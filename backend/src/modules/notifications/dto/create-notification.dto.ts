@@ -1,3 +1,7 @@
-// TODO: CreateNotificationDto
-// Fields: type, title, message, facilityId?
-// Created automatically by the system (low stock, bed full, attendance missing)
+export class CreateNotificationDto {
+  facilityId?: string;
+  type: 'Info' | 'Warning' | 'Critical';
+  title: string;
+  message: string;
+  isRead?: boolean;
+}

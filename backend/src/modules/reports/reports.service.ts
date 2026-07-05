@@ -1,5 +1,10 @@
-// TODO: ReportsService
-// Business logic layer for reports
-// Calls ReportsRepository for data access
-// Validates facilityId scoping for non-district-admin roles
-// Triggers notifications/audit logs where applicable
+import { Injectable } from '@nestjs/common';
+import { BaseService } from '../../common/services/base.service';
+import { ReportsRepository } from './reports.repository';
+
+@Injectable()
+export class ReportsService extends BaseService<any> {
+  constructor(protected readonly reportsRepository: ReportsRepository) {
+    super(reportsRepository);
+  }
+}

@@ -1,2 +1,6 @@
-// TODO: GenerateReportDto
-// Fields: reportType (DAILY|WEEKLY|MONTHLY|INVENTORY|ATTENDANCE), startDate, endDate, facilityId?
+export class GenerateReportDto {
+  facilityId?: string;
+  reportType: 'Daily' | 'Weekly' | 'Monthly' | 'Inventory' | 'Attendance';
+  fileUrl?: string;
+  status?: 'Pending' | 'Completed' | 'Failed';
+}

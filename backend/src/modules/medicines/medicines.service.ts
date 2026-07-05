@@ -1,5 +1,10 @@
-// TODO: MedicinesService
-// Business logic layer for medicines
-// Calls MedicinesRepository for data access
-// Validates facilityId scoping for non-district-admin roles
-// Triggers notifications/audit logs where applicable
+import { Injectable } from '@nestjs/common';
+import { BaseService } from '../../common/services/base.service';
+import { MedicinesRepository } from './medicines.repository';
+
+@Injectable()
+export class MedicinesService extends BaseService<any> {
+  constructor(protected readonly medicinesRepository: MedicinesRepository) {
+    super(medicinesRepository);
+  }
+}

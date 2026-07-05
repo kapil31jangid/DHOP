@@ -1,5 +1,10 @@
-// TODO: AttendanceService
-// Business logic layer for attendance
-// Calls AttendanceRepository for data access
-// Validates facilityId scoping for non-district-admin roles
-// Triggers notifications/audit logs where applicable
+import { Injectable } from '@nestjs/common';
+import { BaseService } from '../../common/services/base.service';
+import { AttendanceRepository } from './attendance.repository';
+
+@Injectable()
+export class AttendanceService extends BaseService<any> {
+  constructor(protected readonly attendanceRepository: AttendanceRepository) {
+    super(attendanceRepository);
+  }
+}

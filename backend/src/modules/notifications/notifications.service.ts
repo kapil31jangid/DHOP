@@ -1,5 +1,12 @@
-// TODO: NotificationsService
-// Business logic layer for notifications
-// Calls NotificationsRepository for data access
-// Validates facilityId scoping for non-district-admin roles
-// Triggers notifications/audit logs where applicable
+import { Injectable } from '@nestjs/common';
+import { BaseService } from '../../common/services/base.service';
+import { NotificationsRepository } from './notifications.repository';
+
+@Injectable()
+export class NotificationsService extends BaseService<any> {
+  constructor(
+    protected readonly notificationsRepository: NotificationsRepository,
+  ) {
+    super(notificationsRepository);
+  }
+}

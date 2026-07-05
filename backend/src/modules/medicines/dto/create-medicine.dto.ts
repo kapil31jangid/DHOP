@@ -1,2 +1,9 @@
-// TODO: CreateMedicineDto
-// Fields: name, category, batchNumber, expiryDate, quantity, threshold, facilityId
+export class CreateMedicineDto {
+  facilityId?: string;
+  name: string;
+  category?: string;
+  batchNumber: string;
+  expiryDate: string;
+  quantity: number;
+  threshold: number;
+}

@@ -1,5 +1,10 @@
-// TODO: AuditLogsService
-// Business logic layer for audit-logs
-// Calls AuditLogsRepository for data access
-// Validates facilityId scoping for non-district-admin roles
-// Triggers notifications/audit logs where applicable
+import { Injectable } from '@nestjs/common';
+import { BaseService } from '../../common/services/base.service';
+import { AuditLogsRepository } from './audit-logs.repository';
+
+@Injectable()
+export class AuditLogsService extends BaseService<any> {
+  constructor(protected readonly auditLogsRepository: AuditLogsRepository) {
+    super(auditLogsRepository);
+  }
+}

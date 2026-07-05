@@ -1,5 +1,10 @@
-// TODO: BedsService
-// Business logic layer for beds
-// Calls BedsRepository for data access
-// Validates facilityId scoping for non-district-admin roles
-// Triggers notifications/audit logs where applicable
+import { Injectable } from '@nestjs/common';
+import { BaseService } from '../../common/services/base.service';
+import { BedsRepository } from './beds.repository';
+
+@Injectable()
+export class BedsService extends BaseService<any> {
+  constructor(protected readonly bedsRepository: BedsRepository) {
+    super(bedsRepository);
+  }
+}
