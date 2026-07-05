@@ -1,0 +1,1686 @@
+Smart Health - AI-Driven Health Center & Supply Chain Management
+
+The Problem
+PHCs and CHCs face recurring operational gaps — medicine stock-outs, unmanaged patient footfall, bed unavailability, unpredictable doctor attendance — tracked manually with no real-time visibility, leading to shortages and under-resourced facilities.
+
+The Challenge
+Build a multilingual AI platform for real-time health centre management covering stock monitoring, patient footfall, bed availability, doctor attendance, and test availability audits. It should generate early stock-out warnings, AI-driven demand forecasts, and smart resource redistribution recommendations across a district's PHCs/CHCs — and automatically flag underperforming or under-resourced centres to district administrators for intervention.
+
+This is actually a very good hackathon problem because you don't need to build a real hospital ERP. You only need to build an AI-powered prototype that demonstrates how the system would work.
+
+
+Step 1: Define Your Users
+There are mainly 3 users:
+
+👨‍⚕️ Health Center Staff
+Update medicine stock
+Update available beds
+Mark doctor attendance
+Update available tests
+🏢 District Administrator
+View dashboard of all PHCs/CHCs
+Receive alerts
+View AI recommendations
+Compare hospital performance
+🤖 AI Assistant
+Predict shortages
+Forecast demand
+Recommend redistribution
+Generate reports
+Answer questions
+
+Step 2: Create the Database
+Suppose your district has 20 PHCs.
+
+Your database may look like:
+
+PHCs Table
+PHC_ID
+Name
+District
+Latitude
+Longitude
+
+
+Medicine Stock
+PHC_ID
+Medicine Name
+Current Stock
+Minimum Threshold
+Expiry Date
+Last Updated
+
+Example
+
+PHC
+Medicine
+Stock
+Threshold
+PHC A
+Paracetamol
+32
+50
+
+Bed Availability
+PHC_ID
+Total Beds
+Occupied Beds
+Available Beds
+
+
+Doctor Attendance
+Doctor Name
+PHC
+Status
+Time In
+
+
+Test Availability
+Blood Test ✔
+
+X-Ray ❌
+
+ECG ✔
+
+Ultrasound ✔
+
+
+Patient Visits
+Date
+
+PHC
+
+Patient Count
+
+
+Step 3: Dashboard
+Now make a dashboard.
+
+Example
+
+District Overview
+
+Medicine Alerts : 8
+
+Beds Available : 320
+
+Doctors Absent : 6
+
+PHCs Critical : 4
+
+Today's Patients : 2810
+
+Below that
+
+Medicine Stock
+
+Bed Status
+
+Doctor Attendance
+
+Patient Trend
+
+Heat Map
+
+
+Step 4: AI Features
+This is where the hackathon becomes interesting.
+
+
+Feature 1
+Stock Prediction
+Instead of
+
+Stock = 50
+
+AI says
+
+Based on previous consumption, Paracetamol will finish in 3 days.
+Use
+
+Prophet
+LSTM
+Random Forest
+Gemini
+Even simple regression is enough.
+
+
+Feature 2
+Demand Forecast
+
+AI predicts
+
+Next Week
+
+Expected Patients
+
+Today : 120
+
+Tomorrow : 145
+
+Rainy Season : 260
+
+Use
+
+Previous patient data
+
+Weather API
+
+Disease outbreak data
+
+Festival calendar
+
+
+Feature 3
+Redistribution Recommendation
+
+Suppose
+
+PHC A
+
+Paracetamol = 15
+
+PHC B
+
+Paracetamol = 700
+
+AI says
+
+Move 250 tablets
+from PHC B
+to PHC A
+
+This is one of the biggest scoring features.
+
+
+Feature 4
+Underperforming Center Detection
+
+Suppose
+
+Hospital A
+
+Medicine Shortages = 18
+
+Doctor Attendance = 40%
+
+Patient Waiting Time = High
+
+Beds Occupied = 100%
+
+AI gives
+
+Health Score
+
+42/100
+
+Reason
+
+Doctor shortage
+
+Low stock
+
+High crowd
+
+
+Feature 5
+AI Chatbot
+
+Ask
+
+Which PHC needs help today?
+
+AI replies
+
+PHC Rajpur
+
+Reasons
+
+Low insulin stock
+
+Only one doctor available
+
+No free beds
+
+Recommend sending
+
+Doctor
+
+Medicines
+
+Ambulance
+
+
+Step 5: AI Alert Engine
+Example
+
+⚠️ ALERT
+
+PHC Ahmedabad East
+
+Paracetamol
+
+Stock
+
+15
+
+Threshold
+
+50
+
+Expected Stock Out
+
+Tomorrow
+
+Recommendation
+
+Transfer from PHC Ahmedabad West
+
+This alert can also be sent via
+
+SMS
+WhatsApp
+Email
+
+Step 6: Resource Recommendation
+This is pure AI.
+
+Input
+
+PHC A
+
+Patients = 300
+
+Beds = 0
+
+Doctors = 2
+
+Medicine = Low
+
+Nearby PHCs
+
+PHC B
+
+Beds = 18
+
+Doctors = 5
+
+Medicine = High
+
+AI
+
+Recommendation
+
+Transfer
+
+80 patients
+
+Move
+
+200 Paracetamol
+
+Send
+
+1 Doctor
+
+
+Step 7: Analytics
+Charts
+
+Medicine Consumption
+
+Patient Growth
+
+Doctor Attendance
+
+Bed Occupancy
+
+Disease Trend
+
+
+Step 8: Overall Architecture
+Users
+
+Staff Admin
+
+↓
+
+Next.js Dashboard
+
+↓
+
+FastAPI Backend
+
+↓
+
+PostgreSQL / Supabase
+
+↓
+
+AI Layer (Gemini)
+
+↓ ↓ ↓
+
+Forecasting
+
+Alerts
+
+Recommendations
+
+Chatbot
+
+Reports
+
+
+Suggested Tech Stack (Great for a Hackathon)
+Since I know you've worked with Next.js, FastAPI, Gemini, and Supabase, this stack plays to your strengths:
+
+Component
+Technology
+Frontend
+Next.js + Tailwind CSS
+Backend
+FastAPI
+Database
+Supabase (PostgreSQL)
+Authentication
+Supabase Auth
+AI
+Google Gemini 3.1 Flash Lite
+Charts
+Recharts
+Maps
+Leaflet or Google Maps
+Notifications
+Twilio (SMS) or Email API
+Deployment
+Vercel (Frontend) + Railway/Render/Cloud Run (Backend)
+
+How to Stand Out in the Hackathon
+Most teams will stop at dashboards. To impress the judges, focus on AI-driven decision support:
+
+District Health Score for every PHC (0–100) based on stock, beds, attendance, and patient load.
+Medicine redistribution optimizer that suggests the best source PHC and route.
+Natural language AI assistant ("Which PHCs are at risk this week?").
+Demand forecasting using historical patient data and weather/seasonal patterns.
+Automatic multilingual report generation (English, Hindi, Gujarati) for district administrators.
+These features demonstrate that your solution is not just displaying data—it is helping officials make better decisions proactively, which is exactly what the problem statement is asking for.
+
+Yes. In fact, I would avoid paid APIs completely for a hackathon. You can build almost the entire project using free-tier services. Since I know your preferred stack is Next.js + FastAPI + Supabase + Gemini, here's a completely free architecture.
+
+
+💰 Total Cost: ₹0 (Hackathon Ready)
+Component
+Free Solution
+Frontend
+Next.js (Vercel Free)
+Backend
+FastAPI (Render Free / Railway Trial / Google Cloud Run Free Tier)
+Database
+Supabase Free
+Authentication
+Supabase Auth
+AI
+Google Gemini 2.5 Flash Lite / Gemini Flash (free tier via Google AI Studio)
+Charts
+Recharts
+Maps
+Leaflet + OpenStreetMap
+Voice Recognition
+Browser Web Speech API (Chrome)
+Notifications
+In-app notifications (avoid SMS costs)
+File Storage
+Supabase Storage
+Deployment
+Vercel + Render/Cloud Run
+
+Architecture
+Health Worker
+
+↓
+
+Next.js
+
+↓
+
+FastAPI
+
+↓
+
+Supabase Database
+
+↓
+
+Gemini AI
+
+No AWS.
+
+No Azure.
+
+No paid APIs.
+
+
+How every feature will work for FREE
+1. Medicine Stock
+Health worker updates
+
+Paracetamol
+
+Stock = 45
+
+Stored in Supabase.
+
+Simple.
+
+
+2. Bed Availability
+Health worker clicks
+
+Total Beds
+
+20
+
+Occupied
+
+18
+
+Backend calculates
+
+Available
+
+2
+
+
+3. Doctor Attendance
+Instead of biometric
+
+Just use
+
+Present
+
+Absent
+
+On Leave
+
+No hardware needed.
+
+
+4. Patient Count
+Every patient registration
+
+increments
+
+Today's Patients
+
+145
+
+No AI needed.
+
+
+AI Features (All Free)
+AI Medicine Prediction
+Every evening
+
+Backend sends
+
+Past 30 days stock
+
+Today's stock
+
+Average consumption
+
+to Gemini.
+
+Prompt
+
+Predict when this medicine
+will finish.
+
+Suggest redistribution.
+
+Return JSON only.
+
+Gemini replies
+
+{
+"stockout":"4 days",
+"priority":"High",
+"recommendation":"Move 250 tablets from PHC B"
+}
+
+Almost free within the Gemini free quota.
+
+
+Demand Forecast
+Send
+
+Patient counts
+
+Rain
+
+Season
+
+Last Month
+
+Gemini predicts
+
+Tomorrow
+
+178 Patients
+
+Reason
+
+Seasonal Flu
+
+No ML model needed.
+
+Let Gemini do it.
+
+
+Health Score
+Backend calculates
+
+Medicine
+
+30%
+
+Doctors
+
+25%
+
+Beds
+
+20%
+
+Tests
+
+15%
+
+Patient Load
+
+10%
+
+Final
+
+87/100
+
+Simple Python function.
+
+No AI required.
+
+
+AI Chatbot
+User asks
+
+Which PHCs need attention?
+
+Backend
+
+Queries Supabase
+
+↓
+
+Sends structured data to Gemini
+
+↓
+
+Gemini replies
+
+PHC East
+
+Low Insulin
+
+No ECG
+
+Doctor absent
+
+Recommendation
+
+Transfer stock
+
+
+Daily Report
+Every night
+
+Python collects data
+
+↓
+
+Gemini
+
+↓
+
+Creates report
+
+Today's Summary
+
+Critical PHCs
+
+Medicine Alerts
+
+Doctors Absent
+
+Recommendations
+
+Download as PDF.
+
+
+Maps
+Don't use Google Maps.
+
+Use
+
+Leaflet
+
++
+
+OpenStreetMap
+
+100% free.
+
+Show
+
+🟢 Healthy
+
+🟡 Warning
+
+🔴 Critical
+
+
+Charts
+Use
+
+Recharts
+
+Free.
+
+Dashboard
+
+Patient Trend
+Medicine Stock
+Doctor Attendance
+Bed Occupancy
+Health Score
+
+Voice Input
+Instead of paid speech APIs
+
+Use
+
+Browser Speech Recognition API
+
+Works in Chrome.
+
+Health worker speaks
+
+Paracetamol
+
+45 tablets
+
+Doctor Present
+
+23 Patients
+
+Browser converts
+
+↓
+
+FastAPI
+
+↓
+
+Database
+
+
+Alerts
+Don't send SMS.
+
+Instead
+
+Show
+
+🔴 Critical Alert
+
+Medicine
+
+Low
+
+Doctor
+
+Absent
+
+Beds
+
+Full
+
+inside the dashboard.
+
+Later you can add email notifications if desired.
+
+
+Database Tables
+phcs
+
+id
+
+name
+
+district
+
+location
+
+
+medicine_stock
+
+medicine
+
+stock
+
+threshold
+
+phc_id
+
+
+beds
+
+total
+
+occupied
+
+available
+
+
+doctor_attendance
+
+doctor
+
+status
+
+date
+
+
+patient_logs
+
+date
+
+count
+
+
+test_availability
+
+blood
+
+ecg
+
+xray
+
+ultrasound
+
+
+Dashboard Pages
+Login
+↓
+
+Home
+↓
+
+District Overview
+
+↓
+
+Alerts
+
+↓
+
+AI Insights
+
+↓
+
+Reports
+
+
+PHC Details
+Medicine
+
+Doctors
+
+Beds
+
+Patients
+
+Tests
+
+
+AI Assistant
+Chat
+
+↓
+
+Reports
+
+↓
+
+Settings
+
+
+Hackathon Demo
+You don't need real hospital data.
+
+Seed your database with
+
+50 PHCs
+
+100 Doctors
+
+100 Medicines
+
+365 Days Patient History
+
+Generate realistic sample data using Python.
+
+During the demo
+
+Change
+
+Paracetamol
+
+300
+
+↓
+
+20
+
+Instantly
+
+AI predicts shortage
+
+↓
+
+Alert appears
+
+↓
+
+Recommendation generated
+
+↓
+
+Health Score drops
+
+↓
+
+Map marker turns red
+
+Judges love live demonstrations like this.
+
+
+One More "WOW" Feature (Highly Recommended)
+Instead of just showing alerts, create an AI Command Center.
+
+The administrator sees a feed like this:
+
+🚨 PHC Naroda
+Paracetamol will run out in 3 days.
+Suggested action: Transfer 150 tablets from PHC Bapunagar.
+
+🚨 PHC Kalol
+Bed occupancy is at 98%.
+Suggested action: Refer new patients to CHC Gandhinagar.
+
+🚨 PHC Sanand
+Doctor attendance has dropped below 60% this week.
+Suggested action: Assign a temporary physician for the next 2 days.
+
+This makes the app feel like an intelligent operations center rather than a simple dashboard.
+
+Final Tech Stack (100% Free)
+Layer
+Technology
+Frontend
+Next.js 15 + Tailwind CSS
+Backend
+FastAPI
+Database
+Supabase PostgreSQL
+Authentication
+Supabase Auth
+AI
+Google Gemini (Google AI Studio free tier)
+Maps
+Leaflet + OpenStreetMap
+Charts
+Recharts
+Storage
+Supabase Storage
+Deployment
+Vercel + Render or Google Cloud Run (free tiers)
+This stack is modern, scalable, and fits well within hackathon constraints without requiring any paid services.
+
+
+
+
+🏥 Smart Health AI - Complete Development Roadmap (7–10 Days)
+
+📌 Phase 1: Planning (Day 1)
+Step 1: Define the Vision
+Your goal is not to build a hospital management system.
+
+Your goal is:
+
+Build an AI-powered Decision Support Platform that helps district administrators monitor and optimize PHCs and CHCs in real time.
+
+Step 2: Decide Your Modules
+Create these modules:
+
+Authentication
+
+Dashboard
+
+Health Centers
+
+Medicine Management
+
+Doctors
+
+Beds
+
+Tests
+
+Patients
+
+AI Insights
+
+Reports
+
+Settings
+
+
+Step 3: Create UI Design
+Before coding.
+
+Open Figma.
+
+Design
+
+Login
+
+↓
+
+Dashboard
+
+↓
+
+PHC Details
+
+↓
+
+Medicine Page
+
+↓
+
+Doctor Page
+
+↓
+
+Reports
+
+↓
+
+AI Chat
+
+Only 6–7 pages.
+
+
+📌 Phase 2: Project Setup
+Step 4: Create GitHub Repository
+smart-health-ai
+
+
+Step 5: Create Next.js
+npx create-next-app@latest
+
+Choose
+
+TypeScript ✔
+
+Tailwind ✔
+
+App Router ✔
+
+ESLint ✔
+
+
+Step 6: Create FastAPI
+backend/
+
+main.py
+
+routers/
+
+models/
+
+services/
+
+Install
+
+fastapi
+
+uvicorn
+
+supabase
+
+python-dotenv
+
+google-genai
+
+pandas
+
+
+Step 7: Create Supabase Project
+Create tables.
+
+
+📌 Phase 3: Database
+Create these tables.
+
+
+PHCs
+id
+
+name
+
+district
+
+address
+
+latitude
+
+longitude
+
+
+Medicines
+id
+
+phc_id
+
+medicine_name
+
+stock
+
+threshold
+
+expiry_date
+
+
+Doctors
+id
+
+phc_id
+
+doctor_name
+
+specialization
+
+status
+
+
+Beds
+id
+
+phc_id
+
+total
+
+occupied
+
+
+Patients
+id
+
+phc_id
+
+date
+
+count
+
+
+Tests
+id
+
+phc_id
+
+blood
+
+xray
+
+ecg
+
+ultrasound
+
+
+Alerts
+id
+
+type
+
+priority
+
+message
+
+created_at
+
+
+📌 Phase 4: Authentication
+Use Supabase Auth.
+
+Two roles
+
+Health Worker
+
+Admin
+
+After login
+
+Worker
+
+↓
+
+Worker Dashboard
+
+Admin
+
+↓
+
+District Dashboard
+
+
+📌 Phase 5: Worker Portal
+Create pages.
+
+
+Dashboard
+Cards
+
+Patients Today
+
+Available Beds
+
+Medicine Alerts
+
+Doctors Present
+
+
+Medicine Page
+Worker updates
+
+Medicine
+
+Stock
+
+Expiry
+
+Threshold
+
+Save.
+
+
+Doctor Page
+Present
+
+Absent
+
+Leave
+
+
+Beds
+Total
+
+Occupied
+
+
+Tests
+Checkboxes
+
+Blood
+
+ECG
+
+X-ray
+
+MRI
+
+
+Patients
+Today's Patients
+
+135
+
+Done.
+
+
+📌 Phase 6: Admin Dashboard
+This is your hero page.
+
+Cards
+
+District Health Score
+
+Critical PHCs
+
+Total Patients
+
+Available Beds
+
+Medicine Alerts
+
+Doctors Absent
+
+
+Charts
+
+Patient Trend
+
+Medicine Trend
+
+Doctor Attendance
+
+Bed Occupancy
+
+Health Score
+
+
+District Map
+
+Green
+
+Yellow
+
+Red
+
+Use
+
+Leaflet
+
+
+📌 Phase 7: Backend APIs
+Create APIs
+
+GET /phcs
+
+GET /medicines
+
+POST /medicine
+
+GET /beds
+
+POST /beds
+
+GET /patients
+
+POST /patients
+
+GET /doctors
+
+POST /attendance
+
+GET /alerts
+
+Test using Postman.
+
+
+📌 Phase 8: AI Layer
+Now add intelligence.
+
+
+AI Service
+Create
+
+services/
+
+gemini.py
+
+One function
+
+askGemini(prompt)
+
+Reuse everywhere.
+
+
+📌 Feature 1
+Medicine Prediction
+
+Every night
+
+Fetch
+
+Stock
+
+Threshold
+
+Past Usage
+
+Prompt Gemini
+
+Predict stock-out date.
+
+Return JSON.
+
+Store response.
+
+
+📌 Feature 2
+Demand Forecast
+
+Send
+
+Past Patient Counts
+
+Rain
+
+Season
+
+Gemini predicts
+
+Tomorrow
+
+Next Week
+
+Next Month
+
+
+📌 Feature 3
+Health Score
+
+Python function
+
+Medicine
+
+30%
+
+Doctors
+
+25%
+
+Beds
+
+20%
+
+Patients
+
+15%
+
+Tests
+
+10%
+
+Return
+
+82
+
+
+📌 Feature 4
+Redistribution
+
+Algorithm
+
+Low Stock
+
+↓
+
+Find Nearby PHC
+
+↓
+
+High Stock
+
+↓
+
+Recommend Transfer
+
+Store recommendation.
+
+
+📌 Feature 5
+AI Chat
+
+Admin asks
+
+Which PHCs need attention?
+
+Backend
+
+↓
+
+Fetch DB
+
+↓
+
+Gemini
+
+↓
+
+Answer
+
+
+📌 Phase 9: Alert Engine
+Every update
+
+Check
+
+Medicine
+
+Below Threshold?
+
+Yes
+
+↓
+
+Create Alert
+
+High Priority
+
+
+Check
+
+Beds
+
+Above 95%
+
+↓
+
+Alert
+
+
+Doctor
+
+Absent
+
+↓
+
+Alert
+
+
+Health Score
+
+Below 60
+
+↓
+
+Critical Alert
+
+
+📌 Phase 10: Reports
+Create
+
+Daily
+
+Weekly
+
+Monthly
+
+Reports.
+
+Gemini summarizes.
+
+Export PDF.
+
+
+📌 Phase 11: Voice Input
+Use Browser Speech API.
+
+Worker speaks
+
+Paracetamol
+
+50 tablets
+
+Doctor Present
+
+120 Patients
+
+Text
+
+↓
+
+Backend
+
+↓
+
+Database
+
+
+📌 Phase 12: Maps
+Use
+
+Leaflet
+
+Every PHC
+
+Green
+
+Healthy
+
+Yellow
+
+Warning
+
+Red
+
+Critical
+
+Click
+
+↓
+
+Open PHC Details.
+
+
+📌 Phase 13: Seed Data
+Don't use real hospital data.
+
+Generate
+
+50 PHCs
+
+300 Doctors
+
+100 Medicines
+
+365 Days Patient History
+
+using Python.
+
+
+📌 Phase 14: Testing
+Test
+
+Medicine Alert
+
+Doctor Alert
+
+Bed Alert
+
+Health Score
+
+AI Chat
+
+Reports
+
+Redistribution
+
+
+📌 Phase 15: Deployment
+Deploy
+
+Frontend
+
+→ Vercel
+
+Backend
+
+→ Render or Google Cloud Run
+
+Database
+
+→ Supabase
+
+
+🎯 Final Folder Structure
+smart-health-ai/
+│
+├── frontend/
+│ ├── app/
+│ ├── components/
+│ ├── lib/
+│ ├── hooks/
+│ ├── services/
+│ ├── types/
+│ └── utils/
+│
+├── backend/
+│ ├── routers/
+│ ├── models/
+│ ├── schemas/
+│ ├── services/
+│ │ ├── gemini.py
+│ │ ├── forecast.py
+│ │ ├── alerts.py
+│ │ ├── health_score.py
+│ │ └── redistribution.py
+│ ├── database/
+│ ├── utils/
+│ └── main.py
+│
+├── docs/
+├── seed/
+│ └── generate_demo_data.py
+│
+├── README.md
+└── docker-compose.yml
+
+🚀 Development Order (Don't Skip Around)
+This order minimizes rework and ensures you always have something working:
+
+✅ Design the UI in Figma.
+✅ Create the Next.js frontend.
+✅ Set up Supabase and design the database.
+✅ Build authentication and role-based access.
+✅ Implement CRUD pages for medicines, beds, doctors, patients, and tests.
+✅ Build the admin dashboard with charts and maps.
+✅ Create FastAPI APIs and connect them to the frontend.
+✅ Seed realistic demo data.
+✅ Add the alert engine (threshold-based).
+✅ Add AI features (Gemini forecasting, recommendations, chat).
+✅ Generate reports and PDFs.
+✅ Polish the UI, deploy, and prepare a live demo script.
+
+🏆 If you want to win the hackathon...
+I would go one step further and brand this as a District Health Digital Twin rather than just a dashboard.
+
+The narrative becomes:
+
+Observe: Live monitoring of all PHCs/CHCs.
+Predict: AI forecasts medicine shortages, patient surges, and resource gaps.
+Recommend: AI suggests transfers of medicines, doctors, and patients.
+Act: Administrators implement recommendations before services are disrupted.
+That story is compelling, aligns perfectly with the problem statement, and gives judges a clear understanding of the real-world impact.

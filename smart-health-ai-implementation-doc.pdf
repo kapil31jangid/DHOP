@@ -1,0 +1,3794 @@
+%PDF-1.4
+%‚„œ”
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [8 0 R 10 0 R 12 0 R 14 0 R 16 0 R 18 0 R 20 0 R 22 0 R 24 0 R 26 0 R 28 0 R 30 0 R 32 0 R 34 0 R 36 0 R 38 0 R] /Count 16 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Oblique >>
+endobj
+6 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Courier >>
+endobj
+7 0 obj
+<< /Length 3734 >>
+stream
+0.85 0.85 0.85 RG
+54 750 m 558 750 l S
+0 0 0 rg
+0.05 0.16 0.25 rg
+BT
+/F2 20 Tf
+1 0 0 1 54.00 736.00 Tm
+(Smart Health AI: Best Implementation Document) Tj
+ET
+0.06 0.24 0.36 rg
+BT
+/F2 15 Tf
+1 0 0 1 54.00 687.00 Tm
+(1. Problem Understanding) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 657.00 Tm
+(Primary Health Centres \(PHCs\) and Community Health Centres \(CHCs\) often track medicines, beds,) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 642.50 Tm
+(doctor attendance, test availability, and patient load manually. This creates delays in) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 628.00 Tm
+(identifying stock-outs, overcrowding, absent doctors, and under-resourced facilities. District) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 613.50 Tm
+(administrators do not get real-time visibility, so intervention usually happens after service) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 599.00 Tm
+(quality has already dropped.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 577.50 Tm
+(The best solution is not a full hospital ERP. For a hackathon or prototype, the strongest) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 563.00 Tm
+(implementation is an AI-powered district health operations platform that monitors PHCs/CHCs,) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 548.50 Tm
+(predicts risk, recommends action, and explains decisions clearly.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 527.00 Tm
+(Core value proposition:) Tj
+ET
+0 0 0 rg
+BT
+/F3 11 Tf
+1 0 0 1 70.00 505.50 Tm
+("Observe live health-center status, predict shortages and surges, recommend) Tj
+ET
+0 0 0 rg
+BT
+/F3 11 Tf
+1 0 0 1 70.00 490.50 Tm
+( redistribution, and help district officials act before services fail.) Tj
+ET
+0.06 0.24 0.36 rg
+BT
+/F2 15 Tf
+1 0 0 1 54.00 458.50 Tm
+(2. Recommended Product Positioning) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 428.50 Tm
+(Brand the solution as a District Health Digital Twin or AI Health Command Center.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 407.00 Tm
+(This framing is stronger than "dashboard" because it shows four clear capabilities:) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 385.50 Tm
+(1. Observe: Real-time monitoring of PHCs/CHCs.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 371.00 Tm
+(2. Predict: AI forecasts medicine stock-outs, patient surges, and resource gaps.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 356.50 Tm
+(3. Recommend: The system suggests transfers of medicines, doctors, beds, and patient referrals.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 342.00 Tm
+(4. Act: District admins receive prioritized alerts and intervention plans.) Tj
+ET
+0.06 0.24 0.36 rg
+BT
+/F2 15 Tf
+1 0 0 1 54.00 310.50 Tm
+(3. User Roles) Tj
+ET
+0.08 0.28 0.36 rg
+BT
+/F2 12.5 Tf
+1 0 0 1 54.00 272.50 Tm
+(Health Center Staff) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 247.00 Tm
+(Staff should have a simple worker portal for daily updates:) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 225.50 Tm
+(- Update medicine stock and expiry dates.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 211.00 Tm
+(- Update occupied beds.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 196.50 Tm
+(- Mark doctor attendance.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 182.00 Tm
+(- Update test availability.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 167.50 Tm
+(- Enter daily patient count.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 153.00 Tm
+(- Use voice input for faster data entry.) Tj
+ET
+0.08 0.28 0.36 rg
+BT
+/F2 12.5 Tf
+1 0 0 1 54.00 123.50 Tm
+(District Administrator) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 98.00 Tm
+(Admins should get an operations dashboard:) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 76.50 Tm
+(- View all PHCs/CHCs across the district.) Tj
+ET
+0.45 0.45 0.45 rg
+BT
+/F1 9 Tf
+1 0 0 1 288.00 28 Tm
+(Page 1) Tj
+ET
+endstream
+endobj
+8 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R /F4 6 0 R >> >> /Contents 7 0 R >>
+endobj
+9 0 obj
+<< /Length 3611 >>
+stream
+0.85 0.85 0.85 RG
+54 750 m 558 750 l S
+0 0 0 rg
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 742.00 Tm
+(- See critical alerts.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 727.50 Tm
+(- Compare centers by health score.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 713.00 Tm
+(- View map-based risk status.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 698.50 Tm
+(- Review AI recommendations.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 684.00 Tm
+(- Generate daily, weekly, and monthly reports.) Tj
+ET
+0.08 0.28 0.36 rg
+BT
+/F2 12.5 Tf
+1 0 0 1 54.00 654.50 Tm
+(AI Assistant) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 629.00 Tm
+(The AI assistant should:) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 607.50 Tm
+(- Explain which centers need attention.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 593.00 Tm
+(- Summarize risk reasons.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 578.50 Tm
+(- Recommend redistribution.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 564.00 Tm
+(- Generate multilingual reports.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 549.50 Tm
+(- Answer admin questions using structured database context.) Tj
+ET
+0.06 0.24 0.36 rg
+BT
+/F2 15 Tf
+1 0 0 1 54.00 518.00 Tm
+(4. Best Implementation Strategy) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 488.00 Tm
+(Use a hybrid system:) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 466.50 Tm
+(- Deterministic backend logic for critical decisions like thresholds, health scores, and basic) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 452.00 Tm
+(  alerts.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 437.50 Tm
+(- Gemini for natural-language explanations, report generation, demand reasoning, and admin) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 423.00 Tm
+(  chatbot responses.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 408.50 Tm
+(- Lightweight forecasting logic using historical data, with Gemini used to explain or refine) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 394.00 Tm
+(  the forecast.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 372.50 Tm
+(This is better than making every feature depend on an LLM because the system remains) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 358.00 Tm
+(predictable, cheap, faster to demo, and easier to debug.) Tj
+ET
+0.06 0.24 0.36 rg
+BT
+/F2 15 Tf
+1 0 0 1 54.00 326.50 Tm
+(5. Scope) Tj
+ET
+0.08 0.28 0.36 rg
+BT
+/F2 12.5 Tf
+1 0 0 1 54.00 288.50 Tm
+(Must-Have MVP) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 263.00 Tm
+(- Authentication with two roles: health worker and district admin.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 248.50 Tm
+(- Worker portal for medicines, beds, doctors, tests, and patients.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 234.00 Tm
+(- Admin dashboard with summary cards, charts, alerts, and map.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 219.50 Tm
+(- Threshold-based alert engine.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 205.00 Tm
+(- Health score for each PHC/CHC.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 190.50 Tm
+(- Medicine stock-out prediction.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 176.00 Tm
+(- Redistribution recommendations.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 161.50 Tm
+(- AI assistant for district-level queries.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 147.00 Tm
+(- Seeded demo dataset.) Tj
+ET
+0.08 0.28 0.36 rg
+BT
+/F2 12.5 Tf
+1 0 0 1 54.00 117.50 Tm
+(High-Impact Additions) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 92.00 Tm
+(- AI command center feed.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 77.50 Tm
+(- Multilingual report generation in English, Hindi, and Gujarati.) Tj
+ET
+0.45 0.45 0.45 rg
+BT
+/F1 9 Tf
+1 0 0 1 288.00 28 Tm
+(Page 2) Tj
+ET
+endstream
+endobj
+10 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R /F4 6 0 R >> >> /Contents 9 0 R >>
+endobj
+11 0 obj
+<< /Length 4185 >>
+stream
+0.85 0.85 0.85 RG
+54 750 m 558 750 l S
+0 0 0 rg
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 742.00 Tm
+(- Voice input for health workers.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 727.50 Tm
+(- PDF export for daily and weekly reports.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 713.00 Tm
+(- Live demo flow where changing stock instantly triggers alerts, score changes, and map status) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 698.50 Tm
+(  updates.) Tj
+ET
+0.08 0.28 0.36 rg
+BT
+/F2 12.5 Tf
+1 0 0 1 54.00 669.00 Tm
+(Avoid in Version 1) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 643.50 Tm
+(- Full hospital ERP workflows.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 629.00 Tm
+(- Real biometric attendance hardware.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 614.50 Tm
+(- Paid SMS/WhatsApp APIs.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 600.00 Tm
+(- Complex LSTM or deep learning models.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 585.50 Tm
+(- Overly large patient-level medical records.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 571.00 Tm
+(- Google Maps paid integration.) Tj
+ET
+0.06 0.24 0.36 rg
+BT
+/F2 15 Tf
+1 0 0 1 54.00 539.50 Tm
+(6. Recommended Tech Stack) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 509.50 Tm
+(Layer | Recommended Technology | Reason) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 497.30 Tm
+(Frontend | Next.js 15 + TypeScript + Tailwind CSS | Fast development, modern UI, easy deployment) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 485.10 Tm
+(Backend | FastAPI | Clean APIs, Python AI ecosystem) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 472.90 Tm
+(Database | Supabase PostgreSQL | Free tier, relational data, auth support) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 460.70 Tm
+(Authentication | Supabase Auth | Simple role-based login) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 448.50 Tm
+(AI | Google Gemini Flash / Flash Lite | Free-tier friendly, good for reasoning and summaries) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 436.30 Tm
+(Charts | Recharts | Simple dashboard visualizations) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 424.10 Tm
+(Maps | Leaflet + OpenStreetMap | Free and reliable) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 411.90 Tm
+(Reports | HTML-to-PDF or Python PDF library | Good enough for hackathon reporting) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 399.70 Tm
+(Notifications | In-app alerts | Avoids paid SMS dependency) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 387.50 Tm
+(Deployment | Vercel + Render or Cloud Run + Supabase | Free-tier friendly deployment) Tj
+ET
+0.06 0.24 0.36 rg
+BT
+/F2 15 Tf
+1 0 0 1 54.00 358.30 Tm
+(7. System Architecture) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 324.30 Tm
+(Health Worker / District Admin) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 311.80 Tm
+(          |) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 299.30 Tm
+(          v) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 286.80 Tm
+(Next.js Frontend) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 274.30 Tm
+(          |) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 261.80 Tm
+(          v) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 249.30 Tm
+(FastAPI Backend) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 236.80 Tm
+(          |) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 224.30 Tm
+(          v) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 211.80 Tm
+(Supabase PostgreSQL) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 199.30 Tm
+(          |) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 186.80 Tm
+(          v) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 174.30 Tm
+(AI and Analytics Layer) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 161.80 Tm
+(          |) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 149.30 Tm
+(          +-- Alert Engine) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 136.80 Tm
+(          +-- Health Score Engine) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 124.30 Tm
+(          +-- Forecasting Service) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 111.80 Tm
+(          +-- Redistribution Optimizer) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 99.30 Tm
+(          +-- Gemini Assistant) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 86.80 Tm
+(          +-- Report Generator) Tj
+ET
+0.45 0.45 0.45 rg
+BT
+/F1 9 Tf
+1 0 0 1 288.00 28 Tm
+(Page 3) Tj
+ET
+endstream
+endobj
+12 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R /F4 6 0 R >> >> /Contents 11 0 R >>
+endobj
+13 0 obj
+<< /Length 3613 >>
+stream
+0.85 0.85 0.85 RG
+54 750 m 558 750 l S
+0 0 0 rg
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 742.00 Tm
+(Recommended backend responsibility:) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 720.50 Tm
+(- Validate updates from health workers.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 706.00 Tm
+(- Store all operational data.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 691.50 Tm
+(- Calculate alerts and health scores.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 677.00 Tm
+(- Generate recommendations.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 662.50 Tm
+(- Provide structured context to Gemini.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 648.00 Tm
+(- Store AI outputs so the frontend can render them quickly.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 626.50 Tm
+(Recommended frontend responsibility:) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 605.00 Tm
+(- Role-based interfaces.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 590.50 Tm
+(- Worker data entry screens.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 576.00 Tm
+(- Admin command center.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 561.50 Tm
+(- Charts, maps, alert feed, and reports.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 547.00 Tm
+(- Voice input capture using the browser Web Speech API.) Tj
+ET
+0.06 0.24 0.36 rg
+BT
+/F2 15 Tf
+1 0 0 1 54.00 515.50 Tm
+(8. Database Design) Tj
+ET
+0.08 0.28 0.36 rg
+BT
+/F2 12.5 Tf
+1 0 0 1 54.00 477.50 Tm
+(phcs) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 452.00 Tm
+(Stores each health center.) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 430.50 Tm
+(Field | Type | Notes) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 418.30 Tm
+(id | uuid | Primary key) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 406.10 Tm
+(name | text | PHC/CHC name) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 393.90 Tm
+(type | text | PHC or CHC) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 381.70 Tm
+(district | text | District name) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 369.50 Tm
+(address | text | Optional) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 357.30 Tm
+(latitude | numeric | Map marker) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 345.10 Tm
+(longitude | numeric | Map marker) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 332.90 Tm
+(created_at | timestamp | Default now) Tj
+ET
+0.08 0.28 0.36 rg
+BT
+/F2 12.5 Tf
+1 0 0 1 54.00 305.70 Tm
+(users_profile) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 280.20 Tm
+(Stores app-specific role data linked to Supabase Auth.) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 258.70 Tm
+(Field | Type | Notes) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 246.50 Tm
+(id | uuid | Supabase auth user id) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 234.30 Tm
+(full_name | text | User name) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 222.10 Tm
+(role | text | admin or worker) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 209.90 Tm
+(phc_id | uuid | Nullable for district admin) Tj
+ET
+0.08 0.28 0.36 rg
+BT
+/F2 12.5 Tf
+1 0 0 1 54.00 182.70 Tm
+(medicines) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 157.20 Tm
+(Stores stock data by PHC.) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 135.70 Tm
+(Field | Type | Notes) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 123.50 Tm
+(id | uuid | Primary key) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 111.30 Tm
+(phc_id | uuid | Foreign key) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 99.10 Tm
+(medicine_name | text | Example: Paracetamol) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 86.90 Tm
+(stock | integer | Current quantity) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 74.70 Tm
+(threshold | integer | Minimum safe stock) Tj
+ET
+0.45 0.45 0.45 rg
+BT
+/F1 9 Tf
+1 0 0 1 288.00 28 Tm
+(Page 4) Tj
+ET
+endstream
+endobj
+14 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R /F4 6 0 R >> >> /Contents 13 0 R >>
+endobj
+15 0 obj
+<< /Length 3617 >>
+stream
+0.85 0.85 0.85 RG
+54 750 m 558 750 l S
+0 0 0 rg
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 742.00 Tm
+(expiry_date | date | Optional) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 729.80 Tm
+(updated_at | timestamp | Last update) Tj
+ET
+0.08 0.28 0.36 rg
+BT
+/F2 12.5 Tf
+1 0 0 1 54.00 702.60 Tm
+(stock_movements) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 677.10 Tm
+(Tracks stock usage and transfers. This is important for forecasting.) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 655.60 Tm
+(Field | Type | Notes) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 643.40 Tm
+(id | uuid | Primary key) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 631.20 Tm
+(phc_id | uuid | Foreign key) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 619.00 Tm
+(medicine_name | text | Medicine) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 606.80 Tm
+(quantity_change | integer | Negative for usage, positive for restock) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 594.60 Tm
+(reason | text | usage, restock, transfer_in, transfer_out) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 582.40 Tm
+(created_at | timestamp | Event time) Tj
+ET
+0.08 0.28 0.36 rg
+BT
+/F2 12.5 Tf
+1 0 0 1 54.00 555.20 Tm
+(beds) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 529.70 Tm
+(Field | Type | Notes) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 517.50 Tm
+(id | uuid | Primary key) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 505.30 Tm
+(phc_id | uuid | Foreign key) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 493.10 Tm
+(total | integer | Total beds) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 480.90 Tm
+(occupied | integer | Occupied beds) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 468.70 Tm
+(updated_at | timestamp | Last update) Tj
+ET
+0.08 0.28 0.36 rg
+BT
+/F2 12.5 Tf
+1 0 0 1 54.00 441.50 Tm
+(doctors) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 416.00 Tm
+(Field | Type | Notes) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 403.80 Tm
+(id | uuid | Primary key) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 391.60 Tm
+(phc_id | uuid | Foreign key) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 379.40 Tm
+(doctor_name | text | Doctor name) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 367.20 Tm
+(specialization | text | Optional) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 355.00 Tm
+(active | boolean | Current posting status) Tj
+ET
+0.08 0.28 0.36 rg
+BT
+/F2 12.5 Tf
+1 0 0 1 54.00 327.80 Tm
+(doctor_attendance) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 302.30 Tm
+(Field | Type | Notes) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 290.10 Tm
+(id | uuid | Primary key) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 277.90 Tm
+(doctor_id | uuid | Foreign key) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 265.70 Tm
+(phc_id | uuid | Foreign key) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 253.50 Tm
+(date | date | Attendance date) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 241.30 Tm
+(status | text | present, absent, leave) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 229.10 Tm
+(time_in | time | Optional) Tj
+ET
+0.08 0.28 0.36 rg
+BT
+/F2 12.5 Tf
+1 0 0 1 54.00 201.90 Tm
+(patient_logs) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 176.40 Tm
+(Field | Type | Notes) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 164.20 Tm
+(id | uuid | Primary key) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 152.00 Tm
+(phc_id | uuid | Foreign key) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 139.80 Tm
+(date | date | Log date) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 127.60 Tm
+(count | integer | Patient footfall) Tj
+ET
+0.08 0.28 0.36 rg
+BT
+/F2 12.5 Tf
+1 0 0 1 54.00 100.40 Tm
+(test_availability) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 74.90 Tm
+(Field | Type | Notes) Tj
+ET
+0.45 0.45 0.45 rg
+BT
+/F1 9 Tf
+1 0 0 1 288.00 28 Tm
+(Page 5) Tj
+ET
+endstream
+endobj
+16 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R /F4 6 0 R >> >> /Contents 15 0 R >>
+endobj
+17 0 obj
+<< /Length 4142 >>
+stream
+0.85 0.85 0.85 RG
+54 750 m 558 750 l S
+0 0 0 rg
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 742.00 Tm
+(id | uuid | Primary key) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 729.80 Tm
+(phc_id | uuid | Foreign key) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 717.60 Tm
+(blood_test | boolean | Available or not) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 705.40 Tm
+(xray | boolean | Available or not) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 693.20 Tm
+(ecg | boolean | Available or not) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 681.00 Tm
+(ultrasound | boolean | Available or not) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 668.80 Tm
+(updated_at | timestamp | Last update) Tj
+ET
+0.08 0.28 0.36 rg
+BT
+/F2 12.5 Tf
+1 0 0 1 54.00 641.60 Tm
+(alerts) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 616.10 Tm
+(Field | Type | Notes) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 603.90 Tm
+(id | uuid | Primary key) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 591.70 Tm
+(phc_id | uuid | Foreign key) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 579.50 Tm
+(alert_type | text | stock, bed, doctor, test, health_score) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 567.30 Tm
+(priority | text | low, medium, high, critical) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 555.10 Tm
+(title | text | Short title) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 542.90 Tm
+(message | text | Human-readable alert) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 530.70 Tm
+(recommendation | text | Suggested action) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 518.50 Tm
+(status | text | open, acknowledged, resolved) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 506.30 Tm
+(created_at | timestamp | Alert time) Tj
+ET
+0.08 0.28 0.36 rg
+BT
+/F2 12.5 Tf
+1 0 0 1 54.00 479.10 Tm
+(recommendations) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 453.60 Tm
+(Field | Type | Notes) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 441.40 Tm
+(id | uuid | Primary key) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 429.20 Tm
+(phc_id | uuid | Target PHC) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 417.00 Tm
+(type | text | medicine_transfer, patient_referral, doctor_assignment) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 404.80 Tm
+(priority | text | medium, high, critical) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 392.60 Tm
+(source_phc_id | uuid | Optional source PHC) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 380.40 Tm
+(payload | jsonb | Structured recommendation details) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 368.20 Tm
+(explanation | text | AI or system explanation) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 356.00 Tm
+(status | text | pending, accepted, rejected, completed) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 343.80 Tm
+(created_at | timestamp | Created time) Tj
+ET
+0.08 0.28 0.36 rg
+BT
+/F2 12.5 Tf
+1 0 0 1 54.00 316.60 Tm
+(reports) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 291.10 Tm
+(Field | Type | Notes) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 278.90 Tm
+(id | uuid | Primary key) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 266.70 Tm
+(report_type | text | daily, weekly, monthly) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 254.50 Tm
+(language | text | en, hi, gu) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 242.30 Tm
+(content | text | Generated report) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 230.10 Tm
+(file_url | text | Optional exported PDF) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 217.90 Tm
+(created_at | timestamp | Created time) Tj
+ET
+0.06 0.24 0.36 rg
+BT
+/F2 15 Tf
+1 0 0 1 54.00 188.70 Tm
+(9. Health Score Model) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 158.70 Tm
+(Use a transparent score from 0 to 100. Avoid hiding everything inside Gemini.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 137.20 Tm
+(Recommended weights:) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 115.70 Tm
+(Factor | Weight) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 103.50 Tm
+(Medicine stock safety | 30) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 91.30 Tm
+(Doctor availability | 25) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 79.10 Tm
+(Bed availability | 20) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 66.90 Tm
+(Patient load pressure | 15) Tj
+ET
+0.45 0.45 0.45 rg
+BT
+/F1 9 Tf
+1 0 0 1 288.00 28 Tm
+(Page 6) Tj
+ET
+endstream
+endobj
+18 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R /F4 6 0 R >> >> /Contents 17 0 R >>
+endobj
+19 0 obj
+<< /Length 3535 >>
+stream
+0.85 0.85 0.85 RG
+54 750 m 558 750 l S
+0 0 0 rg
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 742.00 Tm
+(Test availability | 10) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 722.80 Tm
+(Example scoring logic:) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 697.30 Tm
+(health_score =) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 684.80 Tm
+(  medicine_score * 0.30 +) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 672.30 Tm
+(  doctor_score * 0.25 +) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 659.80 Tm
+(  bed_score * 0.20 +) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 647.30 Tm
+(  patient_score * 0.15 +) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 634.80 Tm
+(  test_score * 0.10) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 609.30 Tm
+(Risk bands:) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 587.80 Tm
+(Score | Status | Map Color) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 575.60 Tm
+(80-100 | Healthy | Green) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 563.40 Tm
+(60-79 | Watch | Yellow) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 551.20 Tm
+(40-59 | At Risk | Orange) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.2 Tf
+1 0 0 1 54.00 539.00 Tm
+(0-39 | Critical | Red) Tj
+ET
+0.06 0.24 0.36 rg
+BT
+/F2 15 Tf
+1 0 0 1 54.00 509.80 Tm
+(10. Alert Engine) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 479.80 Tm
+(Run alert checks after every worker update and through a scheduled daily job.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 458.30 Tm
+(Rules:) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 436.80 Tm
+(- Medicine stock below threshold: create high-priority stock alert.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 422.30 Tm
+(- Medicine predicted to run out within 3 days: create critical alert.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 407.80 Tm
+(- Bed occupancy above 90 percent: create high-priority bed alert.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 393.30 Tm
+(- Bed occupancy above 98 percent: create critical alert.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 378.80 Tm
+(- Doctor attendance below 70 percent for the week: create high-priority staffing alert.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 364.30 Tm
+(- Health score below 60: create at-risk alert.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 349.80 Tm
+(- Health score below 40: create critical intervention alert.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 335.30 Tm
+(- Essential test unavailable for more than 2 days: create test availability alert.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 313.80 Tm
+(Every alert should include:) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 292.30 Tm
+(- What happened.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 277.80 Tm
+(- Which PHC/CHC is affected.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 263.30 Tm
+(- Why it matters.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 248.80 Tm
+(- Suggested action.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 234.30 Tm
+(- Priority.) Tj
+ET
+0.06 0.24 0.36 rg
+BT
+/F2 15 Tf
+1 0 0 1 54.00 202.80 Tm
+(11. AI Features) Tj
+ET
+0.08 0.28 0.36 rg
+BT
+/F2 12.5 Tf
+1 0 0 1 54.00 164.80 Tm
+(11.1 Medicine Stock-Out Prediction) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 139.30 Tm
+(Best approach:) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 117.80 Tm
+(1. Use recent stock movements to calculate average daily consumption.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 103.30 Tm
+(2. Estimate days until stock-out with a simple formula.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 88.80 Tm
+(3. Ask Gemini to explain the risk and produce a clean recommendation.) Tj
+ET
+0.45 0.45 0.45 rg
+BT
+/F1 9 Tf
+1 0 0 1 288.00 28 Tm
+(Page 7) Tj
+ET
+endstream
+endobj
+20 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R /F4 6 0 R >> >> /Contents 19 0 R >>
+endobj
+21 0 obj
+<< /Length 3307 >>
+stream
+0.85 0.85 0.85 RG
+54 750 m 558 750 l S
+0 0 0 rg
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 742.00 Tm
+(Formula:) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 716.50 Tm
+(days_to_stockout = current_stock / average_daily_consumption) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 691.00 Tm
+(If stock history is missing, fall back to:) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 665.50 Tm
+(average_daily_consumption = max\(1, patient_count_average * medicine_usage_factor\)) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 640.00 Tm
+(Store output as structured JSON:) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 614.50 Tm
+({) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 602.00 Tm
+(  "medicine": "Paracetamol",) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 589.50 Tm
+(  "phc": "PHC Naroda",) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 577.00 Tm
+(  "current_stock": 15,) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 564.50 Tm
+(  "days_to_stockout": 2,) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 552.00 Tm
+(  "priority": "critical",) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 539.50 Tm
+(  "recommendation": "Transfer 150 tablets from PHC Bapunagar") Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 527.00 Tm
+(}) Tj
+ET
+0.08 0.28 0.36 rg
+BT
+/F2 12.5 Tf
+1 0 0 1 54.00 493.50 Tm
+(11.2 Demand Forecast) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 468.00 Tm
+(For the MVP, use a simple forecast instead of a heavy ML model:) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 446.50 Tm
+(- 7-day moving average.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 432.00 Tm
+(- Last 30-day trend.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 417.50 Tm
+(- Day-of-week pattern.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 403.00 Tm
+(- Seasonal multiplier.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 388.50 Tm
+(- Optional Gemini explanation.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 367.00 Tm
+(Inputs:) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 345.50 Tm
+(- Historical patient counts.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 331.00 Tm
+(- Current season.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 316.50 Tm
+(- Recent patient trend.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 302.00 Tm
+(- Disease outbreak flag if available.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 287.50 Tm
+(- Festival or local event note if manually entered.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 266.00 Tm
+(Outputs:) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 244.50 Tm
+(- Tomorrow's expected patients.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 230.00 Tm
+(- Next 7-day expected patients.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 215.50 Tm
+(- Surge risk: low, medium, high.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 201.00 Tm
+(- Short reason.) Tj
+ET
+0.08 0.28 0.36 rg
+BT
+/F2 12.5 Tf
+1 0 0 1 54.00 171.50 Tm
+(11.3 Redistribution Optimizer) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 146.00 Tm
+(This is the highest-value feature.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 124.50 Tm
+(Algorithm:) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 103.00 Tm
+(1. Identify target PHCs with low stock or high demand.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 88.50 Tm
+(2. Find source PHCs with surplus stock.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 74.00 Tm
+(3. Rank source PHCs by:) Tj
+ET
+0.45 0.45 0.45 rg
+BT
+/F1 9 Tf
+1 0 0 1 288.00 28 Tm
+(Page 8) Tj
+ET
+endstream
+endobj
+22 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R /F4 6 0 R >> >> /Contents 21 0 R >>
+endobj
+23 0 obj
+<< /Length 3748 >>
+stream
+0.85 0.85 0.85 RG
+54 750 m 558 750 l S
+0 0 0 rg
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 742.00 Tm
+(   - Available surplus above threshold.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 727.50 Tm
+(   - Distance from target PHC.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 713.00 Tm
+(   - Same district or block.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 698.50 Tm
+(   - Source PHC's own risk level.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 684.00 Tm
+(4. Recommend transfer quantity without pushing source below safety threshold.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 662.50 Tm
+(Transfer formula:) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 637.00 Tm
+(surplus = source_stock - source_threshold) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 624.50 Tm
+(target_gap = target_threshold - target_stock) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 612.00 Tm
+(transfer_quantity = min\(surplus * 0.6, target_gap + 7_day_expected_usage\)) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 586.50 Tm
+(Recommendation example:) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 561.00 Tm
+(Move 150 Paracetamol tablets from PHC Bapunagar to PHC Naroda.) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 548.50 Tm
+(Reason: PHC Naroda will run out in 2 days. PHC Bapunagar has 420 tablets above its safety) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 536.00 Tm
+(threshold.) Tj
+ET
+0.08 0.28 0.36 rg
+BT
+/F2 12.5 Tf
+1 0 0 1 54.00 502.50 Tm
+(11.4 Underperforming Center Detection) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 477.00 Tm
+(Use health score and repeated alerts to identify underperforming centers.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 455.50 Tm
+(Flag a center if:) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 434.00 Tm
+(- Health score stays below 60 for 3 consecutive days.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 419.50 Tm
+(- More than 5 critical alerts occur in 7 days.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 405.00 Tm
+(- Doctor attendance stays below 60 percent in a week.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 390.50 Tm
+(- Bed occupancy stays above 95 percent for 3 days.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 376.00 Tm
+(- Two or more essential services are unavailable.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 354.50 Tm
+(The admin dashboard should show reasons, not just a score.) Tj
+ET
+0.08 0.28 0.36 rg
+BT
+/F2 12.5 Tf
+1 0 0 1 54.00 325.00 Tm
+(11.5 AI Assistant) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 299.50 Tm
+(Use Gemini as a natural-language layer over structured district data.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 278.00 Tm
+(Important rule:) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 256.50 Tm
+(Do not let the assistant guess. The backend should first query Supabase and pass only relevant) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 242.00 Tm
+(structured context to Gemini.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 220.50 Tm
+(Example prompt shape:) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 195.00 Tm
+(You are an assistant for a district health administrator.) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 182.50 Tm
+(Use only the provided JSON data.) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 170.00 Tm
+(Identify the top PHCs needing attention today.) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 157.50 Tm
+(Return concise recommendations with reasons.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 132.00 Tm
+(Useful questions:) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 110.50 Tm
+(- Which PHCs need urgent attention today?) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 96.00 Tm
+(- Which medicines are likely to run out this week?) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 81.50 Tm
+(- Where should we move Paracetamol from?) Tj
+ET
+0.45 0.45 0.45 rg
+BT
+/F1 9 Tf
+1 0 0 1 288.00 28 Tm
+(Page 9) Tj
+ET
+endstream
+endobj
+24 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R /F4 6 0 R >> >> /Contents 23 0 R >>
+endobj
+25 0 obj
+<< /Length 2837 >>
+stream
+0.85 0.85 0.85 RG
+54 750 m 558 750 l S
+0 0 0 rg
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 742.00 Tm
+(- Which centers have poor doctor attendance?) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 727.50 Tm
+(- Generate today's district health summary.) Tj
+ET
+0.08 0.28 0.36 rg
+BT
+/F2 12.5 Tf
+1 0 0 1 54.00 698.00 Tm
+(11.6 Multilingual Reports) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 672.50 Tm
+(Generate reports in:) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 651.00 Tm
+(- English.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 636.50 Tm
+(- Hindi.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 622.00 Tm
+(- Gujarati.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 600.50 Tm
+(Report sections:) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 579.00 Tm
+(- District summary.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 564.50 Tm
+(- Critical PHCs.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 550.00 Tm
+(- Medicine alerts.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 535.50 Tm
+(- Bed pressure.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 521.00 Tm
+(- Doctor attendance.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 506.50 Tm
+(- Test unavailability.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 492.00 Tm
+(- Recommended actions.) Tj
+ET
+0.06 0.24 0.36 rg
+BT
+/F2 15 Tf
+1 0 0 1 54.00 460.50 Tm
+(12. API Design) Tj
+ET
+0.08 0.28 0.36 rg
+BT
+/F2 12.5 Tf
+1 0 0 1 54.00 422.50 Tm
+(Authentication) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 397.00 Tm
+(- `POST /auth/login`) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 382.50 Tm
+(- `POST /auth/logout`) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 368.00 Tm
+(- `GET /auth/me`) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 346.50 Tm
+(If Supabase Auth is used directly in the frontend, the backend should still validate JWTs for) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 332.00 Tm
+(protected APIs.) Tj
+ET
+0.08 0.28 0.36 rg
+BT
+/F2 12.5 Tf
+1 0 0 1 54.00 302.50 Tm
+(PHCs) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 277.00 Tm
+(- `GET /phcs`) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 262.50 Tm
+(- `GET /phcs/{id}`) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 248.00 Tm
+(- `GET /phcs/{id}/summary`) Tj
+ET
+0.08 0.28 0.36 rg
+BT
+/F2 12.5 Tf
+1 0 0 1 54.00 218.50 Tm
+(Worker Updates) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 193.00 Tm
+(- `POST /medicines`) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 178.50 Tm
+(- `PATCH /medicines/{id}`) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 164.00 Tm
+(- `POST /beds/update`) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 149.50 Tm
+(- `POST /doctor-attendance`) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 135.00 Tm
+(- `POST /patient-logs`) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 120.50 Tm
+(- `POST /test-availability`) Tj
+ET
+0.08 0.28 0.36 rg
+BT
+/F2 12.5 Tf
+1 0 0 1 54.00 91.00 Tm
+(Admin Dashboard) Tj
+ET
+0.45 0.45 0.45 rg
+BT
+/F1 9 Tf
+1 0 0 1 288.00 28 Tm
+(Page 10) Tj
+ET
+endstream
+endobj
+26 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R /F4 6 0 R >> >> /Contents 25 0 R >>
+endobj
+27 0 obj
+<< /Length 2791 >>
+stream
+0.85 0.85 0.85 RG
+54 750 m 558 750 l S
+0 0 0 rg
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 742.00 Tm
+(- `GET /dashboard/district-summary`) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 727.50 Tm
+(- `GET /dashboard/health-scores`) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 713.00 Tm
+(- `GET /dashboard/patient-trends`) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 698.50 Tm
+(- `GET /dashboard/map`) Tj
+ET
+0.08 0.28 0.36 rg
+BT
+/F2 12.5 Tf
+1 0 0 1 54.00 669.00 Tm
+(Alerts) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 643.50 Tm
+(- `GET /alerts`) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 629.00 Tm
+(- `PATCH /alerts/{id}/acknowledge`) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 614.50 Tm
+(- `PATCH /alerts/{id}/resolve`) Tj
+ET
+0.08 0.28 0.36 rg
+BT
+/F2 12.5 Tf
+1 0 0 1 54.00 585.00 Tm
+(AI and Recommendations) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 559.50 Tm
+(- `POST /ai/chat`) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 545.00 Tm
+(- `POST /ai/generate-report`) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 530.50 Tm
+(- `GET /recommendations`) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 516.00 Tm
+(- `POST /recommendations/run`) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 501.50 Tm
+(- `POST /forecasts/run`) Tj
+ET
+0.06 0.24 0.36 rg
+BT
+/F2 15 Tf
+1 0 0 1 54.00 470.00 Tm
+(13. Frontend Pages) Tj
+ET
+0.08 0.28 0.36 rg
+BT
+/F2 12.5 Tf
+1 0 0 1 54.00 432.00 Tm
+(Public) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 406.50 Tm
+(- Login) Tj
+ET
+0.08 0.28 0.36 rg
+BT
+/F2 12.5 Tf
+1 0 0 1 54.00 377.00 Tm
+(Worker Portal) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 351.50 Tm
+(- Worker dashboard) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 337.00 Tm
+(- Medicine update page) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 322.50 Tm
+(- Bed update page) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 308.00 Tm
+(- Doctor attendance page) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 293.50 Tm
+(- Patient count page) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 279.00 Tm
+(- Test availability page) Tj
+ET
+0.08 0.28 0.36 rg
+BT
+/F2 12.5 Tf
+1 0 0 1 54.00 249.50 Tm
+(Admin Portal) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 224.00 Tm
+(- District overview dashboard) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 209.50 Tm
+(- AI command center) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 195.00 Tm
+(- PHC/CHC details) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 180.50 Tm
+(- Alerts) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 166.00 Tm
+(- Recommendations) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 151.50 Tm
+(- Reports) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 137.00 Tm
+(- AI assistant) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 122.50 Tm
+(- Settings) Tj
+ET
+0.06 0.24 0.36 rg
+BT
+/F2 15 Tf
+1 0 0 1 54.00 91.00 Tm
+(14. Admin Dashboard Layout) Tj
+ET
+0.45 0.45 0.45 rg
+BT
+/F1 9 Tf
+1 0 0 1 288.00 28 Tm
+(Page 11) Tj
+ET
+endstream
+endobj
+28 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R /F4 6 0 R >> >> /Contents 27 0 R >>
+endobj
+29 0 obj
+<< /Length 3354 >>
+stream
+0.85 0.85 0.85 RG
+54 750 m 558 750 l S
+0 0 0 rg
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 742.00 Tm
+(Top summary cards:) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 720.50 Tm
+(- District health score.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 706.00 Tm
+(- Critical PHCs.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 691.50 Tm
+(- Medicine alerts.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 677.00 Tm
+(- Doctors absent.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 662.50 Tm
+(- Available beds.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 648.00 Tm
+(- Today's patients.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 626.50 Tm
+(Main panels:) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 605.00 Tm
+(- AI command center feed.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 590.50 Tm
+(- District map with color-coded centers.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 576.00 Tm
+(- Patient footfall trend.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 561.50 Tm
+(- Medicine risk chart.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 547.00 Tm
+(- Bed occupancy chart.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 532.50 Tm
+(- Doctor attendance chart.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 518.00 Tm
+(- Underperforming centers table.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 496.50 Tm
+(PHC detail drawer:) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 475.00 Tm
+(- Health score.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 460.50 Tm
+(- Current medicines at risk.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 446.00 Tm
+(- Bed status.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 431.50 Tm
+(- Doctor status.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 417.00 Tm
+(- Test availability.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 402.50 Tm
+(- Latest alerts.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 388.00 Tm
+(- Recommended actions.) Tj
+ET
+0.06 0.24 0.36 rg
+BT
+/F2 15 Tf
+1 0 0 1 54.00 356.50 Tm
+(15. AI Command Center Feed) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 326.50 Tm
+(This should be the hero feature in the demo.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 305.00 Tm
+(Each item should look like an operational instruction:) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 279.50 Tm
+(Critical: PHC Naroda) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 267.00 Tm
+(Paracetamol will run out in 2 days.) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 254.50 Tm
+(Recommended action: Transfer 150 tablets from PHC Bapunagar.) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 242.00 Tm
+(Reason: Bapunagar has surplus stock and is within 8 km.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 216.50 Tm
+(Other examples:) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 191.00 Tm
+(High Risk: CHC Kalol) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 178.50 Tm
+(Bed occupancy is 98 percent.) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 166.00 Tm
+(Recommended action: Refer new non-critical patients to CHC Gandhinagar.) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 136.50 Tm
+(Staffing Alert: PHC Sanand) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 124.00 Tm
+(Doctor attendance is 58 percent this week.) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 111.50 Tm
+(Recommended action: Assign one temporary physician for the next 2 days.) Tj
+ET
+0.06 0.24 0.36 rg
+BT
+/F2 15 Tf
+1 0 0 1 54.00 76.00 Tm
+(16. Demo Data Strategy) Tj
+ET
+0.45 0.45 0.45 rg
+BT
+/F1 9 Tf
+1 0 0 1 288.00 28 Tm
+(Page 12) Tj
+ET
+endstream
+endobj
+30 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R /F4 6 0 R >> >> /Contents 29 0 R >>
+endobj
+31 0 obj
+<< /Length 3152 >>
+stream
+0.85 0.85 0.85 RG
+54 750 m 558 750 l S
+0 0 0 rg
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 731.00 Tm
+(Use generated data instead of real hospital data.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 709.50 Tm
+(Seed:) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 688.00 Tm
+(- 50 PHCs/CHCs.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 673.50 Tm
+(- 200-300 doctors.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 659.00 Tm
+(- 50-100 medicines.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 644.50 Tm
+(- 365 days of patient footfall.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 630.00 Tm
+(- 30 days of stock movements.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 615.50 Tm
+(- Random test availability gaps.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 601.00 Tm
+(- Realistic latitude and longitude values.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 579.50 Tm
+(Include intentionally risky centers:) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 558.00 Tm
+(- Low-stock PHC.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 543.50 Tm
+(- Overcrowded CHC.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 529.00 Tm
+(- Doctor absenteeism center.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 514.50 Tm
+(- Test-unavailable center.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 500.00 Tm
+(- High patient surge center.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 478.50 Tm
+(This makes the demo predictable and impressive.) Tj
+ET
+0.06 0.24 0.36 rg
+BT
+/F2 15 Tf
+1 0 0 1 54.00 447.00 Tm
+(17. Development Roadmap) Tj
+ET
+0.08 0.28 0.36 rg
+BT
+/F2 12.5 Tf
+1 0 0 1 54.00 409.00 Tm
+(Phase 1: Foundation) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 383.50 Tm
+(- Create Next.js frontend.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 369.00 Tm
+(- Create FastAPI backend.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 354.50 Tm
+(- Create Supabase project and schema.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 340.00 Tm
+(- Implement Supabase Auth.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 325.50 Tm
+(- Add role-based routing.) Tj
+ET
+0.08 0.28 0.36 rg
+BT
+/F2 12.5 Tf
+1 0 0 1 54.00 296.00 Tm
+(Phase 2: Worker Portal) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 270.50 Tm
+(- Build data-entry forms for medicines, beds, doctors, patients, and tests.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 256.00 Tm
+(- Connect forms to FastAPI.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 241.50 Tm
+(- Validate and store updates.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 227.00 Tm
+(- Trigger alert checks after updates.) Tj
+ET
+0.08 0.28 0.36 rg
+BT
+/F2 12.5 Tf
+1 0 0 1 54.00 197.50 Tm
+(Phase 3: Admin Dashboard) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 172.00 Tm
+(- Build district overview cards.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 157.50 Tm
+(- Add charts with Recharts.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 143.00 Tm
+(- Add Leaflet district map.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 128.50 Tm
+(- Add PHC detail view.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 114.00 Tm
+(- Add alerts table and filters.) Tj
+ET
+0.08 0.28 0.36 rg
+BT
+/F2 12.5 Tf
+1 0 0 1 54.00 84.50 Tm
+(Phase 4: Intelligence Layer) Tj
+ET
+0.45 0.45 0.45 rg
+BT
+/F1 9 Tf
+1 0 0 1 288.00 28 Tm
+(Page 13) Tj
+ET
+endstream
+endobj
+32 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R /F4 6 0 R >> >> /Contents 31 0 R >>
+endobj
+33 0 obj
+<< /Length 3562 >>
+stream
+0.85 0.85 0.85 RG
+54 750 m 558 750 l S
+0 0 0 rg
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 742.00 Tm
+(- Implement health score engine.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 727.50 Tm
+(- Implement threshold alert engine.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 713.00 Tm
+(- Implement stock-out forecast.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 698.50 Tm
+(- Implement redistribution optimizer.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 684.00 Tm
+(- Store recommendations.) Tj
+ET
+0.08 0.28 0.36 rg
+BT
+/F2 12.5 Tf
+1 0 0 1 54.00 654.50 Tm
+(Phase 5: Gemini Features) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 629.00 Tm
+(- Add AI assistant.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 614.50 Tm
+(- Generate recommendation explanations.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 600.00 Tm
+(- Generate daily/weekly reports.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 585.50 Tm
+(- Add multilingual report output.) Tj
+ET
+0.08 0.28 0.36 rg
+BT
+/F2 12.5 Tf
+1 0 0 1 54.00 556.00 Tm
+(Phase 6: Demo Polish) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 530.50 Tm
+(- Generate realistic seed data.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 516.00 Tm
+(- Add AI command center feed.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 501.50 Tm
+(- Add voice input for worker updates.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 487.00 Tm
+(- Add PDF export.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 472.50 Tm
+(- Deploy frontend and backend.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 458.00 Tm
+(- Prepare live demo script.) Tj
+ET
+0.06 0.24 0.36 rg
+BT
+/F2 15 Tf
+1 0 0 1 54.00 426.50 Tm
+(18. Suggested Folder Structure) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 392.50 Tm
+(smart-health-ai/) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 380.00 Tm
+(  frontend/) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 367.50 Tm
+(    app/) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 355.00 Tm
+(    components/) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 342.50 Tm
+(    lib/) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 330.00 Tm
+(    hooks/) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 317.50 Tm
+(    services/) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 305.00 Tm
+(    types/) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 292.50 Tm
+(    utils/) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 280.00 Tm
+(  backend/) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 267.50 Tm
+(    routers/) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 255.00 Tm
+(    models/) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 242.50 Tm
+(    schemas/) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 230.00 Tm
+(    services/) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 217.50 Tm
+(      gemini.py) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 205.00 Tm
+(      forecast.py) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 192.50 Tm
+(      alerts.py) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 180.00 Tm
+(      health_score.py) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 167.50 Tm
+(      redistribution.py) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 155.00 Tm
+(      reports.py) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 142.50 Tm
+(    database/) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 130.00 Tm
+(    utils/) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 117.50 Tm
+(    main.py) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 105.00 Tm
+(  seed/) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 92.50 Tm
+(    generate_demo_data.py) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 80.00 Tm
+(  docs/) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 67.50 Tm
+(    implementation.md) Tj
+ET
+0.45 0.45 0.45 rg
+BT
+/F1 9 Tf
+1 0 0 1 288.00 28 Tm
+(Page 14) Tj
+ET
+endstream
+endobj
+34 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R /F4 6 0 R >> >> /Contents 33 0 R >>
+endobj
+35 0 obj
+<< /Length 3883 >>
+stream
+0.85 0.85 0.85 RG
+54 750 m 558 750 l S
+0 0 0 rg
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 742.00 Tm
+(    demo-script.md) Tj
+ET
+0 0 0 rg
+BT
+/F4 8.5 Tf
+1 0 0 1 66.00 729.50 Tm
+(  README.md) Tj
+ET
+0.06 0.24 0.36 rg
+BT
+/F2 15 Tf
+1 0 0 1 54.00 694.00 Tm
+(19. Demo Script) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 664.00 Tm
+(Use this live demo sequence:) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 642.50 Tm
+(1. Login as district administrator.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 628.00 Tm
+(2. Show district overview and map.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 613.50 Tm
+(3. Open AI command center and show current alerts.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 599.00 Tm
+(4. Login as health worker for a PHC.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 584.50 Tm
+(5. Reduce Paracetamol stock from safe level to critical level.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 570.00 Tm
+(6. Return to admin dashboard.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 555.50 Tm
+(7. Show that:) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 541.00 Tm
+(   - Alert appears.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 526.50 Tm
+(   - Health score drops.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 512.00 Tm
+(   - Map marker changes color.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 497.50 Tm
+(   - Stock-out prediction appears.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 483.00 Tm
+(   - Redistribution recommendation is generated.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 468.50 Tm
+(8. Ask AI assistant: "Which PHCs need urgent help today?") Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 454.00 Tm
+(9. Generate a daily report in English and one Indian language.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 432.50 Tm
+(This demonstrates the full story: live data, prediction, recommendation, and action.) Tj
+ET
+0.06 0.24 0.36 rg
+BT
+/F2 15 Tf
+1 0 0 1 54.00 401.00 Tm
+(20. Success Criteria) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 371.00 Tm
+(The implementation is successful if it can show:) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 349.50 Tm
+(- Real-time operational visibility across PHCs/CHCs.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 335.00 Tm
+(- Early warnings before stock-outs and overloads.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 320.50 Tm
+(- Clear health score for every center.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 306.00 Tm
+(- Practical redistribution recommendations.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 291.50 Tm
+(- AI assistant that answers district-level questions.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 277.00 Tm
+(- Reports that administrators can use directly.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 262.50 Tm
+(- A polished, reliable demo with seeded data.) Tj
+ET
+0.06 0.24 0.36 rg
+BT
+/F2 15 Tf
+1 0 0 1 54.00 231.00 Tm
+(21. Final Recommendation) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 201.00 Tm
+(Build the project as an AI decision-support platform, not a generic dashboard. Keep the core) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 186.50 Tm
+(logic deterministic and transparent, then use Gemini to explain, summarize, translate, and) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 172.00 Tm
+(assist. The winning implementation should make judges feel that the district administrator can) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 157.50 Tm
+(see risk early and take action immediately.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 136.00 Tm
+(The most important features to prioritize are:) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 114.50 Tm
+(1. AI command center feed.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 100.00 Tm
+(2. Medicine stock-out prediction.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 85.50 Tm
+(3. Redistribution optimizer.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 71.00 Tm
+(4. District health score.) Tj
+ET
+0.45 0.45 0.45 rg
+BT
+/F1 9 Tf
+1 0 0 1 288.00 28 Tm
+(Page 15) Tj
+ET
+endstream
+endobj
+36 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R /F4 6 0 R >> >> /Contents 35 0 R >>
+endobj
+37 0 obj
+<< /Length 517 >>
+stream
+0.85 0.85 0.85 RG
+54 750 m 558 750 l S
+0 0 0 rg
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 742.00 Tm
+(5. Map-based risk visualization.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 66.00 727.50 Tm
+(6. AI assistant and report generation.) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 706.00 Tm
+(If time is limited, build fewer modules but make these features feel complete, connected, and) Tj
+ET
+0 0 0 rg
+BT
+/F1 10.5 Tf
+1 0 0 1 54.00 691.50 Tm
+(demo-ready.) Tj
+ET
+0.45 0.45 0.45 rg
+BT
+/F1 9 Tf
+1 0 0 1 288.00 28 Tm
+(Page 16) Tj
+ET
+endstream
+endobj
+38 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R /F4 6 0 R >> >> /Contents 37 0 R >>
+endobj
+xref
+0 39
+0000000000 65535 f 
+0000000015 00000 n 
+0000000064 00000 n 
+0000000227 00000 n 
+0000000297 00000 n 
+0000000372 00000 n 
+0000000450 00000 n 
+0000000518 00000 n 
+0000004303 00000 n 
+0000004459 00000 n 
+0000008121 00000 n 
+0000008278 00000 n 
+0000012515 00000 n 
+0000012673 00000 n 
+0000016338 00000 n 
+0000016496 00000 n 
+0000020165 00000 n 
+0000020323 00000 n 
+0000024517 00000 n 
+0000024675 00000 n 
+0000028262 00000 n 
+0000028420 00000 n 
+0000031779 00000 n 
+0000031937 00000 n 
+0000035737 00000 n 
+0000035895 00000 n 
+0000038784 00000 n 
+0000038942 00000 n 
+0000041785 00000 n 
+0000041943 00000 n 
+0000045349 00000 n 
+0000045507 00000 n 
+0000048711 00000 n 
+0000048869 00000 n 
+0000052483 00000 n 
+0000052641 00000 n 
+0000056576 00000 n 
+0000056734 00000 n 
+0000057302 00000 n 
+trailer
+<< /Size 39 /Root 1 0 R >>
+startxref
+57460
+%%EOF
