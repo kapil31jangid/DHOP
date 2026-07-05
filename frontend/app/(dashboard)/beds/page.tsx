@@ -200,8 +200,7 @@ export default function BedsPage() {
 
   const isOps =
     user?.role === 'OPERATIONS_STAFF' ||
-    user?.role === 'FACILITY_ADMIN' ||
-    user?.role === 'DISTRICT_ADMIN';
+    user?.role === 'FACILITY_ADMIN';
 
   if (error) {
     return (
