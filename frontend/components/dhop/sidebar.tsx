@@ -67,14 +67,17 @@ export function SidebarNav({ onNavigate }: { onNavigate?: () => void }) {
                 onClick={onNavigate}
                 aria-current={active ? 'page' : undefined}
                 className={cn(
-                  'flex items-center gap-2.5 rounded-lg px-2 py-1.5 text-sm transition-colors',
+                  'group flex items-center gap-2.5 rounded-lg px-2 py-1.5 text-sm transition-all duration-200',
                   active
-                    ? 'bg-sidebar-accent font-medium text-sidebar-accent-foreground'
-                    : 'text-sidebar-foreground hover:bg-muted hover:text-foreground',
+                    ? 'bg-sidebar-accent font-semibold text-sidebar-accent-foreground shadow-xs'
+                    : 'text-sidebar-foreground hover:bg-sidebar-accent/40 hover:text-primary',
                 )}
               >
                 <item.icon
-                  className={cn('size-4', active && 'text-primary')}
+                  className={cn(
+                    'size-4 transition-colors',
+                    active ? 'text-primary' : 'text-sidebar-foreground/65 group-hover:text-primary',
+                  )}
                   aria-hidden="true"
                 />
                 {item.label}

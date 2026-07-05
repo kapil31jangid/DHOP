@@ -93,7 +93,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       {/* Main column */}
       <div className="flex min-w-0 flex-1 flex-col">
         {/* Header */}
-        <header className="sticky top-0 z-40 flex h-14 items-center gap-3 border-b bg-card/95 px-4 backdrop-blur lg:px-6">
+        <header className="sticky top-0 z-40 flex h-14 items-center gap-3 border-b border-slate-200/80 bg-white/95 px-4 backdrop-blur-md lg:px-6 shadow-[0_1px_3px_0_rgba(15,23,42,0.02)]">
           <Button
             variant="ghost"
             size="icon-sm"
@@ -198,7 +198,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
               className="absolute inset-0 bg-foreground/20"
               onClick={() => setDrawerOpen(false)}
             />
-            <div className="absolute inset-y-0 right-0 flex w-full max-w-sm flex-col bg-card shadow-xl">
+            <div className="absolute inset-y-0 right-0 flex w-full max-w-sm flex-col border-l border-slate-200 bg-white shadow-2xl">
               <div className="flex h-14 items-center justify-between border-b px-4">
                 <h2 className="text-sm font-semibold">Notifications</h2>
                 <Button
