@@ -155,8 +155,7 @@ export default function AttendancePage() {
 
   const isOps =
     currentUser?.role === 'OPERATIONS_STAFF' ||
-    currentUser?.role === 'FACILITY_ADMIN' ||
-    currentUser?.role === 'DISTRICT_ADMIN';
+    currentUser?.role === 'FACILITY_ADMIN';
 
   if (error) {
     return (
