@@ -1,5 +1,12 @@
-// TODO: HealthCentresService
-// Business logic layer for health-centres
-// Calls HealthCentresRepository for data access
-// Validates facilityId scoping for non-district-admin roles
-// Triggers notifications/audit logs where applicable
+import { Injectable } from '@nestjs/common';
+import { BaseService } from '../../common/services/base.service';
+import { HealthCentresRepository } from './health-centres.repository';
+
+@Injectable()
+export class HealthCentresService extends BaseService<any> {
+  constructor(
+    protected readonly healthCentresRepository: HealthCentresRepository,
+  ) {
+    super(healthCentresRepository);
+  }
+}

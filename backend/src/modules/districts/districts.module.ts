@@ -1,4 +1,11 @@
-// TODO: DistrictsModule
-// Imports: SupabaseModule, AuthModule
-// Providers: DistrictsService, DistrictsRepository
-// Controllers: DistrictsController
+import { Module } from '@nestjs/common';
+import { DistrictsController } from './districts.controller';
+import { DistrictsService } from './districts.service';
+import { DistrictsRepository } from './districts.repository';
+
+@Module({
+  controllers: [DistrictsController],
+  providers: [DistrictsService, DistrictsRepository],
+  exports: [DistrictsService, DistrictsRepository],
+})
+export class DistrictsModule {}

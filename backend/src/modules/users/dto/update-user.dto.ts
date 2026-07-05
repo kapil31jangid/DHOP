@@ -1,3 +1,8 @@
-// TODO: UpdateUserDto — Partial<CreateUserDto>
-// Only FACILITY_ADMIN can update staff in their facility
-// DISTRICT_ADMIN can update any user
+import { Role } from '../../../common/constants/roles.constants';
+
+export class UpdateUserDto {
+  facilityId?: string | null;
+  name?: string;
+  role?: Role;
+  status?: 'Active' | 'Inactive';
+}
