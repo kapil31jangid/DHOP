@@ -50,48 +50,82 @@
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
+
+  /* New healthcare SaaS theme colors */
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-light: var(--primary-light);
+  --color-success-light: var(--success-light);
+  --color-warning-light: var(--warning-light);
+  --color-danger: var(--danger);
+  --color-danger-light: var(--danger-light);
+  --color-info: var(--info);
+  --color-info-light: var(--info-light);
 }
 
 :root {
   color-scheme: light;
-  /* Health theme: clean whites, slate neutrals, medical teal primary */
-  --background: oklch(0.985 0.003 200);
-  --foreground: oklch(0.24 0.02 240);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.24 0.02 240);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.24 0.02 240);
-  --primary: oklch(0.55 0.1 200);
-  --primary-foreground: oklch(0.99 0 0);
-  --secondary: oklch(0.96 0.008 200);
-  --secondary-foreground: oklch(0.32 0.02 240);
-  --muted: oklch(0.96 0.006 220);
-  --muted-foreground: oklch(0.52 0.02 240);
-  --accent: oklch(0.94 0.02 195);
-  --accent-foreground: oklch(0.38 0.07 205);
-  --destructive: oklch(0.58 0.2 27);
-  --destructive-foreground: oklch(0.99 0 0);
-  --success: oklch(0.6 0.13 155);
-  --success-foreground: oklch(0.99 0 0);
-  --warning: oklch(0.72 0.15 65);
-  --warning-foreground: oklch(0.28 0.05 65);
-  --border: oklch(0.91 0.008 220);
-  --input: oklch(0.91 0.008 220);
-  --ring: oklch(0.55 0.1 200);
-  --chart-1: oklch(0.55 0.1 200);
-  --chart-2: oklch(0.6 0.13 155);
-  --chart-3: oklch(0.72 0.15 65);
-  --chart-4: oklch(0.58 0.2 27);
-  --chart-5: oklch(0.52 0.02 240);
+  
+  --background: #F8FAFC;
+  --foreground: #0F172A;
+  
+  --card: #FFFFFF;
+  --card-foreground: #0F172A;
+  
+  --popover: #FFFFFF;
+  --popover-foreground: #0F172A;
+  
+  --primary: #0F766E;
+  --primary-foreground: #FFFFFF;
+  --primary-hover: #0D9488;
+  --primary-light: #CCFBF1;
+  
+  --secondary: #F1F5F9;
+  --secondary-foreground: #475569;
+  
+  --muted: #F1F5F9;
+  --muted-foreground: #475569;
+  
+  --accent: #CCFBF1;
+  --accent-foreground: #0F766E;
+  
+  --destructive: #EF4444;
+  --destructive-foreground: #FFFFFF;
+  
+  --success: #10B981;
+  --success-foreground: #FFFFFF;
+  --success-light: #ECFDF5;
+  
+  --warning: #F59E0B;
+  --warning-foreground: #FFFFFF;
+  --warning-light: #FFFBEB;
+  
+  --danger: #EF4444;
+  --danger-light: #FEF2F2;
+  
+  --info: #3B82F6;
+  --info-light: #EFF6FF;
+  
+  --border: #E2E8F0;
+  --input: #E2E8F0;
+  --ring: #0D9488;
+  
+  --chart-1: #0F766E;
+  --chart-2: #10B981;
+  --chart-3: #F59E0B;
+  --chart-4: #EF4444;
+  --chart-5: #3B82F6;
+  
   --radius: 0.5rem;
-  --sidebar: oklch(1 0 0);
-  --sidebar-foreground: oklch(0.4 0.02 240);
-  --sidebar-primary: oklch(0.55 0.1 200);
-  --sidebar-primary-foreground: oklch(0.99 0 0);
-  --sidebar-accent: oklch(0.95 0.015 200);
-  --sidebar-accent-foreground: oklch(0.38 0.07 205);
-  --sidebar-border: oklch(0.91 0.008 220);
-  --sidebar-ring: oklch(0.55 0.1 200);
+  
+  /* Sidebar Specifically */
+  --sidebar: #F4FBF9;
+  --sidebar-foreground: #475569;
+  --sidebar-primary: #0F766E;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #CCFBF1;
+  --sidebar-accent-foreground: #0F766E;
+  --sidebar-border: #E2E8F0;
+  --sidebar-ring: #0D9488;
 }
 
 @layer base {

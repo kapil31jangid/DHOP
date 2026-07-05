@@ -70,7 +70,7 @@ export function DataTable({
               setPage(0)
             }}
             placeholder={searchPlaceholder}
-            className="h-8 w-full rounded-lg border bg-card pr-3 pl-8 text-sm outline-none placeholder:text-muted-foreground focus-visible:ring-3 focus-visible:ring-ring/50"
+            className="h-8 w-full rounded-lg border bg-white pr-3 pl-8 text-sm outline-none placeholder:text-muted-foreground transition-all focus-visible:border-primary/50 focus-visible:ring-3 focus-visible:ring-primary/20"
             aria-label={searchPlaceholder}
           />
         </div>
@@ -88,11 +88,11 @@ export function DataTable({
       <div className="overflow-x-auto rounded-lg border bg-card">
         <table className="w-full min-w-max text-sm">
           <thead>
-            <tr className="border-b bg-muted/50 text-left">
+            <tr className="border-b bg-slate-50 text-left">
               {columns.map((col) => (
                 <th
                   key={col}
-                  className="px-4 py-2.5 font-medium whitespace-nowrap text-muted-foreground"
+                  className="px-4 py-2.5 font-semibold whitespace-nowrap text-slate-600"
                 >
                   {col}
                 </th>
@@ -123,7 +123,7 @@ export function DataTable({
                 <tr
                   key={i}
                   className={cn(
-                    'transition-colors hover:bg-muted/40',
+                    'transition-all duration-150 hover:bg-primary-light/15 hover:text-slate-900',
                     i < visible.length - 1 && 'border-b',
                   )}
                 >
