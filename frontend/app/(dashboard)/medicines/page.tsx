@@ -157,8 +157,7 @@ export default function MedicinesPage() {
 
   const isStaff =
     user?.role === 'HEALTHCARE_STAFF' ||
-    user?.role === 'FACILITY_ADMIN' ||
-    user?.role === 'DISTRICT_ADMIN';
+    user?.role === 'FACILITY_ADMIN';
 
   if (error) {
     return (
