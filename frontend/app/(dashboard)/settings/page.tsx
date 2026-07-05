@@ -17,6 +17,7 @@ import { Button } from '@/components/ui/button';
 const settingFormSchema = z.object({
   key: z.string().min(1, 'Setting Key is required'),
   value: z.string().min(1, 'Setting Value is required'),
+  facilityId: z.string().optional(),
 });
 
 type SettingFormData = z.infer<typeof settingFormSchema>;
@@ -35,6 +36,14 @@ export default function SettingsPage() {
     queryKey: ['settings'],
     queryFn: async () => {
       const response = await api.get('/settings');
+      return response.data?.data || [];
+    },
+  });
+
+  const { data: healthCentres } = useQuery<any[]>({
+    queryKey: ['health-centres-list-for-settings'],
+    queryFn: async () => {
+      const response = await api.get('/health-centres');
       return response.data?.data || [];
     },
   });
@@ -130,7 +139,7 @@ export default function SettingsPage() {
     );
   });
 
-  const isAuthorized = user?.role === 'FACILITY_ADMIN';
+  const isAuthorized = user?.role === 'FACILITY_ADMIN' || user?.role === 'DISTRICT_ADMIN';
 
   if (error) {
     return (
@@ -185,6 +194,9 @@ export default function SettingsPage() {
             <table className="w-full min-w-max text-sm">
               <thead>
                 <tr className="border-b bg-muted/50 text-left">
+                  {user?.role === 'DISTRICT_ADMIN' && (
+                    <th className="px-4 py-2.5 font-medium text-muted-foreground">Scope / Facility</th>
+                  )}
                   <th className="px-4 py-2.5 font-medium text-muted-foreground">Configuration Key</th>
                   <th className="px-4 py-2.5 font-medium text-muted-foreground">Value</th>
                   {isAuthorized && <th className="w-20 px-4 py-2.5 text-right">Actions</th>}
@@ -198,30 +210,36 @@ export default function SettingsPage() {
                     </td>
                   </tr>
                 ) : (
-                  filteredSettings.map((s) => (
-                    <tr key={s.id} className="transition-colors hover:bg-muted/40">
-                      <td className="px-4 py-3 font-mono text-xs font-semibold">{s.key}</td>
-                      <td className="px-4 py-3 whitespace-nowrap text-foreground">{s.value}</td>
-                      {isAuthorized && (
-                        <td className="px-4 py-3 text-right space-x-1.5 whitespace-nowrap">
-                          <button
-                            onClick={() => handleEditClick(s)}
-                            className="p-1 hover:text-primary transition-colors inline-block"
-                            title="Edit parameter"
-                          >
-                            <Edit2 className="size-4" />
-                          </button>
-                          <button
-                            onClick={() => setDeletingSetting(s)}
-                            className="p-1 hover:text-destructive transition-colors inline-block"
-                            title="Delete parameter"
-                          >
-                            <Trash2 className="size-4" />
-                          </button>
-                        </td>
-                      )}
-                    </tr>
-                  ))
+                  filteredSettings.map((s) => {
+                    const facilityName = healthCentres?.find((hc) => hc.id === s.facility_id)?.name || 'System / District-Wide';
+                    return (
+                      <tr key={s.id} className="transition-colors hover:bg-muted/40">
+                        {user?.role === 'DISTRICT_ADMIN' && (
+                          <td className="px-4 py-3 text-xs font-semibold text-muted-foreground">{facilityName}</td>
+                        )}
+                        <td className="px-4 py-3 font-mono text-xs font-semibold">{s.key}</td>
+                        <td className="px-4 py-3 whitespace-nowrap text-foreground">{s.value}</td>
+                        {isAuthorized && (
+                          <td className="px-4 py-3 text-right space-x-1.5 whitespace-nowrap">
+                            <button
+                              onClick={() => handleEditClick(s)}
+                              className="p-1 hover:text-primary transition-colors inline-block"
+                              title="Edit parameter"
+                            >
+                              <Edit2 className="size-4" />
+                            </button>
+                            <button
+                              onClick={() => setDeletingSetting(s)}
+                              className="p-1 hover:text-destructive transition-colors inline-block"
+                              title="Delete parameter"
+                            >
+                              <Trash2 className="size-4" />
+                            </button>
+                          </td>
+                        )}
+                      </tr>
+                    );
+                  })
                 )}
               </tbody>
             </table>
@@ -232,6 +250,27 @@ export default function SettingsPage() {
       {/* Add Setting Drawer */}
       <Drawer isOpen={isCreateOpen} onClose={() => setIsCreateOpen(false)} title="Add Configuration Key">
         <form onSubmit={handleSubmit(onSubmitCreate)} className="flex flex-col gap-4">
+          {user?.role === 'DISTRICT_ADMIN' && (
+            <div className="flex flex-col gap-1">
+              <label className="text-xs font-semibold">Assigned Health Centre *</label>
+              <select
+                {...register('facilityId')}
+                className="h-9 rounded-lg border bg-background px-3 text-sm outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
+                required
+              >
+                <option value="">Select a Health Centre</option>
+                {(healthCentres || []).map((c) => (
+                  <option key={c.id} value={c.id}>
+                    {c.name} ({c.type})
+                  </option>
+                ))}
+              </select>
+              {errors.facilityId && (
+                <span className="text-[10px] text-destructive">{errors.facilityId.message}</span>
+              )}
+            </div>
+          )}
+
           <div className="flex flex-col gap-1">
             <label className="text-xs font-semibold">Configuration Key *</label>
             <input
