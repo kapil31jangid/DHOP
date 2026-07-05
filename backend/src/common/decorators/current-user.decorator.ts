@@ -1,3 +1,8 @@
-// TODO: @CurrentUser() decorator
-// Extracts the authenticated user object from the request
-// Populated by FirebaseAuthGuard after token verification
+import { createParamDecorator, ExecutionContext } from '@nestjs/common';
+
+export const CurrentUser = createParamDecorator(
+  (data: unknown, ctx: ExecutionContext) => {
+    const request = ctx.switchToHttp().getRequest();
+    return request.user;
+  },
+);

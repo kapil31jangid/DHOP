@@ -1,3 +1,5 @@
-// TODO: @Roles() decorator
-// Custom metadata decorator to set allowed roles on a route handler
-// Usage: @Roles(Role.DISTRICT_ADMIN, Role.FACILITY_ADMIN)
+import { SetMetadata } from '@nestjs/common';
+import { Role } from '../constants/roles.constants';
+
+export const ROLES_KEY = 'roles';
+export const Roles = (...roles: Role[]) => SetMetadata(ROLES_KEY, roles);

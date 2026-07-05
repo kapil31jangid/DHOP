@@ -1,3 +1,8 @@
-// TODO: @FacilityId() decorator
-// Extracts the facilityId from the authenticated user's profile
-// Used in controllers to scope data access to the user's facility
+import { createParamDecorator, ExecutionContext } from '@nestjs/common';
+
+export const FacilityId = createParamDecorator(
+  (data: unknown, ctx: ExecutionContext): string | null => {
+    const request = ctx.switchToHttp().getRequest();
+    return request.user?.facilityId || request.user?.facility_id || null;
+  },
+);
