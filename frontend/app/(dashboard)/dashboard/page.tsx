@@ -1,179 +1,215 @@
-import Link from 'next/link'
-import {
-  AlertTriangle,
-  Building2,
-  CalendarCheck,
-  CircleCheck,
-  Pill,
-  UsersRound,
-} from 'lucide-react'
-import { Button } from '@/components/ui/button'
-import { DataTable, type Cell } from '@/components/dhop/data-table'
-import { KpiCard } from '@/components/dhop/kpi-card'
-import { PageHeader } from '@/components/dhop/page-header'
-import { StatusBadge } from '@/components/dhop/status-badge'
+'use client';
 
-const alerts = [
-  {
-    tone: 'critical' as const,
-    title: 'Paracetamol 500mg below threshold',
-    centre: 'PHC Rampur',
-    time: '5m ago',
-  },
-  {
-    tone: 'critical' as const,
-    title: 'Full bed occupancy — general ward',
-    centre: 'CHC Sundarpur',
-    time: '1h ago',
-  },
-  {
-    tone: 'warning' as const,
-    title: 'Attendance not submitted today',
-    centre: 'CHC Bhairavi',
-    time: '2h ago',
-  },
-  {
-    tone: 'warning' as const,
-    title: 'Amoxicillin batch A-204 expires in 7 days',
-    centre: 'PHC Lakshmi Nagar',
-    time: '3h ago',
-  },
-]
-
-const activity = [
-  { text: 'PHC Rampur updated medicine stock', time: '10m ago' },
-  { text: 'CHC Bhairavi submitted attendance', time: '25m ago' },
-  { text: 'PHC Lakshmi Nagar generated weekly report', time: '1h ago' },
-  { text: 'CHC Sundarpur registered 12 new patients', time: '2h ago' },
-  { text: 'PHC Devgarh updated bed availability', time: '3h ago' },
-]
-
-const columns = [
-  'Centre Name',
-  'Type',
-  "Today's Patients",
-  'Available Beds',
-  'Low Stock',
-  'Attendance',
-  'Last Updated',
-  'Status',
-]
-
-const rows: Cell[][] = [
-  ['PHC Rampur', 'PHC', '64', '8 / 20', '3', '92%', '10m ago', { badge: 'Critical', tone: 'critical' }],
-  ['CHC Sundarpur', 'CHC', '118', '0 / 40', '1', '88%', '32m ago', { badge: 'Critical', tone: 'critical' }],
-  ['CHC Bhairavi', 'CHC', '96', '12 / 40', '0', '71%', '2h ago', { badge: 'Warning', tone: 'warning' }],
-  ['PHC Lakshmi Nagar', 'PHC', '48', '11 / 20', '2', '95%', '1h ago', { badge: 'Warning', tone: 'warning' }],
-  ['PHC Devgarh', 'PHC', '39', '14 / 20', '0', '97%', '3h ago', { badge: 'Active', tone: 'success' }],
-  ['District Hospital Central', 'DH', '284', '36 / 120', '0', '94%', '15m ago', { badge: 'Active', tone: 'success' }],
-  ['PHC Kishanpur', 'PHC', '41', '9 / 20', '0', '90%', '45m ago', { badge: 'Active', tone: 'success' }],
-  ['CHC Motihari', 'CHC', '87', '18 / 40', '0', '93%', '1h ago', { badge: 'Active', tone: 'success' }],
-  ['PHC Shantipur', 'PHC', '0', '20 / 20', '0', '0%', '2d ago', { badge: 'Inactive', tone: 'neutral' }],
-]
+import React from 'react';
+import { useQuery } from '@tanstack/react-query';
+import { Building2, UsersRound, BedDouble, AlertTriangle, CalendarCheck, FileBarChart, Bell, Download } from 'lucide-react';
+import api from '@/lib/api';
+import { KpiCard } from '@/components/dhop/kpi-card';
+import { KpiSkeleton } from '@/components/dhop/skeleton';
+import { QuickActionCard } from '@/components/dhop/quick-action-card';
+import { exportToCSV } from '@/utils/export-utils';
+import { toast } from 'sonner';
 
 export default function DistrictDashboardPage() {
+  // Fetch everything to aggregate district metrics
+  const { data: centres, isLoading: isLoadingCentres } = useQuery<any[]>({
+    queryKey: ['dashboard-centres'],
+    queryFn: async () => {
+      const res = await api.get('/health-centres');
+      return res.data?.data || [];
+    },
+  });
+
+  const { data: patients, isLoading: isLoadingPatients } = useQuery<any[]>({
+    queryKey: ['dashboard-patients'],
+    queryFn: async () => {
+      const res = await api.get('/patients');
+      return res.data?.data || [];
+    },
+  });
+
+  const { data: beds, isLoading: isLoadingBeds } = useQuery<any[]>({
+    queryKey: ['dashboard-beds'],
+    queryFn: async () => {
+      const res = await api.get('/beds');
+      return res.data?.data || [];
+    },
+  });
+
+  const { data: medicines, isLoading: isLoadingMeds } = useQuery<any[]>({
+    queryKey: ['dashboard-medicines'],
+    queryFn: async () => {
+      const res = await api.get('/medicines');
+      return res.data?.data || [];
+    },
+  });
+
+  const { data: attendance, isLoading: isLoadingAttendance } = useQuery<any[]>({
+    queryKey: ['dashboard-attendance'],
+    queryFn: async () => {
+      const res = await api.get('/attendance');
+      return res.data?.data || [];
+    },
+  });
+
+  const loading =
+    isLoadingCentres ||
+    isLoadingPatients ||
+    isLoadingBeds ||
+    isLoadingMeds ||
+    isLoadingAttendance;
+
+  if (loading) {
+    return (
+      <div className="flex flex-col gap-6">
+        <div>
+          <h1 className="text-2xl font-bold tracking-tight">District Dashboard</h1>
+          <p className="text-sm text-muted-foreground">Compiling district analytics...</p>
+        </div>
+        <KpiSkeleton />
+      </div>
+    );
+  }
+
+  // Calculate stats
+  const totalCentres = centres?.length || 0;
+  const activeCentres = centres?.filter((c) => c.status === 'Active').length || 0;
+  const totalPatients = patients?.length || 0;
+  
+  const totalBeds = beds?.length || 0;
+  const occupiedBeds = beds?.filter((b) => b.status === 'Occupied').length || 0;
+  const bedUtilization = totalBeds > 0 ? Math.round((occupiedBeds / totalBeds) * 100) : 0;
+
+  const lowStockCount = medicines?.filter((m) => m.quantity <= m.threshold).length || 0;
+  const presentStaff = attendance?.filter((a) => a.status === 'Present').length || 0;
+
+  const handleExportSummary = () => {
+    if (!centres || centres.length === 0) {
+      toast.error('No health centre data available to export');
+      return;
+    }
+    const headers = ['Name', 'Type', 'Address', 'Contact Number', 'Status'];
+    const rows = centres.map((c) => [
+      c.name,
+      c.type,
+      c.address || '',
+      c.contact_number || '',
+      c.status,
+    ]);
+    exportToCSV('District-Centres-Summary', headers, rows);
+    toast.success('Health Centres summary exported successfully');
+  };
+
   return (
     <div className="flex flex-col gap-6">
-      <PageHeader
-        title="District Dashboard"
-        description="Real-time overview of all health centres in the district."
-        secondaryAction="Export Summary"
-      />
-
-      {/* KPI cards */}
-      <div className="grid grid-cols-2 gap-3 md:grid-cols-3 xl:grid-cols-6">
-        <KpiCard label="Total Centres" value="24" icon={Building2} href="/health-centres" />
-        <KpiCard label="Active Centres" value="22" icon={CircleCheck} href="/health-centres" />
-        <KpiCard label="Critical Alerts" value="4" icon={AlertTriangle} tone="critical" href="/notifications" />
-        <KpiCard label="Patients Today" value="1,284" icon={UsersRound} trend="+12" trendUp href="/patients" />
-        <KpiCard label="Low Stock Alerts" value="6" icon={Pill} tone="warning" href="/medicines" />
-        <KpiCard label="Avg Attendance" value="91%" icon={CalendarCheck} trend="+2%" trendUp href="/attendance" />
+      <div>
+        <h1 className="text-2xl font-bold tracking-tight">District Dashboard</h1>
+        <p className="text-sm text-muted-foreground">
+          Aggregated operations metrics across all health centres.
+        </p>
       </div>
 
-      {/* Alerts + Activity */}
-      <div className="grid gap-4 lg:grid-cols-3">
-        <section className="flex flex-col gap-3 rounded-lg border bg-card p-4 lg:col-span-2">
-          <div className="flex items-center justify-between">
-            <h2 className="text-sm font-semibold">Critical Alerts</h2>
-            <Link
-              href="/notifications"
-              className="text-xs font-medium text-primary hover:underline"
-            >
-              View all
-            </Link>
-          </div>
-          <div className="flex flex-col">
-            {alerts.map((alert, i) => (
-              <div
-                key={i}
-                className={`flex flex-col gap-2 py-3 sm:flex-row sm:items-center sm:justify-between ${
-                  i < alerts.length - 1 ? 'border-b' : ''
-                }`}
-              >
-                <div className="flex min-w-0 items-start gap-3">
-                  <StatusBadge tone={alert.tone} className="mt-0.5 shrink-0">
-                    {alert.tone === 'critical' ? 'Critical' : 'Warning'}
-                  </StatusBadge>
-                  <div className="flex min-w-0 flex-col">
-                    <span className="truncate text-sm font-medium">
-                      {alert.title}
-                    </span>
-                    <span className="text-xs text-muted-foreground">
-                      {alert.centre} · {alert.time}
-                    </span>
+      {/* Stats Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-3">
+        <KpiCard label="Active Centres" value={`${activeCentres} / ${totalCentres}`} icon={Building2} />
+        <KpiCard label="Registered Patients" value={String(totalPatients)} icon={UsersRound} />
+        <KpiCard
+          label="Bed Utilization"
+          value={`${bedUtilization}%`}
+          icon={BedDouble}
+          tone={bedUtilization > 80 ? 'critical' : bedUtilization > 50 ? 'warning' : 'success'}
+        />
+        <KpiCard
+          label="Low Stock Medicines"
+          value={String(lowStockCount)}
+          icon={AlertTriangle}
+          tone={lowStockCount > 0 ? 'critical' : 'neutral'}
+        />
+        <KpiCard label="Staff Present Today" value={String(presentStaff)} icon={CalendarCheck} tone="success" />
+      </div>
+
+      {/* Quick Actions */}
+      <div>
+        <h3 className="text-sm font-semibold mb-3 text-muted-foreground uppercase tracking-wider">
+          Quick Actions
+        </h3>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <QuickActionCard
+            label="View Reports"
+            description="Access district-wide periodic health sheets and summaries."
+            href="/reports"
+            icon={FileBarChart}
+          />
+          <QuickActionCard
+            label="View Notifications"
+            description="Check system messages, threshold flags, and broadcast status."
+            href="/notifications"
+            icon={Bell}
+          />
+          <QuickActionCard
+            label="Export Summary"
+            description="Instantly export district center registers as CSV table."
+            onClick={handleExportSummary}
+            icon={Download}
+          />
+        </div>
+      </div>
+
+      {/* Operational Highlights */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {/* Centers distribution */}
+        <div className="rounded-xl border bg-card p-6 shadow-sm">
+          <h3 className="text-sm font-semibold mb-4 text-muted-foreground uppercase tracking-wider">
+            Health Centres Distribution
+          </h3>
+          <div className="space-y-4">
+            {['PHC', 'CHC', 'DH'].map((type) => {
+              const count = centres?.filter((c) => c.type === type).length || 0;
+              const percent = totalCentres > 0 ? Math.round((count / totalCentres) * 100) : 0;
+              return (
+                <div key={type} className="space-y-1">
+                  <div className="flex justify-between text-sm">
+                    <span className="font-medium text-foreground">{type === 'PHC' ? 'Primary Health Centres (PHC)' : type === 'CHC' ? 'Community Health Centres (CHC)' : 'District Hospitals (DH)'}</span>
+                    <span className="font-semibold">{count}</span>
+                  </div>
+                  <div className="h-2 w-full bg-muted rounded-full overflow-hidden">
+                    <div
+                      className="h-full bg-primary rounded-full transition-all duration-500"
+                      style={{ width: `${percent}%` }}
+                    />
                   </div>
                 </div>
-                <div className="flex shrink-0 items-center gap-2">
-                  <Button variant="outline" size="xs">
-                    View Centre
-                  </Button>
-                  <Button variant="ghost" size="xs">
-                    Mark Reviewed
-                  </Button>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
-        </section>
+        </div>
 
-        <section className="flex flex-col gap-3 rounded-lg border bg-card p-4">
-          <h2 className="text-sm font-semibold">Recent Activity</h2>
-          <ul className="flex flex-col">
-            {activity.map((item, i) => (
-              <li
-                key={i}
-                className={`flex items-start gap-2.5 py-2.5 ${
-                  i < activity.length - 1 ? 'border-b' : ''
-                }`}
-              >
-                <span
-                  className="mt-1.5 size-1.5 shrink-0 rounded-full bg-primary"
-                  aria-hidden="true"
-                />
-                <div className="flex flex-col gap-0.5">
-                  <span className="text-sm leading-snug">{item.text}</span>
-                  <span className="text-xs text-muted-foreground">
-                    {item.time}
-                  </span>
-                </div>
-              </li>
-            ))}
-          </ul>
-        </section>
+        {/* Critical Alerts */}
+        <div className="rounded-xl border bg-card p-6 shadow-sm">
+          <h3 className="text-sm font-semibold mb-4 text-muted-foreground uppercase tracking-wider">
+            Critical Alerts Summary
+          </h3>
+          <div className="space-y-3">
+            {lowStockCount > 0 && (
+              <div className="flex items-center gap-3 p-3 rounded-lg bg-destructive/10 border border-destructive/20 text-destructive text-sm font-medium">
+                <AlertTriangle className="size-5 shrink-0" />
+                <span>{lowStockCount} medicines are below warning thresholds. Action required.</span>
+              </div>
+            )}
+            {bedUtilization > 80 && (
+              <div className="flex items-center gap-3 p-3 rounded-lg bg-destructive/10 border border-destructive/20 text-destructive text-sm font-medium">
+                <BedDouble className="size-5 shrink-0" />
+                <span>Critical bed utilization ({bedUtilization}%) across district.</span>
+              </div>
+            )}
+            {lowStockCount === 0 && bedUtilization <= 80 && (
+              <div className="text-center py-8 text-sm text-muted-foreground italic">
+                All systems reporting normal. No critical alerts.
+              </div>
+            )}
+          </div>
+        </div>
       </div>
-
-      {/* Overview table */}
-      <section className="flex flex-col gap-3">
-        <h2 className="text-sm font-semibold">Health Centre Overview</h2>
-        <DataTable
-          columns={columns}
-          rows={rows}
-          filters={['Centre Type', 'Status', 'Date']}
-          searchPlaceholder="Search centres..."
-          emptyLabel="No health centres available."
-          emptyAction="Add Health Centre"
-        />
-      </section>
     </div>
-  )
+  );
 }
