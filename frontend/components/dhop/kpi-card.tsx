@@ -67,21 +67,30 @@ export const KpiCard = React.memo(function KpiCard({
       hoverBg: 'hover:bg-info-light/70',
       hoverBorder: 'hover:border-info/30',
     },
+    neutral: {
+      bg: 'bg-slate-50',
+      border: 'border-slate-200/60',
+      icon: 'text-slate-500',
+      hoverBg: 'hover:bg-slate-100/80',
+      hoverBorder: 'hover:border-slate-300/40',
+    },
   }
+
+  const style = toneStyles[resolvedTone as keyof typeof toneStyles] || toneStyles.info;
 
   const card = (
     <div
       className={cn(
         'flex h-full flex-col gap-3 rounded-lg border p-4 transition-all duration-200 shadow-xs',
-        toneStyles[resolvedTone].bg,
-        toneStyles[resolvedTone].border,
-        href && cn('cursor-pointer', toneStyles[resolvedTone].hoverBg, toneStyles[resolvedTone].hoverBorder),
+        style.bg,
+        style.border,
+        href && cn('cursor-pointer', style.hoverBg, style.hoverBorder),
       )}
     >
       <div className="flex items-center justify-between gap-2">
         <span className="text-sm font-medium text-slate-500">{label}</span>
         <Icon
-          className={cn('size-4 shrink-0 transition-colors', toneStyles[resolvedTone].icon)}
+          className={cn('size-4 shrink-0 transition-colors', style.icon)}
           aria-hidden="true"
         />
       </div>
