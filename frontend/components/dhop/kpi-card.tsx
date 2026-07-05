@@ -1,9 +1,10 @@
+import React from 'react'
 import Link from 'next/link'
 import type { LucideIcon } from 'lucide-react'
 import { ArrowDownRight, ArrowUpRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
-export function KpiCard({
+export const KpiCard = React.memo(function KpiCard({
   label,
   value,
   icon: Icon,
@@ -70,4 +71,4 @@ export function KpiCard({
     )
   }
   return card
-}
+})

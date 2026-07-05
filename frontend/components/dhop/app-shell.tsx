@@ -1,13 +1,18 @@
-'use client'
+'use client';
 
-import { useState } from 'react'
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-import { Bell, ChevronRight, HeartPulse, LogOut, Menu, User, X } from 'lucide-react'
-import { Button } from '@/components/ui/button'
-import { SidebarNav } from '@/components/dhop/sidebar'
-import { StatusBadge } from '@/components/dhop/status-badge'
-import { cn } from '@/lib/utils'
+import { useState } from 'react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { Bell, ChevronRight, HeartPulse, LogOut, Menu, User, X, Check } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { SidebarNav } from '@/components/dhop/sidebar';
+import { StatusBadge } from '@/components/dhop/status-badge';
+import { useAuthStore } from '@/store/auth-store';
+import { cn } from '@/lib/utils';
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import api from '@/lib/api';
+import { toast } from 'sonner';
+import { Skeleton } from '@/components/dhop/skeleton';
 
 const pageTitles: Record<string, string> = {
   '/dashboard': 'District Dashboard',
@@ -22,14 +27,9 @@ const pageTitles: Record<string, string> = {
   '/notifications': 'Notifications',
   '/audit-logs': 'Audit Logs',
   '/settings': 'Settings',
-}
+};
 
-const drawerNotifications = [
-  { tone: 'critical' as const, label: 'Critical', title: 'Paracetamol below threshold at PHC Rampur', time: '5m ago' },
-  { tone: 'warning' as const, label: 'Warning', title: 'Attendance not submitted — CHC Bhairavi', time: '32m ago' },
-  { tone: 'critical' as const, label: 'Critical', title: 'Full bed occupancy at CHC Sundarpur', time: '1h ago' },
-  { tone: 'info' as const, label: 'Info', title: 'Weekly report generated for PHC Lakshmi Nagar', time: '2h ago' },
-]
+
 
 function Logo() {
   return (
@@ -38,26 +38,93 @@ function Logo() {
         <HeartPulse className="size-4" aria-hidden="true" />
       </span>
       <span className="flex flex-col leading-none">
-        <span className="text-sm font-semibold tracking-tight">DHOP</span>
-        <span className="text-[10px] text-muted-foreground">
-          District Health Ops
-        </span>
+        <span className="text-sm font-semibold tracking-tight">CureSync</span>
+        <span className="text-[10px] text-muted-foreground">District Health Ops</span>
       </span>
     </Link>
-  )
+  );
 }
 
 export function AppShell({ children }: { children: React.ReactNode }) {
-  const [mobileNavOpen, setMobileNavOpen] = useState(false)
-  const [drawerOpen, setDrawerOpen] = useState(false)
-  const [profileOpen, setProfileOpen] = useState(false)
-  const pathname = usePathname()
-  const title = pageTitles[pathname] ?? 'Dashboard'
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [profileOpen, setProfileOpen] = useState(false);
+  const pathname = usePathname();
+  const title = pageTitles[pathname] ?? 'Dashboard';
+
+  const { user, logout } = useAuthStore();
+  const queryClient = useQueryClient();
+
+  const { data: notifications, isLoading, error } = useQuery<any[]>({
+    queryKey: ['notifications'],
+    queryFn: async () => {
+      const response = await api.get('/notifications');
+      return response.data?.data || [];
+    },
+  });
+
+  const unreadNotifications = (notifications || []).filter((n) => !n.is_read);
+
+  const markReadMutation = useMutation({
+    mutationFn: async (id: string) => {
+      const response = await api.patch(`/notifications/${id}/read`);
+      return response.data;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['notifications'] });
+      toast.success('Notification marked as read');
+    },
+  });
+
+  const markAllReadMutation = useMutation({
+    mutationFn: async () => {
+      const promises = unreadNotifications.map((n) =>
+        api.patch(`/notifications/${n.id}/read`)
+      );
+      await Promise.all(promises);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['notifications'] });
+      toast.success('All notifications marked as read');
+    },
+    onError: () => {
+      toast.error('Failed to mark all as read');
+    },
+  });
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+    } catch (err) {
+      console.error('Logout failed:', err);
+    }
+  };
+
+  const formatRole = (role: string) => {
+    return role
+      .split('_')
+      .map((word) => word.charAt(0) + word.slice(1).toLowerCase())
+      .join(' ');
+  };
+
+  const getInitials = (name: string) => {
+    if (!name) return 'U';
+    return name
+      .split(' ')
+      .map((n) => n[0])
+      .join('')
+      .toUpperCase()
+      .slice(0, 2);
+  };
+
+  const userDisplayName = user?.name || 'Authorized User';
+  const userRoleLabel = user?.role ? formatRole(user.role) : 'Healthcare Staff';
+  const userInitials = getInitials(userDisplayName);
 
   return (
     <div className="flex min-h-svh">
       {/* Desktop sidebar */}
-      <aside className="sticky top-0 hidden h-svh w-60 shrink-0 flex-col border-r bg-sidebar lg:flex">
+      <aside className="sticky top-0 hidden h-svh w-60 shrink-0 flex-col border-r bg-sidebar lg:flex print:hidden">
         <div className="flex h-14 items-center border-b px-4">
           <Logo />
         </div>
@@ -66,7 +133,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
 
       {/* Mobile nav drawer */}
       {mobileNavOpen && (
-        <div className="fixed inset-0 z-50 lg:hidden">
+        <div className="fixed inset-0 z-50 lg:hidden print:hidden">
           <button
             type="button"
             aria-label="Close navigation"
@@ -93,7 +160,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       {/* Main column */}
       <div className="flex min-w-0 flex-1 flex-col">
         {/* Header */}
-        <header className="sticky top-0 z-40 flex h-14 items-center gap-3 border-b bg-card/95 px-4 backdrop-blur lg:px-6">
+        <header className="sticky top-0 z-40 flex h-14 items-center gap-3 border-b bg-card/95 px-4 backdrop-blur lg:px-6 print:hidden">
           <Button
             variant="ghost"
             size="icon-sm"
@@ -106,9 +173,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
 
           {/* Breadcrumb */}
           <div className="flex min-w-0 items-center gap-1.5 text-sm">
-            <span className="hidden text-muted-foreground sm:inline">
-              Dashboard
-            </span>
+            <span className="hidden text-muted-foreground sm:inline">Dashboard</span>
             <ChevronRight
               className="hidden size-3.5 text-muted-foreground sm:inline"
               aria-hidden="true"
@@ -124,16 +189,20 @@ export function AppShell({ children }: { children: React.ReactNode }) {
                 size="icon-sm"
                 aria-label="Notifications"
                 onClick={() => {
-                  setDrawerOpen((o) => !o)
-                  setProfileOpen(false)
+                  setDrawerOpen((o) => !o);
+                  setProfileOpen(false);
                 }}
               >
                 <Bell className="size-4" aria-hidden="true" />
               </Button>
-              <span
-                className="absolute top-0.5 right-0.5 size-2 rounded-full bg-destructive"
-                aria-hidden="true"
-              />
+              {unreadNotifications.length > 0 && (
+                <span
+                  className="absolute -top-1 -right-1 flex size-4 items-center justify-center rounded-full bg-destructive text-[8px] font-bold text-white"
+                  aria-hidden="true"
+                >
+                  {unreadNotifications.length}
+                </span>
+              )}
             </div>
 
             {/* Profile */}
@@ -142,47 +211,37 @@ export function AppShell({ children }: { children: React.ReactNode }) {
                 type="button"
                 aria-label="Profile menu"
                 onClick={() => {
-                  setProfileOpen((o) => !o)
-                  setDrawerOpen(false)
+                  setProfileOpen((o) => !o);
+                  setDrawerOpen(false);
                 }}
                 className="flex items-center gap-2 rounded-lg py-1 pr-2 pl-1 transition-colors hover:bg-muted"
               >
                 <span className="flex size-7 items-center justify-center rounded-full bg-accent text-xs font-semibold text-accent-foreground">
-                  DA
+                  {userInitials}
                 </span>
-                <span className="hidden flex-col items-start leading-tight sm:flex">
-                  <span className="text-xs font-medium">Dr. A. Sharma</span>
-                  <span className="text-[10px] text-muted-foreground">
-                    District Admin
-                  </span>
+                <span className="hidden flex-col items-start leading-tight sm:flex text-left">
+                  <span className="text-xs font-medium">{userDisplayName}</span>
+                  <span className="text-[10px] text-muted-foreground">{userRoleLabel}</span>
                 </span>
               </button>
               {profileOpen && (
                 <div className="absolute right-0 z-50 mt-1 w-44 rounded-lg border bg-popover p-1 shadow-md">
-                  {[
-                    { icon: User, label: 'My Profile' },
-                    { icon: Bell, label: 'Change Password' },
-                  ].map((item) => (
-                    <button
-                      key={item.label}
-                      type="button"
-                      className="flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-sm hover:bg-muted"
-                    >
-                      <item.icon
-                        className="size-4 text-muted-foreground"
-                        aria-hidden="true"
-                      />
-                      {item.label}
-                    </button>
-                  ))}
+                  <button
+                    type="button"
+                    className="flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-sm hover:bg-muted"
+                  >
+                    <User className="size-4 text-muted-foreground" aria-hidden="true" />
+                    My Profile
+                  </button>
                   <div className="my-1 border-t" />
-                  <Link
-                    href="/"
-                    className="flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-sm text-destructive hover:bg-destructive/10"
+                  <button
+                    type="button"
+                    onClick={handleLogout}
+                    className="flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-sm text-destructive hover:bg-destructive/10 text-left"
                   >
                     <LogOut className="size-4" aria-hidden="true" />
                     Logout
-                  </Link>
+                  </button>
                 </div>
               )}
             </div>
@@ -211,26 +270,66 @@ export function AppShell({ children }: { children: React.ReactNode }) {
                 </Button>
               </div>
               <div className="flex-1 overflow-y-auto">
-                {drawerNotifications.map((n, i) => (
-                  <div
-                    key={i}
-                    className={cn(
-                      'flex flex-col gap-1.5 px-4 py-3',
-                      i < drawerNotifications.length - 1 && 'border-b',
-                    )}
-                  >
-                    <div className="flex items-center justify-between gap-2">
-                      <StatusBadge tone={n.tone}>{n.label}</StatusBadge>
-                      <span className="text-xs text-muted-foreground">
-                        {n.time}
-                      </span>
-                    </div>
-                    <p className="text-sm text-pretty">{n.title}</p>
+                {isLoading ? (
+                  <div className="p-4 space-y-3">
+                    <Skeleton className="h-10 w-full" />
+                    <Skeleton className="h-10 w-full" />
+                    <Skeleton className="h-10 w-full" />
                   </div>
-                ))}
+                ) : error ? (
+                  <div className="p-4 text-center text-xs text-muted-foreground">
+                    Failed to load notifications.
+                  </div>
+                ) : (notifications || []).length === 0 ? (
+                  <div className="p-8 text-center text-sm text-muted-foreground italic">
+                    No announcements or alerts.
+                  </div>
+                ) : (
+                  (notifications || []).slice(0, 5).map((n) => {
+                    const tone = n.type === 'Critical' ? 'critical' : n.type === 'Warning' ? 'warning' : 'info';
+                    return (
+                      <div
+                        key={n.id}
+                        className={cn(
+                          'flex flex-col gap-1.5 px-4 py-3 relative group',
+                          !n.is_read && 'bg-primary/5',
+                          'border-b'
+                        )}
+                      >
+                        <div className="flex items-center justify-between gap-2">
+                          <StatusBadge tone={tone}>{n.type}</StatusBadge>
+                          <span className="text-[10px] text-muted-foreground">
+                            {n.created_at ? new Date(n.created_at).toLocaleTimeString() : 'now'}
+                          </span>
+                        </div>
+                        <div className="flex justify-between items-start gap-2">
+                          <div className="flex-1 min-w-0">
+                            <h4 className="text-sm font-semibold truncate">{n.title}</h4>
+                            <p className="text-xs text-muted-foreground leading-normal mt-0.5 break-words">{n.message}</p>
+                          </div>
+                          {!n.is_read && (
+                            <button
+                              onClick={() => markReadMutation.mutate(n.id)}
+                              disabled={markReadMutation.isPending}
+                              className="opacity-0 group-hover:opacity-100 p-1 text-primary hover:text-green-600 transition-opacity"
+                              title="Mark as read"
+                            >
+                              <Check className="size-3.5" />
+                            </button>
+                          )}
+                        </div>
+                      </div>
+                    );
+                  })
+                )}
               </div>
               <div className="flex items-center justify-between border-t p-3">
-                <Button variant="ghost" size="sm">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => markAllReadMutation.mutate()}
+                  disabled={unreadNotifications.length === 0 || markAllReadMutation.isPending}
+                >
                   Mark all as read
                 </Button>
                 <Link
@@ -248,5 +347,5 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         <main className="flex-1 p-4 lg:p-6">{children}</main>
       </div>
     </div>
-  )
+  );
 }

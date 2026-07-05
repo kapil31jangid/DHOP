@@ -1,3 +1,4 @@
+import React from 'react'
 import { cn } from '@/lib/utils'
 
 export type StatusTone = 'success' | 'warning' | 'critical' | 'pending' | 'neutral' | 'info'
@@ -11,7 +12,7 @@ const tones: Record<StatusTone, string> = {
   info: 'bg-accent text-accent-foreground',
 }
 
-export function StatusBadge({
+export const StatusBadge = React.memo(function StatusBadge({
   tone = 'neutral',
   children,
   className,
@@ -32,4 +33,4 @@ export function StatusBadge({
       {children}
     </span>
   )
-}
+})
