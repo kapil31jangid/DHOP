@@ -2,14 +2,6 @@
 
 DHOP is a state-of-the-art, centralized operational hub designed to digitize, monitor, and streamline the daily operations of multiple health centres (Primary Health Centres (PHCs), Community Health Centres (CHCs), and District Hospitals) across a district.
 
----
-
-## 📸 Platform Interface Preview
-
-![DHOP Dashboard Preview](assets/dhop_dashboard_preview.png)
-
----
-
 ## 🌟 Core Features & Capability Overview
 
 DHOP replaces manual paper registers, phone coordination, and disjointed spreadsheets with real-time operational visibility for district health administrators and facility managers:
