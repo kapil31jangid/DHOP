@@ -43,5 +43,10 @@
     "overrides": {
       "hono": "4.12.25"
     }
+  },
+  "allowScripts": {
+    "@firebase/util@1.15.1": true,
+    "protobufjs@7.6.5": true,
+    "sharp@0.34.5": true
   }
 }

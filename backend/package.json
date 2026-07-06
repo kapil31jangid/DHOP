@@ -29,5 +29,9 @@
     "jest": "^29.0.0",
     "ts-jest": "^29.0.0",
     "typescript": "^5.0.0"
+  },
+  "allowScripts": {
+    "@nestjs/core@10.4.22": true,
+    "protobufjs@7.6.5": true
   }
 }
