@@ -1,6 +1,6 @@
-# CureSync — Pending Tasks Implementation Checklist
+# DHOP — Pending Tasks Implementation Checklist
 
-This checklist details all the components, features, and configurations remaining to complete the CureSync (DHOP) MVP. Use this document to track development progress.
+This checklist details all the components, features, and configurations remaining to complete the DHOP MVP. Use this document to track development progress.
 
 ---
 

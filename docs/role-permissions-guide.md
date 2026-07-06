@@ -1,6 +1,6 @@
 # Role-Based Access Control (RBAC) & Operations Guide
 
-This document outlines the **Role-Based Access Control (RBAC)** architecture of the **CureSync / DHOP (District Health Operations Platform)**. It specifies the access bounds, UI controls, and API endpoint scopes for all user roles.
+This document outlines the **Role-Based Access Control (RBAC)** architecture of the **DHOP (District Health Operations Platform)**. It specifies the access bounds, UI controls, and API endpoint scopes for all user roles.
 
 ---
 

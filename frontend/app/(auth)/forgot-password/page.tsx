@@ -49,7 +49,7 @@ export default function ForgotPasswordPage() {
               Password Recovery
             </h1>
             <p className="text-sm text-muted-foreground text-balance">
-              Request a link to reset your CureSync password
+              Request a link to reset your DHOP password
             </p>
           </div>
         </div>

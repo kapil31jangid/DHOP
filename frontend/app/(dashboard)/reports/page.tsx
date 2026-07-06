@@ -150,7 +150,7 @@ export default function ReportsPage() {
         r.status,
       ];
     });
-    exportToCSV('CureSync-Reports', headers, rows);
+    exportToCSV('DHOP-Reports', headers, rows);
     toast.success('Reports list exported to CSV successfully');
   };
 

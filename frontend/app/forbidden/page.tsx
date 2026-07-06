@@ -17,7 +17,7 @@ export default function ForbiddenPage() {
             403 - Access Forbidden
           </h1>
           <p className="text-sm text-muted-foreground max-w-sm text-balance">
-            Your CureSync account role permissions restrict access to this page. Please contact your district administrator if you believe this is in error.
+            Your DHOP account role permissions restrict access to this page. Please contact your district administrator if you believe this is in error.
           </p>
         </div>
         <Button

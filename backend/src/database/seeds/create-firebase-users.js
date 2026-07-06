@@ -49,25 +49,25 @@ admin.initializeApp({
 const demoUsers = [
   {
     uid: 'fb-uid-district-admin',
-    email: 'district.admin@curesync.gov.in',
+    email: 'district.admin@dhop.gov.in',
     password: 'Password@123',
     displayName: 'Dr. Rajendra Prasad',
   },
   {
     uid: 'fb-uid-admin-rampur',
-    email: 'admin.rampur@curesync.gov.in',
+    email: 'admin.rampur@dhop.gov.in',
     password: 'Password@123',
     displayName: 'Dr. Ramesh Sharma',
   },
   {
     uid: 'fb-uid-staff-healthcare-rampur',
-    email: 'staff.healthcare.rampur@curesync.gov.in',
+    email: 'staff.healthcare.rampur@dhop.gov.in',
     password: 'Password@123',
     displayName: 'Dr. S. Verma',
   },
   {
     uid: 'fb-uid-staff-ops-rampur',
-    email: 'staff.ops.rampur@curesync.gov.in',
+    email: 'staff.ops.rampur@dhop.gov.in',
     password: 'Password@123',
     displayName: 'Amit Kumar',
   },
@@ -78,8 +78,16 @@ async function run() {
   for (const user of demoUsers) {
     try {
       try {
-        await admin.auth().getUser(user.uid);
-        console.log(`- Account already exists: ${user.email}`);
+        const existingUser = await admin.auth().getUser(user.uid);
+        if (existingUser.email !== user.email) {
+          await admin.auth().updateUser(user.uid, {
+            email: user.email,
+            displayName: user.displayName,
+          });
+          console.log(`* Successfully updated email to: ${user.email} (UID: ${user.uid})`);
+        } else {
+          console.log(`- Account already exists and is up to date: ${user.email}`);
+        }
       } catch (err) {
         if (err.code === 'auth/user-not-found') {
           await admin.auth().createUser({

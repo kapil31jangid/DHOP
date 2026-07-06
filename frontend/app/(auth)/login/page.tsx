@@ -48,7 +48,7 @@ export default function LoginPage() {
           </span>
           <div className="flex flex-col gap-1">
             <h1 className="text-xl font-bold tracking-tight bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text">
-              CureSync / DHOP
+              DHOP
             </h1>
             <p className="text-sm text-muted-foreground text-balance">
               District Health Operations Platform
@@ -143,33 +143,33 @@ export default function LoginPage() {
             <button
               type="button"
               onClick={() => {
-                setEmail('district.admin@curesync.gov.in');
+                setEmail('district.admin@dhop.gov.in');
                 setPassword('Password@123');
               }}
               className="flex flex-col items-start rounded-lg border bg-background/50 p-2 text-left hover:border-primary/50 transition-colors"
             >
               <span className="text-[10px] font-bold text-primary">District Admin</span>
               <span className="text-[9px] text-muted-foreground truncate w-full">
-                district.admin@curesync...
+                district.admin@dhop...
               </span>
             </button>
             <button
               type="button"
               onClick={() => {
-                setEmail('admin.rampur@curesync.gov.in');
+                setEmail('admin.rampur@dhop.gov.in');
                 setPassword('Password@123');
               }}
               className="flex flex-col items-start rounded-lg border bg-background/50 p-2 text-left hover:border-primary/50 transition-colors"
             >
               <span className="text-[10px] font-bold text-primary">Facility Admin</span>
               <span className="text-[9px] text-muted-foreground truncate w-full">
-                admin.rampur@curesync...
+                admin.rampur@dhop...
               </span>
             </button>
             <button
               type="button"
               onClick={() => {
-                setEmail('staff.healthcare.rampur@curesync.gov.in');
+                setEmail('staff.healthcare.rampur@dhop.gov.in');
                 setPassword('Password@123');
               }}
               className="flex flex-col items-start rounded-lg border bg-background/50 p-2 text-left hover:border-primary/50 transition-colors"
@@ -182,7 +182,7 @@ export default function LoginPage() {
             <button
               type="button"
               onClick={() => {
-                setEmail('staff.ops.rampur@curesync.gov.in');
+                setEmail('staff.ops.rampur@dhop.gov.in');
                 setPassword('Password@123');
               }}
               className="flex flex-col items-start rounded-lg border bg-background/50 p-2 text-left hover:border-primary/50 transition-colors"

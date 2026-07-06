@@ -28,22 +28,22 @@ INSERT INTO health_centres (id, district_id, name, type, address, contact_number
 -- 3. Insert Users (District Admin, Facility Admins, Staff)
 INSERT INTO users (id, facility_id, name, email, role, firebase_uid, status) VALUES
 -- District Admin (no facility_id)
-('u0000000-0000-0000-0000-000000000000', NULL, 'Dr. Rajendra Prasad', 'district.admin@curesync.gov.in', 'DISTRICT_ADMIN', 'fb-uid-district-admin', 'Active'),
+('u0000000-0000-0000-0000-000000000000', NULL, 'Dr. Rajendra Prasad', 'district.admin@dhop.gov.in', 'DISTRICT_ADMIN', 'fb-uid-district-admin', 'Active'),
 
 -- PHC Rampur Users
-('u1111111-1111-1111-1111-111111111111', 'a1111111-1111-1111-1111-111111111111', 'Dr. Ramesh Sharma', 'admin.rampur@curesync.gov.in', 'FACILITY_ADMIN', 'fb-uid-admin-rampur', 'Active'),
-('u1111111-2222-2222-2222-222222222222', 'a1111111-1111-1111-1111-111111111111', 'Dr. S. Verma', 'staff.healthcare.rampur@curesync.gov.in', 'HEALTHCARE_STAFF', 'fb-uid-staff-healthcare-rampur', 'Active'),
-('u1111111-3333-3333-3333-333333333333', 'a1111111-1111-1111-1111-111111111111', 'Amit Kumar', 'staff.ops.rampur@curesync.gov.in', 'OPERATIONS_STAFF', 'fb-uid-staff-ops-rampur', 'Active'),
+('u1111111-1111-1111-1111-111111111111', 'a1111111-1111-1111-1111-111111111111', 'Dr. Ramesh Sharma', 'admin.rampur@dhop.gov.in', 'FACILITY_ADMIN', 'fb-uid-admin-rampur', 'Active'),
+('u1111111-2222-2222-2222-222222222222', 'a1111111-1111-1111-1111-111111111111', 'Dr. S. Verma', 'staff.healthcare.rampur@dhop.gov.in', 'HEALTHCARE_STAFF', 'fb-uid-staff-healthcare-rampur', 'Active'),
+('u1111111-3333-3333-3333-333333333333', 'a1111111-1111-1111-1111-111111111111', 'Amit Kumar', 'staff.ops.rampur@dhop.gov.in', 'OPERATIONS_STAFF', 'fb-uid-staff-ops-rampur', 'Active'),
 
 -- CHC Sundarpur Users
-('u2222222-2222-2222-2222-222222222222', 'a2222222-2222-2222-2222-222222222222', 'Dr. Sunita Patil', 'admin.sundarpur@curesync.gov.in', 'FACILITY_ADMIN', 'fb-uid-admin-sundarpur', 'Active'),
-('u2222222-3333-3333-3333-333333333333', 'a2222222-2222-2222-2222-222222222222', 'Suresh Bind', 'staff.ops.sundarpur@curesync.gov.in', 'OPERATIONS_STAFF', 'fb-uid-staff-ops-sundarpur', 'Active'),
+('u2222222-2222-2222-2222-222222222222', 'a2222222-2222-2222-2222-222222222222', 'Dr. Sunita Patil', 'admin.sundarpur@dhop.gov.in', 'FACILITY_ADMIN', 'fb-uid-admin-sundarpur', 'Active'),
+('u2222222-3333-3333-3333-333333333333', 'a2222222-2222-2222-2222-222222222222', 'Suresh Bind', 'staff.ops.sundarpur@dhop.gov.in', 'OPERATIONS_STAFF', 'fb-uid-staff-ops-sundarpur', 'Active'),
 
 -- CHC Bhairavi Users
-('u3333333-3333-3333-3333-333333333333', 'a3333333-3333-3333-3333-333333333333', 'Dr. Prem Kumar', 'admin.bhairavi@curesync.gov.in', 'FACILITY_ADMIN', 'fb-uid-admin-bhairavi', 'Active'),
+('u3333333-3333-3333-3333-333333333333', 'a3333333-3333-3333-3333-333333333333', 'Dr. Prem Kumar', 'admin.bhairavi@dhop.gov.in', 'FACILITY_ADMIN', 'fb-uid-admin-bhairavi', 'Active'),
 
 -- PHC Lakshmi Nagar Users
-('u4444444-4444-4444-4444-444444444444', 'a4444444-4444-4444-4444-444444444444', 'Dr. Neha Gupta', 'admin.lakshmi@curesync.gov.in', 'FACILITY_ADMIN', 'fb-uid-admin-lakshmi', 'Active');
+('u4444444-4444-4444-4444-444444444444', 'a4444444-4444-4444-4444-444444444444', 'Dr. Neha Gupta', 'admin.lakshmi@dhop.gov.in', 'FACILITY_ADMIN', 'fb-uid-admin-lakshmi', 'Active');
 
 -- 4. Insert Patients
 INSERT INTO patients (id, facility_id, patient_id_code, name, age, gender, visit_type, disease_category, assigned_doctor, visit_date) VALUES
@@ -111,7 +111,7 @@ INSERT INTO attendance (id, facility_id, user_id, date, check_in, check_out, sta
 -- 8. Insert Notifications
 INSERT INTO notifications (id, facility_id, type, title, message, is_read) VALUES
 -- District Warning
-(gen_random_uuid(), NULL, 'Warning', 'System database maintenance', 'CureSync system database will undergo maintenance at 11:59 PM today.', false),
+(gen_random_uuid(), NULL, 'Warning', 'System database maintenance', 'DHOP system database will undergo maintenance at 11:59 PM today.', false),
 
 -- PHC Rampur Notification: Medicine running low
 (gen_random_uuid(), 'a1111111-1111-1111-1111-111111111111', 'Critical', 'Paracetamol 500mg below threshold', 'PHC Rampur stock for Paracetamol 500mg is currently 80, which is below the threshold of 200.', false),
@@ -121,5 +121,5 @@ INSERT INTO notifications (id, facility_id, type, title, message, is_read) VALUE
 
 -- 9. Seed Audit Logs
 INSERT INTO audit_logs (id, facility_id, user_id, module, action, description, timestamp) VALUES
-(gen_random_uuid(), 'a1111111-1111-1111-1111-111111111111', 'u1111111-1111-1111-1111-111111111111', 'auth', 'CREATE', 'User admin.rampur@curesync.gov.in logged in successfully.', now() - INTERVAL '1 hour'),
+(gen_random_uuid(), 'a1111111-1111-1111-1111-111111111111', 'u1111111-1111-1111-1111-111111111111', 'auth', 'CREATE', 'User admin.rampur@dhop.gov.in logged in successfully.', now() - INTERVAL '1 hour'),
 (gen_random_uuid(), 'a1111111-1111-1111-1111-111111111111', 'u1111111-3333-3333-3333-333333333333', 'attendance', 'CREATE', 'Daily attendance marked for operations staff Amit Kumar.', now() - INTERVAL '30 minutes');

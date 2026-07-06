@@ -28,7 +28,7 @@ async function bootstrap() {
   // Setup Swagger in development environment
   if (env === 'development') {
     const swaggerConfig = new DocumentBuilder()
-      .setTitle('CureSync (DHOP) API')
+      .setTitle('DHOP API')
       .setDescription('District Health Operations Platform API Descriptions')
       .setVersion('1.0')
       .addBearerAuth()

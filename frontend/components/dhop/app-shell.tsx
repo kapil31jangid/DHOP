@@ -38,7 +38,7 @@ function Logo() {
         <HeartPulse className="size-4" aria-hidden="true" />
       </span>
       <span className="flex flex-col leading-none">
-        <span className="text-sm font-semibold tracking-tight">CureSync</span>
+        <span className="text-sm font-semibold tracking-tight">DHOP</span>
         <span className="text-[10px] text-muted-foreground">District Health Ops</span>
       </span>
     </Link>

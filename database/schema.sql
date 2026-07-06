@@ -1,5 +1,5 @@
 -- DDL Schema: schema.sql
--- Description: Sets up enums, tables, keys, constraints, and indexes for DHOP / CureSync.
+-- Description: Sets up enums, tables, keys, constraints, and indexes for DHOP / DHOP.
 
 -- 1. Create Enums & Types
 CREATE TYPE health_centre_type AS ENUM ('PHC', 'CHC', 'DH');
