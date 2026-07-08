@@ -24,6 +24,7 @@ export class NotificationsController {
   constructor(private readonly notificationsService: NotificationsService) {}
 
   @Get()
+  @Roles(Role.DISTRICT_ADMIN, Role.FACILITY_ADMIN, Role.HEALTHCARE_STAFF, Role.OPERATIONS_STAFF)
   async getAll(@CurrentUser() currentUser: any) {
     const filters = this.notificationsService.getFacilityFilters(currentUser);
     return this.notificationsService.findMany({ filters });
@@ -46,6 +47,7 @@ export class NotificationsController {
   }
 
   @Patch(':id/read')
+  @Roles(Role.DISTRICT_ADMIN, Role.FACILITY_ADMIN, Role.HEALTHCARE_STAFF, Role.OPERATIONS_STAFF)
   async markAsRead(@Param('id') id: string, @CurrentUser() currentUser: any) {
     const notification = await this.notificationsService.findOne(id);
     if (notification.facility_id) {

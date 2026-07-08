@@ -25,12 +25,14 @@ export class AttendanceController {
   constructor(private readonly attendanceService: AttendanceService) {}
 
   @Get()
+  @Roles(Role.DISTRICT_ADMIN, Role.FACILITY_ADMIN, Role.OPERATIONS_STAFF)
   async getAll(@CurrentUser() currentUser: any) {
     const filters = this.attendanceService.getFacilityFilters(currentUser);
     return this.attendanceService.findMany({ filters });
   }
 
   @Get(':id')
+  @Roles(Role.DISTRICT_ADMIN, Role.FACILITY_ADMIN, Role.OPERATIONS_STAFF)
   async getOne(@Param('id') id: string, @CurrentUser() currentUser: any) {
     const attendance = await this.attendanceService.findOne(id);
     this.attendanceService.assertFacilityScope(currentUser, attendance.facility_id);

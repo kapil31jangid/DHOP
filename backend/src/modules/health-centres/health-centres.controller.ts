@@ -24,11 +24,13 @@ export class HealthCentresController {
   constructor(private readonly healthCentresService: HealthCentresService) {}
 
   @Get()
+  @Roles(Role.DISTRICT_ADMIN)
   async getAll() {
     return this.healthCentresService.findMany();
   }
 
   @Get(':id')
+  @Roles(Role.DISTRICT_ADMIN)
   async getOne(@Param('id') id: string) {
     return this.healthCentresService.findOne(id);
   }

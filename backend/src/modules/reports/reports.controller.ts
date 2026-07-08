@@ -24,12 +24,14 @@ export class ReportsController {
   constructor(private readonly reportsService: ReportsService) {}
 
   @Get()
+  @Roles(Role.DISTRICT_ADMIN, Role.FACILITY_ADMIN, Role.HEALTHCARE_STAFF, Role.OPERATIONS_STAFF)
   async getAll(@CurrentUser() currentUser: any) {
     const filters = this.reportsService.getFacilityFilters(currentUser);
     return this.reportsService.findMany({ filters });
   }
 
   @Get(':id')
+  @Roles(Role.DISTRICT_ADMIN, Role.FACILITY_ADMIN, Role.HEALTHCARE_STAFF, Role.OPERATIONS_STAFF)
   async getOne(@Param('id') id: string, @CurrentUser() currentUser: any) {
     const report = await this.reportsService.findOne(id);
     if (report.facility_id) {

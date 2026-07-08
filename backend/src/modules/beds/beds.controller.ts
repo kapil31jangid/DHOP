@@ -26,12 +26,14 @@ export class BedsController {
   constructor(private readonly bedsService: BedsService) {}
 
   @Get()
+  @Roles(Role.DISTRICT_ADMIN, Role.FACILITY_ADMIN, Role.OPERATIONS_STAFF)
   async getAll(@CurrentUser() currentUser: any) {
     const filters = this.bedsService.getFacilityFilters(currentUser);
     return this.bedsService.findMany({ filters });
   }
 
   @Get(':id')
+  @Roles(Role.DISTRICT_ADMIN, Role.FACILITY_ADMIN, Role.OPERATIONS_STAFF)
   async getOne(@Param('id') id: string, @CurrentUser() currentUser: any) {
     const bed = await this.bedsService.findOne(id);
     this.bedsService.assertFacilityScope(currentUser, bed.facility_id);

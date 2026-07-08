@@ -11,8 +11,14 @@ const routePermissions: Record<string, string[]> = {
   '/dashboard': ['DISTRICT_ADMIN'],
   '/facility': ['FACILITY_ADMIN', 'HEALTHCARE_STAFF', 'OPERATIONS_STAFF'],
   '/health-centres': ['DISTRICT_ADMIN'],
+  '/patients': ['DISTRICT_ADMIN', 'FACILITY_ADMIN', 'HEALTHCARE_STAFF'],
+  '/medicines': ['DISTRICT_ADMIN', 'FACILITY_ADMIN', 'HEALTHCARE_STAFF'],
+  '/beds': ['DISTRICT_ADMIN', 'FACILITY_ADMIN', 'OPERATIONS_STAFF'],
+  '/attendance': ['DISTRICT_ADMIN', 'FACILITY_ADMIN', 'OPERATIONS_STAFF'],
+  '/reports': ['DISTRICT_ADMIN', 'FACILITY_ADMIN', 'HEALTHCARE_STAFF', 'OPERATIONS_STAFF'],
   '/users': ['DISTRICT_ADMIN', 'FACILITY_ADMIN'],
-  '/audit-logs': ['DISTRICT_ADMIN', 'FACILITY_ADMIN'],
+  '/notifications': ['DISTRICT_ADMIN', 'FACILITY_ADMIN', 'HEALTHCARE_STAFF', 'OPERATIONS_STAFF'],
+  '/audit-logs': ['DISTRICT_ADMIN'],
   '/settings': ['DISTRICT_ADMIN', 'FACILITY_ADMIN'],
 };
 

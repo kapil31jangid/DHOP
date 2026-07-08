@@ -40,6 +40,7 @@ export class UsersController {
   }
 
   @Post()
+  @Roles(Role.DISTRICT_ADMIN)
   @UsePipes(new ZodValidationPipe(createUserSchema))
   async create(@Body() dto: CreateUserDto, @CurrentUser() currentUser: any) {
     return this.usersService.createUser(dto, currentUser);
@@ -69,6 +70,7 @@ export class UsersController {
   }
 
   @Delete(':id')
+  @Roles(Role.DISTRICT_ADMIN)
   async remove(@Param('id') id: string, @CurrentUser() currentUser: any) {
     await this.usersService.deleteUser(id, currentUser);
     return { message: 'User deleted successfully' };

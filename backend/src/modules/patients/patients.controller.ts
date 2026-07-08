@@ -26,12 +26,14 @@ export class PatientsController {
   constructor(private readonly patientsService: PatientsService) {}
 
   @Get()
+  @Roles(Role.DISTRICT_ADMIN, Role.FACILITY_ADMIN, Role.HEALTHCARE_STAFF)
   async getAll(@CurrentUser() currentUser: any) {
     const filters = this.patientsService.getFacilityFilters(currentUser);
     return this.patientsService.findMany({ filters });
   }
 
   @Get(':id')
+  @Roles(Role.DISTRICT_ADMIN, Role.FACILITY_ADMIN, Role.HEALTHCARE_STAFF)
   async getOne(@Param('id') id: string, @CurrentUser() currentUser: any) {
     const patient = await this.patientsService.findOne(id);
     this.patientsService.assertFacilityScope(currentUser, patient.facility_id);

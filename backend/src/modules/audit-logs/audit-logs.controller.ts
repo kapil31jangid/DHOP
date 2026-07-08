@@ -8,7 +8,7 @@ import { AuditLogsService } from './audit-logs.service';
 
 @Controller('audit-logs')
 @UseGuards(FirebaseAuthGuard, RolesGuard)
-@Roles(Role.DISTRICT_ADMIN, Role.FACILITY_ADMIN)
+@Roles(Role.DISTRICT_ADMIN)
 export class AuditLogsController {
   constructor(private readonly auditLogsService: AuditLogsService) {}
 
