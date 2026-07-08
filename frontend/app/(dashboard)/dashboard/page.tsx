@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { Building2, UsersRound, BedDouble, AlertTriangle, CalendarCheck, FileBarChart, Bell, Download } from 'lucide-react';
 import api from '@/lib/api';
@@ -9,6 +9,7 @@ import { KpiSkeleton } from '@/components/dhop/skeleton';
 import { QuickActionCard } from '@/components/dhop/quick-action-card';
 import { exportToCSV } from '@/utils/export-utils';
 import { toast } from 'sonner';
+import { AnalyticsChart } from '@/components/dhop/analytics-chart';
 
 export default function DistrictDashboardPage() {
   // Fetch everything to aggregate district metrics
@@ -21,9 +22,9 @@ export default function DistrictDashboardPage() {
   });
 
   const { data: patients, isLoading: isLoadingPatients } = useQuery<any[]>({
-    queryKey: ['dashboard-patients'],
+    queryKey: ['dashboard-patients-all'],
     queryFn: async () => {
-      const res = await api.get('/patients');
+      const res = await api.get('/patients', { params: { date: 'all' } });
       return res.data?.data || [];
     },
   });
@@ -59,29 +60,41 @@ export default function DistrictDashboardPage() {
     isLoadingMeds ||
     isLoadingAttendance;
 
-  if (loading) {
-    return (
-      <div className="flex flex-col gap-6">
-        <div>
-          <h1 className="text-2xl font-bold tracking-tight">District Dashboard</h1>
-          <p className="text-sm text-muted-foreground">Compiling district analytics...</p>
-        </div>
-        <KpiSkeleton />
-      </div>
-    );
-  }
-
   // Calculate stats
   const totalCentres = centres?.length || 0;
   const activeCentres = centres?.filter((c) => c.status === 'Active').length || 0;
-  const totalPatients = patients?.length || 0;
   
+  const todayStr = new Date().toISOString().split('T')[0];
+  const patientsRegisteredToday = useMemo(() => {
+    return (patients || []).filter((p) => p.visit_date === todayStr).length;
+  }, [patients, todayStr]);
+
   const totalBeds = beds?.length || 0;
   const occupiedBeds = beds?.filter((b) => b.status === 'Occupied').length || 0;
   const bedUtilization = totalBeds > 0 ? Math.round((occupiedBeds / totalBeds) * 100) : 0;
 
   const lowStockCount = medicines?.filter((m) => m.quantity <= m.threshold).length || 0;
   const presentStaff = attendance?.filter((a) => a.status === 'Present').length || 0;
+
+  // 7-day registration trend calculation
+  const chartData = useMemo(() => {
+    if (!patients) return [];
+    
+    const dates = Array.from({ length: 7 }, (_, i) => {
+      const d = new Date();
+      d.setDate(d.getDate() - (6 - i));
+      return d.toISOString().split('T')[0];
+    });
+
+    return dates.map((dateStr) => {
+      const count = patients.filter((p) => p.visit_date === dateStr).length;
+      const formattedLabel = new Date(dateStr).toLocaleDateString('en-US', {
+        month: 'short',
+        day: 'numeric',
+      });
+      return { label: formattedLabel, value: count };
+    });
+  }, [patients]);
 
   const handleExportSummary = () => {
     if (!centres || centres.length === 0) {
@@ -100,6 +113,18 @@ export default function DistrictDashboardPage() {
     toast.success('Health Centres summary exported successfully');
   };
 
+  if (loading) {
+    return (
+      <div className="flex flex-col gap-6">
+        <div>
+          <h1 className="text-2xl font-bold tracking-tight">District Dashboard</h1>
+          <p className="text-sm text-muted-foreground">Compiling district analytics...</p>
+        </div>
+        <KpiSkeleton />
+      </div>
+    );
+  }
+
   return (
     <div className="flex flex-col gap-6">
       <div>
@@ -112,7 +137,7 @@ export default function DistrictDashboardPage() {
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-3">
         <KpiCard label="Active Centres" value={`${activeCentres} / ${totalCentres}`} icon={Building2} />
-        <KpiCard label="Patients Registered Today" value={String(totalPatients)} icon={UsersRound} />
+        <KpiCard label="Patients Registered Today" value={String(patientsRegisteredToday)} icon={UsersRound} />
         <KpiCard
           label="Bed Utilization"
           value={`${bedUtilization}%`}
@@ -153,6 +178,15 @@ export default function DistrictDashboardPage() {
             icon={Download}
           />
         </div>
+      </div>
+
+      {/* Analytics Chart */}
+      <div className="grid grid-cols-1 gap-6">
+        <AnalyticsChart
+          title="Patient Registrations Trend (Last 7 Days)"
+          data={chartData}
+          type="line"
+        />
       </div>
 
       {/* Operational Highlights */}

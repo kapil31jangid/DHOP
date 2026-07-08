@@ -19,7 +19,13 @@ export function useRealtimeSync() {
           queryClient.invalidateQueries({ queryKey: ['dashboard-medicines'] });
           queryClient.invalidateQueries({ queryKey: ['facility-medicines'] });
           
-          if (payload.eventType === 'INSERT') {
+          const isCritical =
+            (payload.eventType === 'INSERT' || payload.eventType === 'UPDATE') &&
+            payload.new.quantity <= payload.new.threshold;
+
+          if (isCritical) {
+            toast.warning(`Critical Inventory Alert: ${payload.new.name} is running below threshold (${payload.new.quantity} remaining)`);
+          } else if (payload.eventType === 'INSERT') {
             toast.info(`Medicine batch stock added: ${payload.new.name}`);
           }
         }

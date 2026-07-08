@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { UsersRound, BedDouble, AlertTriangle, CalendarCheck, Stethoscope, Pill, FileBarChart } from 'lucide-react';
 import api from '@/lib/api';
@@ -8,15 +8,16 @@ import { useAuthStore } from '@/store/auth-store';
 import { KpiCard } from '@/components/dhop/kpi-card';
 import { KpiSkeleton } from '@/components/dhop/skeleton';
 import { QuickActionCard } from '@/components/dhop/quick-action-card';
+import { AnalyticsChart } from '@/components/dhop/analytics-chart';
 
 export default function FacilityDashboardPage() {
   const { user } = useAuthStore();
 
   // Queries (backend automatically scopes these endpoints based on user's facilityId)
   const { data: patients, isLoading: isLoadingPatients } = useQuery<any[]>({
-    queryKey: ['facility-patients'],
+    queryKey: ['facility-patients-all'],
     queryFn: async () => {
-      const res = await api.get('/patients');
+      const res = await api.get('/patients', { params: { date: 'all' } });
       return res.data?.data || [];
     },
   });
@@ -51,22 +52,19 @@ export default function FacilityDashboardPage() {
     isLoadingMeds ||
     isLoadingAttendance;
 
-  if (loading) {
-    return (
-      <div className="flex flex-col gap-6">
-        <div>
-          <h1 className="text-2xl font-bold tracking-tight">Facility Dashboard</h1>
-          <p className="text-sm text-muted-foreground">Compiling facility stats...</p>
-        </div>
-        <KpiSkeleton />
-      </div>
-    );
-  }
-
   // Calculate stats
-  const totalPatients = patients?.length || 0;
-  const opdCount = patients?.filter((p) => p.visit_type === 'OPD').length || 0;
-  const ipdCount = patients?.filter((p) => p.visit_type === 'IPD').length || 0;
+  const todayStr = new Date().toISOString().split('T')[0];
+  const patientsRegisteredToday = useMemo(() => {
+    return (patients || []).filter((p) => p.visit_date === todayStr).length;
+  }, [patients, todayStr]);
+
+  const opdCount = useMemo(() => {
+    return (patients || []).filter((p) => p.visit_type === 'OPD').length;
+  }, [patients]);
+
+  const ipdCount = useMemo(() => {
+    return (patients || []).filter((p) => p.visit_type === 'IPD').length;
+  }, [patients]);
 
   const totalBeds = beds?.length || 0;
   const occupiedBeds = beds?.filter((b) => b.status === 'Occupied').length || 0;
@@ -74,6 +72,26 @@ export default function FacilityDashboardPage() {
 
   const lowStockCount = medicines?.filter((m) => m.quantity <= m.threshold).length || 0;
   const presentStaff = attendance?.filter((a) => a.status === 'Present').length || 0;
+
+  // 7-day registration trend calculation
+  const chartData = useMemo(() => {
+    if (!patients) return [];
+    
+    const dates = Array.from({ length: 7 }, (_, i) => {
+      const d = new Date();
+      d.setDate(d.getDate() - (6 - i));
+      return d.toISOString().split('T')[0];
+    });
+
+    return dates.map((dateStr) => {
+      const count = patients.filter((p) => p.visit_date === dateStr).length;
+      const formattedLabel = new Date(dateStr).toLocaleDateString('en-US', {
+        month: 'short',
+        day: 'numeric',
+      });
+      return { label: formattedLabel, value: count };
+    });
+  }, [patients]);
 
   const getQuickActions = () => {
     const role = user?.role;
@@ -99,11 +117,11 @@ export default function FacilityDashboardPage() {
       });
     }
 
-    // Update Bed Status
+    // Add Bed
     if (role === 'FACILITY_ADMIN' || role === 'OPERATIONS_STAFF') {
       actions.push({
-        label: 'Update Bed Status',
-        description: 'Allocate beds or set maintenance parameters.',
+        label: 'Add Bed Unit',
+        description: 'Provision new clinical beds in wards.',
         href: '/beds',
         icon: BedDouble,
       });
@@ -132,6 +150,18 @@ export default function FacilityDashboardPage() {
     return actions;
   };
 
+  if (loading) {
+    return (
+      <div className="flex flex-col gap-6">
+        <div>
+          <h1 className="text-2xl font-bold tracking-tight">Facility Dashboard</h1>
+          <p className="text-sm text-muted-foreground">Compiling facility stats...</p>
+        </div>
+        <KpiSkeleton />
+      </div>
+    );
+  }
+
   const quickActions = getQuickActions();
 
   return (
@@ -145,7 +175,7 @@ export default function FacilityDashboardPage() {
 
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
-        <KpiCard label="Patients Registered Today" value={String(totalPatients)} icon={UsersRound} />
+        <KpiCard label="Patients Registered Today" value={String(patientsRegisteredToday)} icon={UsersRound} />
         <KpiCard
           label="Beds Available"
           value={`${availableBeds} / ${totalBeds}`}
@@ -180,6 +210,15 @@ export default function FacilityDashboardPage() {
           </div>
         </div>
       )}
+
+      {/* Analytics Chart */}
+      <div className="grid grid-cols-1 gap-6">
+        <AnalyticsChart
+          title="Patient Registrations Trend (Last 7 Days)"
+          data={chartData}
+          type="line"
+        />
+      </div>
 
       {/* Operational highlights */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
