@@ -20,12 +20,12 @@ export function AnalyticsChart({
   data = [],
   type = 'line',
   color = 'var(--primary)',
-  height = 180,
+  height = 220,
 }: AnalyticsChartProps) {
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
 
   // SVG parameters
-  const padding = { top: 20, right: 20, bottom: 30, left: 40 };
+  const padding = { top: 20, right: 20, bottom: 40, left: 45 };
   const chartHeight = height - padding.top - padding.bottom;
   const chartWidth = 500; // base viewport width for scalable SVG viewBox
   const viewBoxWidth = chartWidth + padding.left + padding.right;
@@ -41,13 +41,23 @@ export function AnalyticsChart({
   // Map data coordinates
   const points = useMemo(() => {
     if (data.length === 0) return [];
+    if (type === 'bar') {
+      // For bar charts: distribute bars evenly in columns so none clip at edges
+      const stepX = chartWidth / data.length;
+      return data.map((d, i) => {
+        const x = padding.left + stepX * (i + 0.5);
+        const y = padding.top + chartHeight - (d.value / maxValue) * chartHeight;
+        return { x, y, label: d.label, value: d.value };
+      });
+    }
+    // For line charts: edge-to-edge
     const stepX = data.length > 1 ? chartWidth / (data.length - 1) : chartWidth;
     return data.map((d, i) => {
       const x = padding.left + i * stepX;
       const y = padding.top + chartHeight - (d.value / maxValue) * chartHeight;
       return { x, y, label: d.label, value: d.value };
     });
-  }, [data, maxValue, chartWidth, chartHeight, padding.left, padding.top]);
+  }, [data, type, maxValue, chartWidth, chartHeight, padding.left, padding.top]);
 
   // Construct SVG path for line chart
   const pathD = useMemo(() => {
@@ -67,9 +77,9 @@ export function AnalyticsChart({
   }, [points, pathD, padding.top, chartHeight]);
 
   return (
-    <div className="flex flex-col rounded-xl border bg-card p-6 shadow-sm transition-all duration-300 hover:shadow-md">
-      <div className="flex items-center justify-between mb-4">
-        <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider">
+    <div className="flex flex-col rounded-xl border bg-card p-4 shadow-sm transition-all duration-300 hover:shadow-md">
+      <div className="flex items-center justify-between mb-3">
+        <h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
           {title}
         </h3>
         {hoveredIdx !== null && data[hoveredIdx] && (
@@ -79,7 +89,7 @@ export function AnalyticsChart({
         )}
       </div>
 
-      <div className="relative w-full overflow-hidden">
+      <div className="relative w-full" style={{ minHeight: `${height}px` }}>
         {data.length === 0 ? (
           <div className="flex items-center justify-center h-32 text-xs text-muted-foreground italic">
             No statistics available for this period.
@@ -87,7 +97,7 @@ export function AnalyticsChart({
         ) : (
           <svg
             viewBox={`0 0 ${viewBoxWidth} ${viewBoxHeight}`}
-            className="w-full h-auto overflow-visible select-none"
+            className="w-full h-auto select-none" style={{ minHeight: `${height}px` }}
           >
             {/* Gradients */}
             <defs>
@@ -133,7 +143,7 @@ export function AnalyticsChart({
                 <text
                   key={i}
                   x={p.x}
-                  y={padding.top + chartHeight + 16}
+                  y={padding.top + chartHeight + 20}
                   textAnchor="middle"
                   className="text-[9px] font-medium fill-muted-foreground font-sans"
                 >
@@ -176,7 +186,7 @@ export function AnalyticsChart({
               <>
                 {/* Bar chart rendering */}
                 {points.map((p, i) => {
-                  const barWidth = Math.max(12, (chartWidth / points.length) * 0.6);
+                  const barWidth = Math.min(28, Math.max(12, (chartWidth / points.length) * 0.5));
                   const barHeight = padding.top + chartHeight - p.y;
                   return (
                     <rect
