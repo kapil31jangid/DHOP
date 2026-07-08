@@ -53,12 +53,21 @@ export default function DistrictDashboardPage() {
     },
   });
 
+  const { data: users, isLoading: isLoadingUsers } = useQuery<any[]>({
+    queryKey: ['dashboard-users'],
+    queryFn: async () => {
+      const res = await api.get('/users');
+      return res.data?.data || [];
+    },
+  });
+
   const loading =
     isLoadingCentres ||
     isLoadingPatients ||
     isLoadingBeds ||
     isLoadingMeds ||
-    isLoadingAttendance;
+    isLoadingAttendance ||
+    isLoadingUsers;
 
   // Calculate stats
   const totalCentres = centres?.length || 0;
@@ -106,6 +115,29 @@ export default function DistrictDashboardPage() {
       return { label: c.name, value: rate };
     });
   }, [centres, beds]);
+
+  const medicineShortagesByCentre = useMemo(() => {
+    if (!centres || !medicines) return [];
+    return centres.map((c) => {
+      const centreMeds = medicines.filter((m) => m.facility_id === c.id);
+      const lowStock = centreMeds.filter((m) => m.quantity <= m.threshold).length;
+      return { label: c.name, value: lowStock };
+    });
+  }, [centres, medicines]);
+
+  const staffAttendanceByCentre = useMemo(() => {
+    if (!centres || !users || !attendance) return [];
+    return centres.map((c) => {
+      const centreUsers = users.filter((u) => u.facility_id === c.id);
+      const totalStaff = centreUsers.length;
+      
+      const centreAttendance = attendance.filter((a) => a.facility_id === c.id);
+      const presentStaff = centreAttendance.filter((a) => a.status === 'Present').length;
+      
+      const rate = totalStaff > 0 ? Math.round((presentStaff / totalStaff) * 100) : 0;
+      return { label: c.name, value: rate };
+    });
+  }, [centres, users, attendance]);
 
   const handleExportSummary = () => {
     if (!centres || centres.length === 0) {
@@ -201,6 +233,16 @@ export default function DistrictDashboardPage() {
         <AnalyticsChart
           title="Bed Utilization by Facility (%)"
           data={bedUtilizationByCentre}
+          type="bar"
+        />
+        <AnalyticsChart
+          title="Medicine Shortages by Facility"
+          data={medicineShortagesByCentre}
+          type="bar"
+        />
+        <AnalyticsChart
+          title="Staff Attendance Rate Today (%)"
+          data={staffAttendanceByCentre}
           type="bar"
         />
       </div>
