@@ -49,3 +49,10 @@ Implemented a unified **Quick Add** dropdown menu in the header ([app-shell.tsx]
 
 ## 6. Ward Location Dropdown
 - **Beds Page** ([beds/page.tsx](file:///c:/Users/lenov/OneDrive/Desktop/HARSHIT/build%20with%20ai/CureSync/frontend/app/(dashboard)/beds/page.tsx)): Converted the "Ward Location" text input fields (in both the Register and Edit drawers) to a `<select>` dropdown containing standardized clinical ward options (General Male, General Female, ICU, Oxygen Ward, Maternity, Pediatric Ward, and Emergency).
+
+---
+
+## 7. Row-Level Security (RLS) Enablement
+- **RLS Migration Script** ([02_enable_rls.sql](file:///c:/Users/lenov/OneDrive/Desktop/HARSHIT/build%20with%20ai/CureSync/backend/src/database/migrations/02_enable_rls.sql)): Enabled Row-Level Security (RLS) on all 11 core tables of the platform.
+- **WebSocket Compatibility**: Created explicit `SELECT` policies for the `anon` role to allow the frontend client (which subscribes anonymously) to receive WebSocket push notifications.
+- **Write Restriction**: Left `INSERT`, `UPDATE`, and `DELETE` policies undefined for `anon` to completely block external REST client mutations, ensuring all data changes are funneled securely through the NestJS backend which uses the `service_role` key.
