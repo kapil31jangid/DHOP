@@ -39,17 +39,29 @@ export default function PatientsPage() {
   // Search & Filter state
   const [search, setSearch] = useState('');
   const [visitFilter, setVisitFilter] = useState<'ALL' | 'OPD' | 'IPD'>('ALL');
+  const [selectedDate, setSelectedDate] = useState<string>(new Date().toISOString().split('T')[0]);
   
   // Dialog & Drawer state
   const [isCreateOpen, setIsCreateOpen] = useState(false);
   const [editingPatient, setEditingPatient] = useState<any | null>(null);
   const [deletingPatient, setDeletingPatient] = useState<any | null>(null);
 
+  React.useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('add') === 'true') {
+        setIsCreateOpen(true);
+      }
+    }
+  }, []);
+
   // TanStack Query to fetch patients
   const { data: patients, isLoading, error } = useQuery<any[]>({
-    queryKey: ['patients'],
+    queryKey: ['patients', selectedDate],
     queryFn: async () => {
-      const response = await api.get('/patients');
+      const response = await api.get('/patients', {
+        params: { date: selectedDate || 'all' },
+      });
       return response.data?.data || [];
     },
   });
@@ -62,6 +74,15 @@ export default function PatientsPage() {
       return response.data?.data || [];
     },
     enabled: user?.role === 'DISTRICT_ADMIN',
+  });
+
+  // Fetch users/doctors to assign
+  const { data: staffList } = useQuery<any[]>({
+    queryKey: ['users-list-for-patients'],
+    queryFn: async () => {
+      const response = await api.get('/users');
+      return response.data?.data || [];
+    },
   });
 
   // Mutators
@@ -116,6 +137,7 @@ export default function PatientsPage() {
     register,
     handleSubmit,
     reset,
+    watch,
     formState: { errors },
   } = useForm<PatientFormData>({
     resolver: zodResolver(patientFormSchema),
@@ -130,10 +152,25 @@ export default function PatientsPage() {
     register: registerEdit,
     handleSubmit: handleSubmitEdit,
     reset: resetEdit,
+    watch: watchEdit,
     formState: { errors: errorsEdit },
   } = useForm<PatientFormData>({
     resolver: zodResolver(patientFormSchema),
   });
+
+  // Watches for facilityId to filter doctor list dynamically for DISTRICT_ADMIN
+  const watchedFacilityId = watch('facilityId');
+  const watchedFacilityIdEdit = watchEdit('facilityId');
+
+  const getAvailableDoctors = (facilityId?: string | null) => {
+    const targetFacilityId = facilityId || user?.facilityId;
+    return (staffList || []).filter(
+      (s) =>
+        (s.role === 'HEALTHCARE_STAFF' || s.role === 'FACILITY_ADMIN') &&
+        s.status === 'Active' &&
+        (!targetFacilityId || s.facility_id === targetFacilityId)
+    );
+  };
 
   const handleEditClick = (patient: any) => {
     setEditingPatient(patient);
@@ -216,20 +253,52 @@ export default function PatientsPage() {
       ) : (
         <div className="flex flex-col gap-4">
           {/* Search toolbar */}
-          <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
-            <div className="relative flex-1 sm:max-w-xs">
-              <Search
-                className="absolute top-1/2 left-2.5 size-4 -translate-y-1/2 text-muted-foreground"
-                aria-hidden="true"
-              />
-              <input
-                type="search"
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                placeholder="Search patients by code, name..."
-                className="h-8 w-full rounded-lg border bg-card pr-3 pl-8 text-sm outline-none placeholder:text-muted-foreground focus-visible:ring-3 focus-visible:ring-ring/50"
-              />
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-center justify-between">
+            <div className="flex flex-wrap items-center gap-2 flex-1">
+              <div className="relative flex-1 max-w-xs min-w-[200px]">
+                <Search
+                  className="absolute top-1/2 left-2.5 size-4 -translate-y-1/2 text-muted-foreground"
+                  aria-hidden="true"
+                />
+                <input
+                  type="search"
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
+                  placeholder="Search patients by code, name..."
+                  className="h-8 w-full rounded-lg border bg-card pr-3 pl-8 text-sm outline-none placeholder:text-muted-foreground focus-visible:ring-3 focus-visible:ring-ring/50"
+                />
+              </div>
+              
+              <div className="flex items-center gap-1.5 border rounded-lg bg-card p-0.5 h-8">
+                <input
+                  type="date"
+                  value={selectedDate}
+                  onChange={(e) => setSelectedDate(e.target.value)}
+                  className="h-7 bg-transparent px-2 text-xs outline-none text-foreground border-r pr-3"
+                />
+                <button
+                  onClick={() => setSelectedDate(new Date().toISOString().split('T')[0])}
+                  className={`h-7 px-2.5 rounded-md text-xs font-medium transition-colors ${
+                    selectedDate === new Date().toISOString().split('T')[0]
+                      ? 'bg-primary text-primary-foreground'
+                      : 'text-muted-foreground hover:text-foreground'
+                  }`}
+                >
+                  Today
+                </button>
+                <button
+                  onClick={() => setSelectedDate('')}
+                  className={`h-7 px-2.5 rounded-md text-xs font-medium transition-colors ${
+                    selectedDate === ''
+                      ? 'bg-primary text-primary-foreground'
+                      : 'text-muted-foreground hover:text-foreground'
+                  }`}
+                >
+                  All Dates
+                </button>
+              </div>
             </div>
+
             <div className="flex items-center gap-2">
               {(['ALL', 'OPD', 'IPD'] as const).map((mode) => (
                 <button
@@ -418,11 +487,17 @@ export default function PatientsPage() {
 
           <div className="flex flex-col gap-1">
             <label className="text-xs font-semibold">Assigned Doctor</label>
-            <input
+            <select
               {...register('assignedDoctor')}
-              placeholder="Dr. S. Verma"
               className="h-9 rounded-lg border bg-background px-3 text-sm outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
-            />
+            >
+              <option value="">Choose Doctor...</option>
+              {getAvailableDoctors(watchedFacilityId).map((doc) => (
+                <option key={doc.id} value={doc.name}>
+                  {doc.name}
+                </option>
+              ))}
+            </select>
           </div>
 
           <div className="flex justify-end gap-2 mt-4 pt-4 border-t">
@@ -541,10 +616,17 @@ export default function PatientsPage() {
 
           <div className="flex flex-col gap-1">
             <label className="text-xs font-semibold">Assigned Doctor</label>
-            <input
+            <select
               {...registerEdit('assignedDoctor')}
               className="h-9 rounded-lg border bg-background px-3 text-sm outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
-            />
+            >
+              <option value="">Choose Doctor...</option>
+              {getAvailableDoctors(watchedFacilityIdEdit).map((doc) => (
+                <option key={doc.id} value={doc.name}>
+                  {doc.name}
+                </option>
+              ))}
+            </select>
           </div>
 
           <div className="flex justify-end gap-2 mt-4 pt-4 border-t">

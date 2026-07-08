@@ -37,6 +37,15 @@ export default function BedsPage() {
   const [editingBed, setEditingBed] = useState<any | null>(null);
   const [deletingBed, setDeletingBed] = useState<any | null>(null);
 
+  React.useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('add') === 'true') {
+        setIsCreateOpen(true);
+      }
+    }
+  }, []);
+
   // Queries
   const { data: beds, isLoading, error } = useQuery<any[]>({
     queryKey: ['beds'],
@@ -378,12 +387,20 @@ export default function BedsPage() {
 
           <div className="flex flex-col gap-1">
             <label className="text-xs font-semibold">Ward Location *</label>
-            <input
+            <select
               {...register('ward')}
-              placeholder="e.g. Male Medical Ward"
               className="h-9 rounded-lg border bg-background px-3 text-sm outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
               required
-            />
+            >
+              <option value="">Choose Ward...</option>
+              <option value="General Male">General Male</option>
+              <option value="General Female">General Female</option>
+              <option value="ICU">ICU</option>
+              <option value="Oxygen Ward">Oxygen Ward</option>
+              <option value="Maternity">Maternity</option>
+              <option value="Pediatric Ward">Pediatric Ward</option>
+              <option value="Emergency">Emergency</option>
+            </select>
             {errors.ward && <span className="text-[10px] text-destructive">{errors.ward.message}</span>}
           </div>
 
@@ -455,11 +472,20 @@ export default function BedsPage() {
 
           <div className="flex flex-col gap-1">
             <label className="text-xs font-semibold">Ward Location *</label>
-            <input
+            <select
               {...registerEdit('ward')}
               className="h-9 rounded-lg border bg-background px-3 text-sm outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
               required
-            />
+            >
+              <option value="">Choose Ward...</option>
+              <option value="General Male">General Male</option>
+              <option value="General Female">General Female</option>
+              <option value="ICU">ICU</option>
+              <option value="Oxygen Ward">Oxygen Ward</option>
+              <option value="Maternity">Maternity</option>
+              <option value="Pediatric Ward">Pediatric Ward</option>
+              <option value="Emergency">Emergency</option>
+            </select>
             {errorsEdit.ward && (
               <span className="text-[10px] text-destructive">{errorsEdit.ward.message}</span>
             )}
