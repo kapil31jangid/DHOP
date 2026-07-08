@@ -30,6 +30,7 @@ type UserFormData = z.infer<typeof userFormSchema>;
 export default function UsersPage() {
   const queryClient = useQueryClient();
   const { user: currentUser } = useAuthStore();
+  const isDistrictAdmin = currentUser?.role === 'DISTRICT_ADMIN';
 
   const [search, setSearch] = useState('');
   const [roleFilter, setRoleFilter] = useState<'ALL' | 'DISTRICT_ADMIN' | 'FACILITY_ADMIN' | 'HEALTHCARE_STAFF' | 'OPERATIONS_STAFF'>('ALL');
@@ -37,6 +38,15 @@ export default function UsersPage() {
   const [isCreateOpen, setIsCreateOpen] = useState(false);
   const [editingUser, setEditingUser] = useState<any | null>(null);
   const [deletingUser, setDeletingUser] = useState<any | null>(null);
+
+  React.useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('add') === 'true' && isDistrictAdmin) {
+        setIsCreateOpen(true);
+      }
+    }
+  }, [isDistrictAdmin]);
 
   // Queries
   const { data: users, isLoading, error } = useQuery<any[]>({
@@ -176,7 +186,7 @@ export default function UsersPage() {
   const adminCount = users?.filter((u) => u.role === 'DISTRICT_ADMIN' || u.role === 'FACILITY_ADMIN').length || 0;
   const staffCount = users?.filter((u) => u.role === 'HEALTHCARE_STAFF' || u.role === 'OPERATIONS_STAFF').length || 0;
 
-  const isDistrictAdmin = currentUser?.role === 'DISTRICT_ADMIN';
+
 
   if (error) {
     return (
@@ -465,7 +475,7 @@ export default function UsersPage() {
             </div>
           </div>
 
-          {selectedRoleEdit !== 'DISTRICT_ADMIN' && (
+          {selectedRoleEdit !== 'DISTRICT_ADMIN' && isDistrictAdmin && (
             <div className="flex flex-col gap-1">
               <label className="text-xs font-semibold">Assigned Health Centre *</label>
               <select

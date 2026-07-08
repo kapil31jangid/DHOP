@@ -7,11 +7,13 @@ import {
   Post,
   UseGuards,
   UsePipes,
+  ForbiddenException,
 } from '@nestjs/common';
 import { FirebaseAuthGuard } from '../../common/guards/firebase-auth.guard';
 import { RolesGuard } from '../../common/guards/roles.guard';
 import { Roles } from '../../common/decorators/roles.decorator';
 import { Role } from '../../common/constants/roles.constants';
+import { CurrentUser } from '../../common/decorators/current-user.decorator';
 import { HealthCentresService } from './health-centres.service';
 import { CreateHealthCentreDto } from './dto/create-health-centre.dto';
 import { UpdateHealthCentreDto } from './dto/update-health-centre.dto';
@@ -24,14 +26,21 @@ export class HealthCentresController {
   constructor(private readonly healthCentresService: HealthCentresService) {}
 
   @Get()
-  @Roles(Role.DISTRICT_ADMIN)
-  async getAll() {
-    return this.healthCentresService.findMany();
+  @Roles(Role.DISTRICT_ADMIN, Role.FACILITY_ADMIN, Role.HEALTHCARE_STAFF, Role.OPERATIONS_STAFF)
+  async getAll(@CurrentUser() currentUser: any) {
+    const filters: Record<string, any> = {};
+    if (currentUser.role !== Role.DISTRICT_ADMIN) {
+      filters.id = currentUser.facilityId;
+    }
+    return this.healthCentresService.findMany({ filters });
   }
 
   @Get(':id')
-  @Roles(Role.DISTRICT_ADMIN)
-  async getOne(@Param('id') id: string) {
+  @Roles(Role.DISTRICT_ADMIN, Role.FACILITY_ADMIN, Role.HEALTHCARE_STAFF, Role.OPERATIONS_STAFF)
+  async getOne(@Param('id') id: string, @CurrentUser() currentUser: any) {
+    if (currentUser.role !== Role.DISTRICT_ADMIN && currentUser.facilityId !== id) {
+      throw new ForbiddenException('Access denied: You can only access your assigned health centre');
+    }
     return this.healthCentresService.findOne(id);
   }
 

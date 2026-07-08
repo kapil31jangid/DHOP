@@ -36,6 +36,15 @@ export default function HealthCentresPage() {
   const [isCreateOpen, setIsCreateOpen] = useState(false);
   const [editingCentre, setEditingCentre] = useState<any | null>(null);
 
+  React.useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('add') === 'true') {
+        setIsCreateOpen(true);
+      }
+    }
+  }, []);
+
   // Queries
   const { data: centres, isLoading, error } = useQuery<any[]>({
     queryKey: ['health-centres'],

@@ -38,6 +38,15 @@ export default function MedicinesPage() {
   const [editingMedicine, setEditingMedicine] = useState<any | null>(null);
   const [deletingMedicine, setDeletingMedicine] = useState<any | null>(null);
 
+  React.useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('add') === 'true') {
+        setIsCreateOpen(true);
+      }
+    }
+  }, []);
+
   const { data: medicines, isLoading, error } = useQuery<any[]>({
     queryKey: ['medicines'],
     queryFn: async () => {

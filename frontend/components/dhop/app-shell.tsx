@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Bell, ChevronRight, HeartPulse, LogOut, Menu, User, X, Check } from 'lucide-react';
+import { Bell, ChevronRight, HeartPulse, LogOut, Menu, User, X, Check, Plus, UserPlus, Building, Pill, BedDouble, Stethoscope } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { SidebarNav } from '@/components/dhop/sidebar';
 import { StatusBadge } from '@/components/dhop/status-badge';
@@ -49,6 +49,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
+  const [quickAddOpen, setQuickAddOpen] = useState(false);
   const pathname = usePathname();
   const title = pageTitles[pathname] ?? 'Dashboard';
 
@@ -182,6 +183,79 @@ export function AppShell({ children }: { children: React.ReactNode }) {
           </div>
 
           <div className="ml-auto flex items-center gap-1.5">
+            {/* Quick Add Menu */}
+            {user && (user.role === 'DISTRICT_ADMIN' || user.role === 'FACILITY_ADMIN' || user.role === 'HEALTHCARE_STAFF') && (
+              <div className="relative">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => {
+                    setQuickAddOpen((o) => !o);
+                    setDrawerOpen(false);
+                    setProfileOpen(false);
+                  }}
+                  className="flex items-center gap-1 h-8 px-2.5 text-xs font-semibold bg-primary text-primary-foreground hover:bg-primary/95 border-none"
+                >
+                  <Plus className="size-3.5" />
+                  <span>Quick Add</span>
+                </Button>
+                {quickAddOpen && (
+                  <div className="absolute right-0 z-50 mt-1 w-48 rounded-lg border bg-popover p-1 shadow-md animate-in fade-in slide-in-from-top-1 duration-150">
+                    {(user.role === 'DISTRICT_ADMIN' || user.role === 'FACILITY_ADMIN') && (
+                      <Link
+                        href="/users?add=true"
+                        onClick={() => setQuickAddOpen(false)}
+                        className="flex w-full items-center gap-2 rounded-md px-2.5 py-1.5 text-xs hover:bg-muted text-foreground font-medium transition-colors"
+                      >
+                        <UserPlus className="size-3.5 text-muted-foreground" />
+                        <span>Provision Doctor/Staff</span>
+                      </Link>
+                    )}
+                    {user.role === 'DISTRICT_ADMIN' && (
+                      <Link
+                        href="/health-centres?add=true"
+                        onClick={() => setQuickAddOpen(false)}
+                        className="flex w-full items-center gap-2 rounded-md px-2.5 py-1.5 text-xs hover:bg-muted text-foreground font-medium transition-colors"
+                      >
+                        <Building className="size-3.5 text-muted-foreground" />
+                        <span>Register Health Centre</span>
+                      </Link>
+                    )}
+                    {(user.role === 'DISTRICT_ADMIN' || user.role === 'FACILITY_ADMIN' || user.role === 'HEALTHCARE_STAFF') && (
+                      <Link
+                        href="/patients?add=true"
+                        onClick={() => setQuickAddOpen(false)}
+                        className="flex w-full items-center gap-2 rounded-md px-2.5 py-1.5 text-xs hover:bg-muted text-foreground font-medium transition-colors"
+                      >
+                        <Stethoscope className="size-3.5 text-muted-foreground" />
+                        <span>Register Patient</span>
+                      </Link>
+                    )}
+                    {(user.role === 'DISTRICT_ADMIN' || user.role === 'FACILITY_ADMIN' || user.role === 'HEALTHCARE_STAFF') && (
+                      <Link
+                        href="/medicines?add=true"
+                        onClick={() => setQuickAddOpen(false)}
+                        className="flex w-full items-center gap-2 rounded-md px-2.5 py-1.5 text-xs hover:bg-muted text-foreground font-medium transition-colors"
+                      >
+                        <Pill className="size-3.5 text-muted-foreground" />
+                        <span>Add Medicine Stock</span>
+                      </Link>
+                    )}
+                    {(user.role === 'DISTRICT_ADMIN' || user.role === 'FACILITY_ADMIN' || user.role === 'OPERATIONS_STAFF') && (
+                      <Link
+                        href="/beds?add=true"
+                        onClick={() => setQuickAddOpen(false)}
+                        className="flex w-full items-center gap-2 rounded-md px-2.5 py-1.5 text-xs hover:bg-muted text-foreground font-medium transition-colors"
+                      >
+                        <BedDouble className="size-3.5 text-muted-foreground" />
+                        <span>Add Bed Unit</span>
+                      </Link>
+                    )}
+                  </div>
+                )}
+              </div>
+            )}
+
             {/* Notifications */}
             <div className="relative">
               <Button
@@ -191,6 +265,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
                 onClick={() => {
                   setDrawerOpen((o) => !o);
                   setProfileOpen(false);
+                  setQuickAddOpen(false);
                 }}
               >
                 <Bell className="size-4" aria-hidden="true" />
@@ -213,6 +288,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
                 onClick={() => {
                   setProfileOpen((o) => !o);
                   setDrawerOpen(false);
+                  setQuickAddOpen(false);
                 }}
                 className="flex items-center gap-2 rounded-lg py-1 pr-2 pl-1 transition-colors hover:bg-muted"
               >
