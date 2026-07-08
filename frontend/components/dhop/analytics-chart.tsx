@@ -20,7 +20,7 @@ export function AnalyticsChart({
   data = [],
   type = 'line',
   color = 'var(--primary)',
-  height = 240,
+  height = 180,
 }: AnalyticsChartProps) {
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
 
@@ -81,7 +81,7 @@ export function AnalyticsChart({
 
       <div className="relative w-full overflow-hidden">
         {data.length === 0 ? (
-          <div className="flex items-center justify-center h-48 text-xs text-muted-foreground italic">
+          <div className="flex items-center justify-center h-32 text-xs text-muted-foreground italic">
             No statistics available for this period.
           </div>
         ) : (
