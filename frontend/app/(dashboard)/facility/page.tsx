@@ -93,6 +93,16 @@ export default function FacilityDashboardPage() {
     });
   }, [patients]);
 
+  const medicineStockData = useMemo(() => {
+    if (!medicines) return [];
+    // Sort by quantity ascending to highlight critical stock first
+    const sorted = [...medicines].sort((a, b) => a.quantity - b.quantity);
+    return sorted.slice(0, 5).map((m) => ({
+      label: m.name,
+      value: m.quantity,
+    }));
+  }, [medicines]);
+
   const getQuickActions = () => {
     const role = user?.role;
     const actions = [];
@@ -211,12 +221,17 @@ export default function FacilityDashboardPage() {
         </div>
       )}
 
-      {/* Analytics Chart */}
-      <div className="grid grid-cols-1 gap-6">
+      {/* Analytics Charts */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <AnalyticsChart
           title="Patient Registrations Trend (Last 7 Days)"
           data={chartData}
           type="line"
+        />
+        <AnalyticsChart
+          title="Critical Medicine Stock Levels"
+          data={medicineStockData}
+          type="bar"
         />
       </div>
 

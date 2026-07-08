@@ -96,6 +96,17 @@ export default function DistrictDashboardPage() {
     });
   }, [patients]);
 
+  const bedUtilizationByCentre = useMemo(() => {
+    if (!centres || !beds) return [];
+    return centres.map((c) => {
+      const centreBeds = beds.filter((b) => b.facility_id === c.id);
+      const total = centreBeds.length;
+      const occupied = centreBeds.filter((b) => b.status === 'Occupied').length;
+      const rate = total > 0 ? Math.round((occupied / total) * 100) : 0;
+      return { label: c.name, value: rate };
+    });
+  }, [centres, beds]);
+
   const handleExportSummary = () => {
     if (!centres || centres.length === 0) {
       toast.error('No health centre data available to export');
@@ -180,12 +191,17 @@ export default function DistrictDashboardPage() {
         </div>
       </div>
 
-      {/* Analytics Chart */}
-      <div className="grid grid-cols-1 gap-6">
+      {/* Analytics Charts */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <AnalyticsChart
           title="Patient Registrations Trend (Last 7 Days)"
           data={chartData}
           type="line"
+        />
+        <AnalyticsChart
+          title="Bed Utilization by Facility (%)"
+          data={bedUtilizationByCentre}
+          type="bar"
         />
       </div>
 
