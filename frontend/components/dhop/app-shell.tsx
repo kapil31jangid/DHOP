@@ -1,9 +1,9 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Bell, ChevronRight, HeartPulse, LogOut, Menu, User, X, Check, Plus, UserPlus, Building, Pill, BedDouble, Stethoscope, Sun, Moon } from 'lucide-react';
+import { Bell, ChevronRight, HeartPulse, LogOut, Menu, User, X, Check, Plus, UserPlus, Building, Pill, BedDouble, Stethoscope } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { SidebarNav } from '@/components/dhop/sidebar';
 import { StatusBadge } from '@/components/dhop/status-badge';
@@ -50,34 +50,8 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
   const [quickAddOpen, setQuickAddOpen] = useState(false);
-  const [darkMode, setDarkMode] = useState(false);
   const pathname = usePathname();
   const title = pageTitles[pathname] ?? 'Dashboard';
-
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const savedTheme = localStorage.getItem('theme');
-      const isDark = savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches);
-      setDarkMode(isDark);
-      if (isDark) {
-        document.documentElement.classList.add('dark');
-      } else {
-        document.documentElement.classList.remove('dark');
-      }
-    }
-  }, []);
-
-  const toggleDarkMode = () => {
-    const nextDark = !darkMode;
-    setDarkMode(nextDark);
-    if (nextDark) {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-    }
-  };
 
   const { user, logout } = useAuthStore();
   const queryClient = useQueryClient();
@@ -281,21 +255,6 @@ export function AppShell({ children }: { children: React.ReactNode }) {
                 )}
               </div>
             )}
-
-            {/* Theme Toggle */}
-            <Button
-              variant="ghost"
-              size="icon-sm"
-              aria-label="Toggle theme"
-              onClick={toggleDarkMode}
-              className="flex items-center justify-center"
-            >
-              {darkMode ? (
-                <Sun className="size-4 text-amber-500 fill-amber-500 animate-in spin-in duration-300" aria-hidden="true" />
-              ) : (
-                <Moon className="size-4 text-slate-700 dark:text-slate-300 animate-in duration-300" aria-hidden="true" />
-              )}
-            </Button>
 
             {/* Notifications */}
             <div className="relative">

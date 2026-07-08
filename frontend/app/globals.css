@@ -2,7 +2,6 @@
 @import 'tw-animate-css';
 @import 'shadcn/tailwind.css';
 
-@variant dark (&:where(.dark, .dark *));
 
 @theme inline {
   --color-sidebar-ring: var(--sidebar-ring);
@@ -128,66 +127,6 @@
   --sidebar-ring: #0D9488;
 }
 
-.dark {
-  --background: #0B0F19;
-  --foreground: #F8FAFC;
-  
-  --card: #151C2C;
-  --card-foreground: #F8FAFC;
-  
-  --popover: #151C2C;
-  --popover-foreground: #F8FAFC;
-  
-  --primary: #0D9488;
-  --primary-foreground: #FFFFFF;
-  --primary-hover: #14B8A6;
-  --primary-light: #115E59;
-  
-  --secondary: #1E293B;
-  --secondary-foreground: #94A3B8;
-  
-  --muted: #1E293B;
-  --muted-foreground: #94A3B8;
-  
-  --accent: #115E59;
-  --accent-foreground: #0D9488;
-  
-  --destructive: #EF4444;
-  --destructive-foreground: #FFFFFF;
-  
-  --success: #34D399;
-  --success-foreground: #FFFFFF;
-  --success-light: #064E3B;
-  
-  --warning: #FBBF24;
-  --warning-foreground: #FFFFFF;
-  --warning-light: #78350F;
-  
-  --danger: #EF4444;
-  --danger-light: #7F1D1D;
-  
-  --info: #60A5FA;
-  --info-light: #1E3A8A;
-  
-  --border: #1E293B;
-  --input: #1E293B;
-  --ring: #14B8A6;
-  
-  --chart-1: #0D9488;
-  --chart-2: #34D399;
-  --chart-3: #FBBF24;
-  --chart-4: #EF4444;
-  --chart-5: #60A5FA;
-  
-  --sidebar: #090C15;
-  --sidebar-foreground: #94A3B8;
-  --sidebar-primary: #0D9488;
-  --sidebar-primary-foreground: #FFFFFF;
-  --sidebar-accent: #115E59;
-  --sidebar-accent-foreground: #0D9488;
-  --sidebar-border: #151C2C;
-  --sidebar-ring: #14B8A6;
-}
 
 @layer base {
   * {
