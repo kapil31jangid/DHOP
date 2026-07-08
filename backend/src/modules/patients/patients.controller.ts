@@ -6,6 +6,7 @@ import {
   Param,
   Patch,
   Post,
+  Query,
   UseGuards,
   UsePipes,
 } from '@nestjs/common';
@@ -27,8 +28,15 @@ export class PatientsController {
 
   @Get()
   @Roles(Role.DISTRICT_ADMIN, Role.FACILITY_ADMIN, Role.HEALTHCARE_STAFF)
-  async getAll(@CurrentUser() currentUser: any) {
+  async getAll(
+    @CurrentUser() currentUser: any,
+    @Query('date') date?: string,
+  ) {
     const filters = this.patientsService.getFacilityFilters(currentUser);
+    const targetDate = date !== undefined ? date : new Date().toISOString().split('T')[0];
+    if (targetDate && targetDate !== 'all') {
+      filters.visit_date = targetDate;
+    }
     return this.patientsService.findMany({ filters });
   }
 

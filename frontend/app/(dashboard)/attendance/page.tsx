@@ -31,15 +31,18 @@ export default function AttendancePage() {
 
   const [search, setSearch] = useState('');
   const [statusFilter, setStatusFilter] = useState<'ALL' | 'Present' | 'Absent' | 'Leave'>('ALL');
+  const [selectedDate, setSelectedDate] = useState<string>(new Date().toISOString().split('T')[0]);
 
   const [isCreateOpen, setIsCreateOpen] = useState(false);
   const [editingAttendance, setEditingAttendance] = useState<any | null>(null);
 
   // Queries
   const { data: attendanceList, isLoading, error } = useQuery<any[]>({
-    queryKey: ['attendance'],
+    queryKey: ['attendance', selectedDate],
     queryFn: async () => {
-      const response = await api.get('/attendance');
+      const response = await api.get('/attendance', {
+        params: { date: selectedDate || 'all' },
+      });
       return response.data?.data || [];
     },
   });
@@ -200,20 +203,52 @@ export default function AttendancePage() {
       ) : (
         <div className="flex flex-col gap-4">
           {/* Toolbar */}
-          <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
-            <div className="relative flex-1 sm:max-w-xs">
-              <Search
-                className="absolute top-1/2 left-2.5 size-4 -translate-y-1/2 text-muted-foreground"
-                aria-hidden="true"
-              />
-              <input
-                type="search"
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                placeholder="Search logs by staff name..."
-                className="h-8 w-full rounded-lg border bg-card pr-3 pl-8 text-sm outline-none placeholder:text-muted-foreground focus-visible:ring-3 focus-visible:ring-ring/50"
-              />
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-center justify-between">
+            <div className="flex flex-wrap items-center gap-2 flex-1">
+              <div className="relative flex-1 max-w-xs min-w-[200px]">
+                <Search
+                  className="absolute top-1/2 left-2.5 size-4 -translate-y-1/2 text-muted-foreground"
+                  aria-hidden="true"
+                />
+                <input
+                  type="search"
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
+                  placeholder="Search logs by staff name..."
+                  className="h-8 w-full rounded-lg border bg-card pr-3 pl-8 text-sm outline-none placeholder:text-muted-foreground focus-visible:ring-3 focus-visible:ring-ring/50"
+                />
+              </div>
+
+              <div className="flex items-center gap-1.5 border rounded-lg bg-card p-0.5 h-8">
+                <input
+                  type="date"
+                  value={selectedDate}
+                  onChange={(e) => setSelectedDate(e.target.value)}
+                  className="h-7 bg-transparent px-2 text-xs outline-none text-foreground border-r pr-3"
+                />
+                <button
+                  onClick={() => setSelectedDate(new Date().toISOString().split('T')[0])}
+                  className={`h-7 px-2.5 rounded-md text-xs font-medium transition-colors ${
+                    selectedDate === new Date().toISOString().split('T')[0]
+                      ? 'bg-primary text-primary-foreground'
+                      : 'text-muted-foreground hover:text-foreground'
+                  }`}
+                >
+                  Today
+                </button>
+                <button
+                  onClick={() => setSelectedDate('')}
+                  className={`h-7 px-2.5 rounded-md text-xs font-medium transition-colors ${
+                    selectedDate === ''
+                      ? 'bg-primary text-primary-foreground'
+                      : 'text-muted-foreground hover:text-foreground'
+                  }`}
+                >
+                  All Dates
+                </button>
+              </div>
             </div>
+
             <div className="flex items-center gap-2">
               {(['ALL', 'Present', 'Absent', 'Leave'] as const).map((mode) => (
                 <button

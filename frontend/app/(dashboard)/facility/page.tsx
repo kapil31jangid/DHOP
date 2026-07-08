@@ -145,7 +145,7 @@ export default function FacilityDashboardPage() {
 
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
-        <KpiCard label="Patients Registered" value={String(totalPatients)} icon={UsersRound} />
+        <KpiCard label="Patients Registered Today" value={String(totalPatients)} icon={UsersRound} />
         <KpiCard
           label="Beds Available"
           value={`${availableBeds} / ${totalBeds}`}

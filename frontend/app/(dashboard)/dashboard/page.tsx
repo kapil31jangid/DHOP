@@ -112,7 +112,7 @@ export default function DistrictDashboardPage() {
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-3">
         <KpiCard label="Active Centres" value={`${activeCentres} / ${totalCentres}`} icon={Building2} />
-        <KpiCard label="Registered Patients" value={String(totalPatients)} icon={UsersRound} />
+        <KpiCard label="Patients Registered Today" value={String(totalPatients)} icon={UsersRound} />
         <KpiCard
           label="Bed Utilization"
           value={`${bedUtilization}%`}
