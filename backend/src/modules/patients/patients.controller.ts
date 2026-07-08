@@ -27,7 +27,7 @@ export class PatientsController {
   constructor(private readonly patientsService: PatientsService) {}
 
   @Get()
-  @Roles(Role.DISTRICT_ADMIN, Role.FACILITY_ADMIN, Role.HEALTHCARE_STAFF)
+  @Roles(Role.DISTRICT_ADMIN, Role.FACILITY_ADMIN, Role.HEALTHCARE_STAFF, Role.OPERATIONS_STAFF)
   async getAll(
     @CurrentUser() currentUser: any,
     @Query('date') date?: string,
@@ -41,7 +41,7 @@ export class PatientsController {
   }
 
   @Get(':id')
-  @Roles(Role.DISTRICT_ADMIN, Role.FACILITY_ADMIN, Role.HEALTHCARE_STAFF)
+  @Roles(Role.DISTRICT_ADMIN, Role.FACILITY_ADMIN, Role.HEALTHCARE_STAFF, Role.OPERATIONS_STAFF)
   async getOne(@Param('id') id: string, @CurrentUser() currentUser: any) {
     const patient = await this.patientsService.findOne(id);
     this.patientsService.assertFacilityScope(currentUser, patient.facility_id);

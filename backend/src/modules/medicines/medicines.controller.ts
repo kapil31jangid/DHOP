@@ -26,14 +26,14 @@ export class MedicinesController {
   constructor(private readonly medicinesService: MedicinesService) {}
 
   @Get()
-  @Roles(Role.DISTRICT_ADMIN, Role.FACILITY_ADMIN, Role.HEALTHCARE_STAFF)
+  @Roles(Role.DISTRICT_ADMIN, Role.FACILITY_ADMIN, Role.HEALTHCARE_STAFF, Role.OPERATIONS_STAFF)
   async getAll(@CurrentUser() currentUser: any) {
     const filters = this.medicinesService.getFacilityFilters(currentUser);
     return this.medicinesService.findMany({ filters });
   }
 
   @Get(':id')
-  @Roles(Role.DISTRICT_ADMIN, Role.FACILITY_ADMIN, Role.HEALTHCARE_STAFF)
+  @Roles(Role.DISTRICT_ADMIN, Role.FACILITY_ADMIN, Role.HEALTHCARE_STAFF, Role.OPERATIONS_STAFF)
   async getOne(@Param('id') id: string, @CurrentUser() currentUser: any) {
     const medicine = await this.medicinesService.findOne(id);
     this.medicinesService.assertFacilityScope(currentUser, medicine.facility_id);
